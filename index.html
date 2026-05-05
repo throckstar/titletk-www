@@ -380,7 +380,7 @@ footer {
 
 /* ─── PANEL: TEAM ────────────────────────────────────────────── */
 #panel-founders-intro { width: 100vw; background: var(--tk-parchment); }
-#panel-founders-intro .panel-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+#panel-founders-intro .panel-inner { display: flex; flex-direction: column; justify-content: center; gap: 40px; }
 #panel-founders-intro h2 {
   font-family: var(--tk-display); font-weight: 700;
   font-size: clamp(56px, 6.5vw, 112px);
@@ -451,11 +451,7 @@ footer {
   border: 1px solid var(--tk-rule);
   text-align: center;
 }
-.badge-back-logo {
-  font-family: var(--tk-display); font-weight: 700; font-size: 18px;
-  letter-spacing: -.018em; color: var(--tk-ink);
-}
-.badge-back-logo span { color: var(--tk-coral); }
+.badge-back-logo { color: var(--tk-ink); }
 .badge-back-email {
   font-family: var(--tk-sans); font-size: 12px; color: var(--tk-ink-2);
   text-decoration: none; word-break: break-all; line-height: 1.4;
@@ -845,7 +841,7 @@ textarea.form-input { resize: vertical; }
             <div class="badge-wrap">
               <div class="badge">
                 <div class="badge-front">
-                  <div class="badge-front-logo">Title TK</div>
+                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
                   <img class="founder-photo" src="/images/Cristina.png" alt="Cristina Pena">
                   <div class="badge-front-info">
                     <h3>Cristina Pena</h3>
@@ -853,7 +849,7 @@ textarea.form-input { resize: vertical; }
                   </div>
                 </div>
                 <div class="badge-back">
-                  <div class="badge-back-logo">Title<span>TK</span></div>
+                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
                   <hr class="badge-back-divider">
                   <a href="mailto:cristina@titletk.com" class="badge-back-email">cristina@titletk.com</a>
                   <hr class="badge-back-divider">
@@ -866,7 +862,7 @@ textarea.form-input { resize: vertical; }
             <div class="badge-wrap">
               <div class="badge">
                 <div class="badge-front">
-                  <div class="badge-front-logo">Title TK</div>
+                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
                   <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton">
                   <div class="badge-front-info">
                     <h3>Jason Throckmorton</h3>
@@ -874,7 +870,7 @@ textarea.form-input { resize: vertical; }
                   </div>
                 </div>
                 <div class="badge-back">
-                  <div class="badge-back-logo">Title<span>TK</span></div>
+                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
                   <hr class="badge-back-divider">
                   <a href="mailto:jason@titletk.com" class="badge-back-email">jason@titletk.com</a>
                   <hr class="badge-back-divider">
@@ -887,7 +883,7 @@ textarea.form-input { resize: vertical; }
             <div class="badge-wrap">
               <div class="badge">
                 <div class="badge-front">
-                  <div class="badge-front-logo">Title TK</div>
+                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
                   <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash">
                   <div class="badge-front-info">
                     <h3>Mike Barash</h3>
@@ -895,7 +891,7 @@ textarea.form-input { resize: vertical; }
                   </div>
                 </div>
                 <div class="badge-back">
-                  <div class="badge-back-logo">Title<span>TK</span></div>
+                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
                   <hr class="badge-back-divider">
                   <a href="mailto:mike@titletk.com" class="badge-back-email">mike@titletk.com</a>
                   <hr class="badge-back-divider">
