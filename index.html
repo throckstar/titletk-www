@@ -216,7 +216,8 @@ footer {
 /* ─── PANEL: HERO ────────────────────────────────────────────── */
 #panel-hero { width: 100vw; background: var(--tk-parchment); }
 #panel-hero .ph { position: absolute; inset: 0; }
-#panel-hero .overlay { position: absolute; inset: 0; background: rgba(242,235,221,.78); }
+#panel-hero .overlay { position: absolute; inset: 0; background: rgba(242,235,221,.55); }
+#panel-hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 #panel-hero .content {
   position: absolute; inset: 120px 64px 64px;
   display: grid; grid-template-rows: auto 1fr auto;
@@ -587,7 +588,9 @@ textarea.form-input { resize: vertical; }
 
       <!-- HERO -->
       <section class="panel" id="panel-hero">
-        <div class="ph" style="position:absolute;inset:0"></div>
+        <video autoplay muted loop playsinline>
+          <source src="/images/coverr-a-road-through-the-hills-6377-1080p.mp4" type="video/mp4">
+        </video>
         <div class="overlay"></div>
         <div class="content">
           <div style="display:flex;justify-content:space-between;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3)">
