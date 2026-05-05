@@ -254,12 +254,16 @@ footer {
 .logo-row:last-child { border-bottom: 1px solid rgba(26,24,21,.25); }
 .logo-cell {
   display: flex; align-items: center; justify-content: center;
-  height: 100%; padding: 32px 16px;
+  height: 100%; padding: 28px 20px;
   border-left: 1px solid rgba(26,24,21,.18);
-  font-family: var(--tk-display); font-weight: 600; letter-spacing: -.005em;
-  font-size: 22px; color: var(--tk-ink); white-space: nowrap;
 }
 .logo-cell:first-child { border-left: none; }
+.client-logo-img {
+  max-height: 30px; max-width: 130px;
+  width: auto; height: auto;
+  object-fit: contain; display: block;
+  filter: brightness(0); /* renders all logos dark on coral bg */
+}
 
 /* ─── PANEL: MANIFESTO ───────────────────────────────────────── */
 #panel-manifesto { width: 100vw; background: var(--tk-ink); }
@@ -289,13 +293,28 @@ footer {
 }
 .work-intro { flex: 0 0 28vw; display: flex; flex-direction: column; justify-content: space-between; padding-right: 24px; }
 .work-card {
-  flex: 0 0 26vw; height: 100%; border-radius: 14px; padding: 32px;
-  display: grid; grid-template-rows: auto 1fr auto; gap: 24px;
-  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  flex: 0 0 26vw; height: 100%; border-radius: 14px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,.18);
 }
-.work-card-meta { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; opacity: .55; }
-.work-card-name { display: flex; align-items: center; justify-content: center; font-family: var(--tk-display); }
-.work-card-footer { display: flex; justify-content: space-between; align-items: center; font-family: var(--tk-sans); font-size: 13px; font-weight: 500; padding-top: 16px; }
+.work-card-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.work-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,9,8,.82) 0%, rgba(10,9,8,.35) 55%, rgba(10,9,8,.08) 100%);
+}
+.work-card-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 28px 32px; color: #fff;
+}
+.work-card-meta { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; opacity: .7; }
+.work-card-name { font-family: var(--tk-display); font-weight: 700; font-size: clamp(36px, 3.2vw, 60px); line-height: .95; letter-spacing: -.024em; }
+.work-card-footer { display: flex; justify-content: space-between; align-items: center; font-family: var(--tk-sans); font-size: 13px; font-weight: 500; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.25); }
 
 /* ─── PANEL: SERVICES ────────────────────────────────────────── */
 #panel-services { width: 160vw; background: var(--tk-paper); }
@@ -518,35 +537,59 @@ textarea.form-input { resize: vertical; }
             </div>
             <span class="mono">Showing 6 of 150+ engagements</span>
           </div>
-          <div class="work-card" style="background:#1A1815;color:#fff">
-            <div class="work-card-meta"><span>Case · 01</span><span>Generative AI</span></div>
-            <div class="work-card-name" style="font-size:48px;color:#fff">Stability AI</div>
-            <div class="work-card-footer" style="border-top:1px solid rgba(255,255,255,.25)"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/stability-ai.jpg" alt="Stability AI">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 01</span><span>Generative AI</span></div>
+              <div class="work-card-name">Stability AI</div>
+              <div class="work-card-footer"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+            </div>
           </div>
-          <div class="work-card" style="background:#E5DECC;color:#1A1815">
-            <div class="work-card-meta"><span>Case · 02</span><span>Developer Security</span></div>
-            <div class="work-card-name" style="font-size:48px">Arcjet</div>
-            <div class="work-card-footer" style="border-top:1px solid rgba(26,24,21,.2)"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/arcjet.jpg" alt="Arcjet">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 02</span><span>Developer Security</span></div>
+              <div class="work-card-name">Arcjet</div>
+              <div class="work-card-footer"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+            </div>
           </div>
-          <div class="work-card" style="background:#FFADAD;color:#1A1815">
-            <div class="work-card-meta"><span>Case · 03</span><span>Customer Experience</span></div>
-            <div class="work-card-name" style="font-size:48px">Narvar</div>
-            <div class="work-card-footer" style="border-top:1px solid rgba(26,24,21,.2)"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/narvar.jpg" alt="Narvar">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 03</span><span>Customer Experience</span></div>
+              <div class="work-card-name">Narvar</div>
+              <div class="work-card-footer"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+            </div>
           </div>
-          <div class="work-card" style="background:#E8DEC9;color:#1A1815">
-            <div class="work-card-meta"><span>Case · 04</span><span>Equipment Rental</span></div>
-            <div class="work-card-name" style="font-size:40px;font-weight:800;text-transform:uppercase;letter-spacing:-.03em">Moab</div>
-            <div class="work-card-footer" style="border-top:1px solid rgba(26,24,21,.2)"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/moab.jpg" alt="Moab">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 04</span><span>Equipment Rental</span></div>
+              <div class="work-card-name">Moab</div>
+              <div class="work-card-footer"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+            </div>
           </div>
-          <div class="work-card" style="background:#FFADAD;color:#1A1815">
-            <div class="work-card-meta"><span>Case · 05</span><span>Digital Fashion</span></div>
-            <div class="work-card-name" style="font-size:40px;font-weight:700;text-transform:uppercase;letter-spacing:.02em">DRESSX</div>
-            <div class="work-card-footer" style="border-top:1px solid rgba(26,24,21,.2)"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/dressx.jpg" alt="DRESSX">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 05</span><span>Digital Fashion</span></div>
+              <div class="work-card-name">DRESSX</div>
+              <div class="work-card-footer"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+            </div>
           </div>
-          <div class="work-card" style="background:#FFE259;color:#1A1815">
-            <div class="work-card-meta"><span>Case · 06</span><span>Consumer Audio</span></div>
-            <div class="work-card-name" style="font-size:44px;font-weight:700;text-transform:uppercase">Sonos</div>
-            <div class="work-card-footer" style="border-top:1px solid rgba(26,24,21,.2)"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/sonos.jpg" alt="Sonos">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 06</span><span>Consumer Audio</span></div>
+              <div class="work-card-name">Sonos</div>
+              <div class="work-card-footer"><span>Read case</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+            </div>
           </div>
         </div>
       </section>
@@ -701,20 +744,20 @@ textarea.form-input { resize: vertical; }
           </div>
           <div class="logo-grid">
             <div class="logo-row" style="grid-template-columns:repeat(6,1fr)">
-              <div class="logo-cell">Stability AI</div>
-              <div class="logo-cell">Arcjet</div>
-              <div class="logo-cell">Narvar</div>
-              <div class="logo-cell" style="font-weight:800;text-transform:uppercase;letter-spacing:-.03em">Moab</div>
-              <div class="logo-cell" style="font-weight:700;text-transform:uppercase;letter-spacing:.02em">DRESSX</div>
-              <div class="logo-cell" style="font-weight:700;text-transform:uppercase">Sonos</div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/stability-ai.svg" alt="Stability AI"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/arcjet.svg" alt="Arcjet"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/narvar.svg" alt="Narvar"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/moab.svg" alt="Moab"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/dressx.svg" alt="DRESSX"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/sonos.svg" alt="Sonos"></div>
             </div>
             <div class="logo-row" style="grid-template-columns:repeat(6,1fr)">
-              <div class="logo-cell" style="font-weight:700;text-transform:uppercase">Hibbett</div>
-              <div class="logo-cell">Burrow</div>
-              <div class="logo-cell" style="font-weight:800;letter-spacing:-.025em">Uber Freight</div>
-              <div class="logo-cell">Hotel Tonight</div>
-              <div class="logo-cell">Google</div>
-              <div class="logo-cell">Nexos</div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/hibbett.svg" alt="Hibbett"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/burrow.svg" alt="Burrow"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/uber-freight.svg" alt="Uber Freight"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/hotel-tonight.svg" alt="Hotel Tonight"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/google.svg" alt="Google"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/nexos.svg" alt="Nexos"></div>
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
