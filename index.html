@@ -331,11 +331,11 @@ footer {
 }
 .svc-col:first-child { border-left: 1px solid var(--tk-rule); }
 .svc-col h3 {
-  font-family: var(--tk-display); font-weight: 600; font-size: 26px;
-  line-height: 1.05; letter-spacing: -.018em; color: var(--tk-ink); margin: 0;
+  font-family: var(--tk-display); font-weight: 600; font-size: 32px;
+  line-height: 1.02; letter-spacing: -.02em; color: var(--tk-ink); margin: 0;
 }
 .svc-col p { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
-.svc-list { list-style: none; margin: auto 0 0; display: flex; flex-direction: column; }
+.svc-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; }
 .svc-list li { font-family: var(--tk-sans); font-size: 13px; color: var(--tk-ink-2); padding: 7px 0; border-top: 1px solid var(--tk-rule); }
 
 /* ─── PANEL: PRODUCT ─────────────────────────────────────────── */
@@ -391,7 +391,7 @@ footer {
 /* Badge flip card */
 .badge-wrap { perspective: 900px; flex-shrink: 0; }
 .badge {
-  width: 220px; height: 300px;
+  width: 275px; height: 375px;
   position: relative;
   transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
   transition: transform .55s cubic-bezier(.4,0,.2,1);
@@ -660,7 +660,7 @@ textarea.form-input { resize: vertical; }
             </div>
           </div>
           <div class="work-card">
-            <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" style="object-position:center top;">
+            <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" style="object-fit:contain;background:#0a0908;">
             <div class="work-card-overlay"></div>
             <div class="work-card-content">
               <div class="work-card-meta"><span>Case · 04</span><span>Digital Fashion</span></div>
@@ -677,7 +677,8 @@ textarea.form-input { resize: vertical; }
           <div class="svc-left">
             <div class="eyebrow">What we do</div>
             <h2>Approach</h2>
-            <p style="font-family:var(--tk-sans);font-size:17px;line-height:1.5;color:var(--tk-ink-2);margin-top:16px">Story. Strategy. Engagement. Every engagement runs on a tight team of senior operators.</p>
+            <p style="font-family:var(--tk-display);font-size:20px;font-weight:600;line-height:1.3;color:var(--tk-ink);margin-top:20px;letter-spacing:-.012em">Story. Strategy. Engagement.</p>
+            <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.5;color:var(--tk-ink-2);margin-top:10px">Every Title TK program is led by a company co-founder.</p>
           </div>
           <div class="svc-cols">
             <div class="svc-col">
@@ -734,9 +735,9 @@ textarea.form-input { resize: vertical; }
         <div class="panel-inner">
           <div class="product-left">
             <div>
-              <div class="eyebrow" style="color:var(--tk-coral)">Narrative Intelligence</div>
+              <div class="eyebrow" style="color:var(--tk-coral)">Introducing North TK</div>
               <h2>NorthTK<span style="color:var(--nk-lapis)">.</span></h2>
-              <p style="font-family:var(--tk-sans);font-size:22px;line-height:1.4;color:rgba(255,255,255,.85);margin-top:28px">Purpose-built software for communications teams who need to move faster, see further, and stay aligned on what the story actually is.</p>
+              <p style="font-family:var(--tk-sans);font-size:22px;line-height:1.4;color:rgba(255,255,255,.85);margin-top:28px">North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.</p>
               <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:rgba(255,255,255,.6);margin-top:20px">NorthTK connects raw organizational intelligence to published story — from signal capture through brief, narrative, and campaign — so nothing falls through the cracks and every piece of content traces back to a real strategic insight.</p>
             </div>
             <div style="display:flex;gap:12px;margin-top:32px">
@@ -917,10 +918,10 @@ textarea.form-input { resize: vertical; }
       <!-- LOGOS -->
 
       <section class="panel" id="panel-logos">
-        <div class="panel-label"><span>Selected clients</span><span>01</span></div>
+        <div class="panel-label"><span>Experience</span><span>01</span></div>
         <div class="panel-inner" style="inset:160px 96px 96px;display:grid;grid-template-rows:auto 1fr auto;gap:48px">
           <div>
-            <div class="mono">Trusted by</div>
+            <div class="mono">Our History</div>
             <h2>150+ companies, from pre-seed to Fortune 50.</h2>
           </div>
           <div class="logo-grid">
@@ -938,6 +939,21 @@ textarea.form-input { resize: vertical; }
               <div class="logo-cell"><img class="client-logo-img" src="/images/logos/scope3 .jpg" alt="Scope3"></div>
               <div class="logo-cell"><img class="client-logo-img" src="/images/logos/snap.png" alt="Snap"></div>
               <div class="logo-cell"><img class="client-logo-img" src="/images/logos/uberfreight.png" alt="Uber Freight"></div>
+            </div>
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"></div>
+              <div class="logo-cell"></div>
+              <div class="logo-cell"></div>
+            </div>
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"></div>
+              <div class="logo-cell"></div>
+              <div class="logo-cell"></div>
+            </div>
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"></div>
+              <div class="logo-cell"></div>
+              <div class="logo-cell"></div>
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
@@ -958,8 +974,8 @@ textarea.form-input { resize: vertical; }
           <div class="stats-grid">
             <div class="stat-cell">
               <div class="stat-tag">Proven founders</div>
-              <div class="stat-k">4</div>
-              <p class="stat-label">Agencies founded and led by Title TK partners.</p>
+              <div class="stat-k">3</div>
+              <p class="stat-label">Our team are co-founders and former executive leaders at LaunchSquad, Codeword and Sparkpr.</p>
             </div>
             <div class="stat-cell">
               <div class="stat-tag">Proven scale</div>
@@ -1029,8 +1045,9 @@ textarea.form-input { resize: vertical; }
             <div>
               <div class="eyebrow" style="color:rgba(26,24,21,.65)">If it matters, we want to hear about it</div>
               <h2>Connect</h2>
-              <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:var(--tk-ink);margin-top:28px;max-width:600px">The best calls we get are early — before the press release, before the announcement, before the room is set. Tell us what you're working on and a partner will write back within one business day.</p>
+              <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:var(--tk-ink);margin-top:28px;max-width:600px">Companies turn to Title TK for big moments that call for a partner that is experienced, nimble, creative and senior. A partner will write back within one business day.</p>
             </div>
+            <p style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.55);margin-bottom:0">A few examples</p>
             <div class="contact-moments">
               <div class="contact-moment">
                 <div class="contact-moment-k">A launch</div>
