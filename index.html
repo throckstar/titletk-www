@@ -388,16 +388,103 @@ footer {
 }
 #panel-founders { width: 160vw; background: var(--tk-parchment); }
 #panel-founders .panel-inner { inset: 80px 64px 64px; }
-.founder-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; height: 100%; }
-.founder-card {
-  background: var(--tk-paper); border-radius: 12px; padding: 20px;
-  display: grid; grid-template-rows: 180px auto 1fr auto; gap: 16px;
-  box-shadow: 0 1px 0 rgba(26,24,21,.04); overflow: hidden;
+.founder-cards { display: flex; gap: 40px; align-items: center; justify-content: center; height: 100%; }
+
+/* Badge flip card */
+.badge-wrap { perspective: 900px; flex-shrink: 0; }
+.badge {
+  width: 220px; height: 300px;
+  position: relative; transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  filter: drop-shadow(0 8px 24px rgba(26,24,21,.18));
 }
-.founder-card h3 { font-family: var(--tk-display); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -.014em; margin: 0; }
-.founder-card p { font-family: var(--tk-sans); font-size: 13.5px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
-.founder-card-footer { padding-top: 12px; border-top: 1px solid var(--tk-rule); display: flex; justify-content: space-between; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); }
-.founder-photo { width: 100%; height: 140px; border-radius: 8px; object-fit: cover; object-position: center 45%; display: block; flex-shrink: 0; }
+.badge-wrap:hover .badge { transform: rotateY(180deg); }
+
+/* Lanyard hole */
+.badge::before {
+  content: ''; position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--tk-parchment); border: 2px solid rgba(26,24,21,.2);
+  z-index: 10;
+}
+
+.badge-front, .badge-back {
+  position: absolute; inset: 0;
+  border-radius: 14px; backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* Front */
+.badge-front { background: var(--tk-coral); }
+.badge-front-logo {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  font-family: var(--tk-display); font-weight: 700; font-size: 13px;
+  letter-spacing: -.01em; color: #fff; opacity: .9;
+}
+.founder-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 35%;
+  display: block;
+}
+.badge-front-info {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  padding: 40px 16px 16px;
+  background: linear-gradient(to top, rgba(10,9,8,.75) 0%, transparent 100%);
+}
+.badge-front-info h3 {
+  font-family: var(--tk-display); font-weight: 700; font-size: 20px;
+  line-height: 1.05; letter-spacing: -.016em; color: #fff; margin: 0;
+}
+.badge-front-info span {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: 4px; display: block;
+}
+
+/* Placeholder front (no photo) */
+.badge-front-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--tk-mono); font-size: 32px; font-weight: 700;
+  color: rgba(255,255,255,.35); letter-spacing: .05em;
+}
+
+/* Back */
+.badge-back {
+  background: var(--tk-paper);
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 24px 20px;
+  border: 1px solid var(--tk-rule);
+}
+.badge-back-logo {
+  font-family: var(--tk-display); font-weight: 700; font-size: 22px;
+  letter-spacing: -.018em; color: var(--tk-ink);
+}
+.badge-back-logo span { color: var(--tk-coral); }
+.badge-back-name {
+  font-family: var(--tk-display); font-weight: 600; font-size: 17px;
+  line-height: 1.1; letter-spacing: -.012em; color: var(--tk-ink); margin-bottom: 4px;
+}
+.badge-back-title {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--tk-ink-3);
+}
+.badge-back-contacts { display: flex; flex-direction: column; gap: 10px; }
+.badge-back-contact {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--tk-sans); font-size: 12px; color: var(--tk-ink-2);
+  text-decoration: none;
+}
+.badge-back-contact:hover { color: var(--tk-ink); }
+.badge-back-contact svg { flex-shrink: 0; opacity: .5; }
+.badge-back-divider { border: none; border-top: 1px solid var(--tk-rule); margin: 0; }
+.badge-hint {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--tk-ink-3); opacity: .5;
+  text-align: center; margin-top: 8px;
+}
 
 /* ─── PANEL: PROVEN ──────────────────────────────────────────── */
 #panel-proven { width: 100vw; background: var(--tk-ink); }
@@ -772,42 +859,112 @@ textarea.form-input { resize: vertical; }
       <section class="panel" id="panel-founders">
         <div class="panel-inner">
           <div class="founder-cards">
-            <article class="founder-card">
-              <div class="founder-photo" style="background:linear-gradient(135deg,#e8dec9,#d4c9b5);display:flex;align-items:center;justify-content:center;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3)">Photo coming</div>
-              <div>
-                <h3>Cristina Pena</h3>
-                <div style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
+
+            <!-- Cristina -->
+            <div class="badge-wrap">
+              <div class="badge">
+                <div class="badge-front">
+                  <div class="badge-front-logo">Title TK</div>
+                  <div class="badge-front-ph">CP</div>
+                  <div class="badge-front-info">
+                    <h3>Cristina Pena</h3>
+                    <span>Co-Founder · Partner</span>
+                  </div>
+                </div>
+                <div class="badge-back">
+                  <div>
+                    <div class="badge-back-logo">Title<span>TK</span></div>
+                  </div>
+                  <div>
+                    <div class="badge-back-name">Cristina Pena</div>
+                    <div class="badge-back-title">Co-Founder · Partner</div>
+                  </div>
+                  <hr class="badge-back-divider">
+                  <div class="badge-back-contacts">
+                    <a href="mailto:cristina@titletk.com" class="badge-back-contact">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+                      cristina@titletk.com
+                    </a>
+                    <a href="#" class="badge-back-contact">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="14" rx="3"/><path d="M5 7v4M5 4.5v.5M8 11V7c0-1.1.9-2 2-2h1"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
+                  <div class="badge-hint">Hover to flip</div>
+                </div>
               </div>
-              <p>Cristina has built award-winning programs for companies redefining their categories — from Fortune 50 platforms to the founders writing what's next. Twenty years of senior operating experience across earned media, brand, and integrated marketing.</p>
-              <div class="founder-card-footer">
-                <a href="#" style="color:inherit">Email →</a>
-                <a href="#" style="color:inherit">LinkedIn →</a>
+            </div>
+
+            <!-- Jason -->
+            <div class="badge-wrap">
+              <div class="badge">
+                <div class="badge-front">
+                  <div class="badge-front-logo">Title TK</div>
+                  <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton">
+                  <div class="badge-front-info">
+                    <h3>Jason Throckmorton</h3>
+                    <span>Co-Founder · Partner</span>
+                  </div>
+                </div>
+                <div class="badge-back">
+                  <div>
+                    <div class="badge-back-logo">Title<span>TK</span></div>
+                  </div>
+                  <div>
+                    <div class="badge-back-name">Jason Throckmorton</div>
+                    <div class="badge-back-title">Co-Founder · Partner</div>
+                  </div>
+                  <hr class="badge-back-divider">
+                  <div class="badge-back-contacts">
+                    <a href="mailto:jason@titletk.com" class="badge-back-contact">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+                      jason@titletk.com
+                    </a>
+                    <a href="#" class="badge-back-contact">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="14" rx="3"/><path d="M5 7v4M5 4.5v.5M8 11V7c0-1.1.9-2 2-2h1"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
+                  <div class="badge-hint">Hover to flip</div>
+                </div>
               </div>
-            </article>
-            <article class="founder-card">
-              <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton">
-              <div>
-                <h3>Jason Throckmorton</h3>
-                <div style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
+            </div>
+
+            <!-- Mike -->
+            <div class="badge-wrap">
+              <div class="badge">
+                <div class="badge-front">
+                  <div class="badge-front-logo">Title TK</div>
+                  <div class="badge-front-ph">MB</div>
+                  <div class="badge-front-info">
+                    <h3>Mike Barash</h3>
+                    <span>Co-Founder · Partner</span>
+                  </div>
+                </div>
+                <div class="badge-back">
+                  <div>
+                    <div class="badge-back-logo">Title<span>TK</span></div>
+                  </div>
+                  <div>
+                    <div class="badge-back-name">Mike Barash</div>
+                    <div class="badge-back-title">Co-Founder · Partner</div>
+                  </div>
+                  <hr class="badge-back-divider">
+                  <div class="badge-back-contacts">
+                    <a href="mailto:mike@titletk.com" class="badge-back-contact">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+                      mike@titletk.com
+                    </a>
+                    <a href="#" class="badge-back-contact">
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="14" rx="3"/><path d="M5 7v4M5 4.5v.5M8 11V7c0-1.1.9-2 2-2h1"/></svg>
+                      LinkedIn
+                    </a>
+                  </div>
+                  <div class="badge-hint">Hover to flip</div>
+                </div>
               </div>
-              <p>Jason has co-founded and led some of the most respected agencies in technology PR. He partners with founders at the moments that matter — IPO, acquisition, the launches that change the trajectory.</p>
-              <div class="founder-card-footer">
-                <a href="#" style="color:inherit">Email →</a>
-                <a href="#" style="color:inherit">LinkedIn →</a>
-              </div>
-            </article>
-            <article class="founder-card">
-              <div class="founder-photo" style="background:linear-gradient(135deg,#e8dec9,#d4c9b5);display:flex;align-items:center;justify-content:center;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3)">Photo coming</div>
-              <div>
-                <h3>Mike Barash</h3>
-                <div style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
-              </div>
-              <p>Mike runs strategy and creative for Title TK. He has led narrative work for category-defining technology brands across two decades and three economic cycles, with a focus on positioning that compounds.</p>
-              <div class="founder-card-footer">
-                <a href="#" style="color:inherit">Email →</a>
-                <a href="#" style="color:inherit">LinkedIn →</a>
-              </div>
-            </article>
+            </div>
+
           </div>
         </div>
       </section>
