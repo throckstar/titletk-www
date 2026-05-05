@@ -392,17 +392,18 @@ footer {
 .badge-wrap { perspective: 900px; flex-shrink: 0; }
 .badge {
   width: 220px; height: 300px;
-  position: relative; transform-style: preserve-3d;
+  position: relative;
+  transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
   transition: transform .55s cubic-bezier(.4,0,.2,1);
   cursor: pointer;
   filter: drop-shadow(0 8px 24px rgba(26,24,21,.18));
 }
 .badge-wrap:hover .badge { transform: rotateY(180deg); }
 
-
 .badge-front, .badge-back {
   position: absolute; inset: 0;
-  border-radius: 14px; backface-visibility: hidden;
+  border-radius: 14px;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
   overflow: hidden;
 }
 
@@ -444,33 +445,28 @@ footer {
 /* Back */
 .badge-back {
   background: var(--tk-paper);
-  transform: rotateY(180deg);
-  display: flex; flex-direction: column; justify-content: space-between;
-  padding: 24px 20px;
+  transform: rotateY(180deg); -webkit-transform: rotateY(180deg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 20px; padding: 28px 20px;
   border: 1px solid var(--tk-rule);
+  text-align: center;
 }
 .badge-back-logo {
-  font-family: var(--tk-display); font-weight: 700; font-size: 22px;
+  font-family: var(--tk-display); font-weight: 700; font-size: 18px;
   letter-spacing: -.018em; color: var(--tk-ink);
 }
 .badge-back-logo span { color: var(--tk-coral); }
-.badge-back-name {
-  font-family: var(--tk-display); font-weight: 600; font-size: 17px;
-  line-height: 1.1; letter-spacing: -.012em; color: var(--tk-ink); margin-bottom: 4px;
-}
-.badge-back-title {
-  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--tk-ink-3);
-}
-.badge-back-contacts { display: flex; flex-direction: column; gap: 10px; }
-.badge-back-contact {
-  display: flex; align-items: center; gap: 8px;
+.badge-back-email {
   font-family: var(--tk-sans); font-size: 12px; color: var(--tk-ink-2);
-  text-decoration: none;
+  text-decoration: none; word-break: break-all; line-height: 1.4;
 }
-.badge-back-contact:hover { color: var(--tk-ink); }
-.badge-back-contact svg { flex-shrink: 0; opacity: .5; }
-.badge-back-divider { border: none; border-top: 1px solid var(--tk-rule); margin: 0; }
+.badge-back-email:hover { color: var(--tk-ink); }
+.badge-back-divider { width: 32px; border: none; border-top: 1px solid var(--tk-rule); margin: 0; }
+.badge-back-linkedin {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none;
+}
+.badge-back-linkedin:hover { color: var(--tk-ink); }
 .badge-hint {
   font-family: var(--tk-mono); font-size: 9px; letter-spacing: .14em;
   text-transform: uppercase; color: var(--tk-ink-3); opacity: .5;
@@ -857,25 +853,11 @@ textarea.form-input { resize: vertical; }
                   </div>
                 </div>
                 <div class="badge-back">
-                  <div>
-                    <div class="badge-back-logo">Title<span>TK</span></div>
-                  </div>
-                  <div>
-                    <div class="badge-back-name">Cristina Pena</div>
-                    <div class="badge-back-title">Co-Founder · Partner</div>
-                  </div>
+                  <div class="badge-back-logo">Title<span>TK</span></div>
                   <hr class="badge-back-divider">
-                  <div class="badge-back-contacts">
-                    <a href="mailto:cristina@titletk.com" class="badge-back-contact">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
-                      cristina@titletk.com
-                    </a>
-                    <a href="#" class="badge-back-contact">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="14" rx="3"/><path d="M5 7v4M5 4.5v.5M8 11V7c0-1.1.9-2 2-2h1"/></svg>
-                      LinkedIn
-                    </a>
-                  </div>
-                  <div class="badge-hint">Hover to flip</div>
+                  <a href="mailto:cristina@titletk.com" class="badge-back-email">cristina@titletk.com</a>
+                  <hr class="badge-back-divider">
+                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
                 </div>
               </div>
             </div>
@@ -892,25 +874,11 @@ textarea.form-input { resize: vertical; }
                   </div>
                 </div>
                 <div class="badge-back">
-                  <div>
-                    <div class="badge-back-logo">Title<span>TK</span></div>
-                  </div>
-                  <div>
-                    <div class="badge-back-name">Jason Throckmorton</div>
-                    <div class="badge-back-title">Co-Founder · Partner</div>
-                  </div>
+                  <div class="badge-back-logo">Title<span>TK</span></div>
                   <hr class="badge-back-divider">
-                  <div class="badge-back-contacts">
-                    <a href="mailto:jason@titletk.com" class="badge-back-contact">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
-                      jason@titletk.com
-                    </a>
-                    <a href="#" class="badge-back-contact">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="14" rx="3"/><path d="M5 7v4M5 4.5v.5M8 11V7c0-1.1.9-2 2-2h1"/></svg>
-                      LinkedIn
-                    </a>
-                  </div>
-                  <div class="badge-hint">Hover to flip</div>
+                  <a href="mailto:jason@titletk.com" class="badge-back-email">jason@titletk.com</a>
+                  <hr class="badge-back-divider">
+                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
                 </div>
               </div>
             </div>
@@ -920,32 +888,18 @@ textarea.form-input { resize: vertical; }
               <div class="badge">
                 <div class="badge-front">
                   <div class="badge-front-logo">Title TK</div>
-                  <div class="badge-front-ph">MB</div>
+                  <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash">
                   <div class="badge-front-info">
                     <h3>Mike Barash</h3>
                     <span>Co-Founder · Partner</span>
                   </div>
                 </div>
                 <div class="badge-back">
-                  <div>
-                    <div class="badge-back-logo">Title<span>TK</span></div>
-                  </div>
-                  <div>
-                    <div class="badge-back-name">Mike Barash</div>
-                    <div class="badge-back-title">Co-Founder · Partner</div>
-                  </div>
+                  <div class="badge-back-logo">Title<span>TK</span></div>
                   <hr class="badge-back-divider">
-                  <div class="badge-back-contacts">
-                    <a href="mailto:mike@titletk.com" class="badge-back-contact">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
-                      mike@titletk.com
-                    </a>
-                    <a href="#" class="badge-back-contact">
-                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="14" height="14" rx="3"/><path d="M5 7v4M5 4.5v.5M8 11V7c0-1.1.9-2 2-2h1"/></svg>
-                      LinkedIn
-                    </a>
-                  </div>
-                  <div class="badge-hint">Hover to flip</div>
+                  <a href="mailto:mike@titletk.com" class="badge-back-email">mike@titletk.com</a>
+                  <hr class="badge-back-divider">
+                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
                 </div>
               </div>
             </div>
