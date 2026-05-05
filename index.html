@@ -46,7 +46,7 @@ html, body {
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* overflow-x: hidden removed — it breaks position: sticky */
 }
 em, i { font-style: normal; }
 a { color: inherit; text-decoration: none; }
@@ -262,20 +262,22 @@ footer {
 .logo-cell:first-child { border-left: none; }
 
 /* ─── PANEL: MANIFESTO ───────────────────────────────────────── */
-#panel-manifesto { width: 100vw; background: var(--tk-coral); }
+#panel-manifesto { width: 100vw; background: var(--tk-ink); }
 #panel-manifesto .panel-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 96px; align-items: center; }
+#panel-manifesto .panel-label { color: rgba(255,255,255,.55); }
 #panel-manifesto h2 {
   font-family: var(--tk-display); font-weight: 700;
   font-size: clamp(56px, 7vw, 128px);
-  line-height: .95; letter-spacing: -.028em; color: var(--tk-ink); margin: 32px 0 0;
+  line-height: .95; letter-spacing: -.028em; color: var(--tk-paper); margin: 32px 0 0;
 }
 #panel-manifesto h2.secondary {
   font-weight: 400; font-size: clamp(40px, 5vw, 80px);
-  line-height: 1; letter-spacing: -.022em; color: var(--tk-charcoal); margin: 12px 0 0;
+  line-height: 1; letter-spacing: -.022em; color: rgba(255,255,255,.65); margin: 12px 0 0;
 }
-.manifesto-right { border-left: 1px solid rgba(26,24,21,.25); padding-left: 64px; }
-.manifesto-right p { font-family: var(--tk-sans); font-weight: 400; font-size: 22px; line-height: 1.45; color: var(--tk-ink); }
-.manifesto-right p + p { font-size: 18px; line-height: 1.5; color: var(--tk-charcoal); margin-top: 28px; }
+#panel-manifesto .mono { color: rgba(255,255,255,.5); }
+.manifesto-right { border-left: 1px solid rgba(255,255,255,.2); padding-left: 64px; }
+.manifesto-right p { font-family: var(--tk-sans); font-weight: 400; font-size: 22px; line-height: 1.45; color: rgba(255,255,255,.85); }
+.manifesto-right p + p { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.6); margin-top: 28px; }
 
 /* ─── PANEL: WORK ────────────────────────────────────────────── */
 #panel-work { width: 180vw; background: var(--tk-parchment); }
@@ -306,17 +308,17 @@ footer {
 .svc-left { border-top: 2px solid var(--tk-ink); padding-top: 24px; }
 .svc-cols { display: grid; grid-template-columns: repeat(3, 1fr); }
 .svc-col {
-  padding: 24px 40px; border-right: 1px solid var(--tk-rule);
-  display: flex; flex-direction: column; gap: 24px; height: 100%;
+  padding: 20px 28px; border-right: 1px solid var(--tk-rule);
+  display: flex; flex-direction: column; gap: 16px; height: 100%;
 }
 .svc-col:first-child { border-left: 1px solid var(--tk-rule); }
 .svc-col h3 {
-  font-family: var(--tk-display); font-weight: 600; font-size: 36px;
-  line-height: 1; letter-spacing: -.018em; color: var(--tk-ink); margin: 0;
+  font-family: var(--tk-display); font-weight: 600; font-size: 26px;
+  line-height: 1.05; letter-spacing: -.018em; color: var(--tk-ink); margin: 0;
 }
-.svc-col p { font-family: var(--tk-sans); font-size: 15.5px; line-height: 1.55; color: var(--tk-ink-2); margin: 0; }
+.svc-col p { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
 .svc-list { list-style: none; margin: auto 0 0; display: flex; flex-direction: column; }
-.svc-list li { font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-ink-2); padding: 10px 0; border-top: 1px solid var(--tk-rule); }
+.svc-list li { font-family: var(--tk-sans); font-size: 13px; color: var(--tk-ink-2); padding: 7px 0; border-top: 1px solid var(--tk-rule); }
 
 /* ─── PANEL: PRODUCT ─────────────────────────────────────────── */
 #panel-product { width: 140vw; background: var(--tk-ink); }
@@ -333,23 +335,25 @@ footer {
 .product-screen-label { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); }
 
 /* ─── PANEL: FOUNDERS ────────────────────────────────────────── */
-#panel-founders { width: 140vw; background: var(--tk-parchment); }
-#panel-founders .panel-inner { display: grid; grid-template-rows: auto 1fr; gap: 56px; }
-#panel-founders h2 {
+#panel-founders-intro { width: 100vw; background: var(--tk-parchment); }
+#panel-founders-intro .panel-inner { display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+#panel-founders-intro h2 {
   font-family: var(--tk-display); font-weight: 700;
   font-size: clamp(56px, 6.5vw, 112px);
   line-height: .95; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0;
 }
-.founders-head { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: end; }
-.founder-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+#panel-founders { width: 160vw; background: var(--tk-parchment); }
+#panel-founders .panel-inner { inset: 80px 64px 64px; }
+.founder-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; height: 100%; }
 .founder-card {
-  background: var(--tk-paper); border-radius: 14px; padding: 24px;
-  display: grid; grid-template-rows: auto auto 1fr auto; gap: 20px;
-  box-shadow: 0 1px 0 rgba(26,24,21,.04);
+  background: var(--tk-paper); border-radius: 12px; padding: 20px;
+  display: grid; grid-template-rows: 180px auto 1fr auto; gap: 16px;
+  box-shadow: 0 1px 0 rgba(26,24,21,.04); overflow: hidden;
 }
-.founder-card h3 { font-family: var(--tk-display); font-weight: 600; font-size: 30px; line-height: 1.1; letter-spacing: -.014em; margin: 0; }
-.founder-card p { font-family: var(--tk-sans); font-size: 14.5px; line-height: 1.55; color: var(--tk-ink-2); margin: 0; }
-.founder-card-footer { padding-top: 16px; border-top: 1px solid var(--tk-rule); display: flex; justify-content: space-between; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); }
+.founder-card h3 { font-family: var(--tk-display); font-weight: 600; font-size: 24px; line-height: 1.1; letter-spacing: -.014em; margin: 0; }
+.founder-card p { font-family: var(--tk-sans); font-size: 13.5px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
+.founder-card-footer { padding-top: 12px; border-top: 1px solid var(--tk-rule); display: flex; justify-content: space-between; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); }
+.founder-photo { width: 100%; height: 180px; border-radius: 8px; object-fit: cover; object-position: top; display: block; }
 
 /* ─── PANEL: PROVEN ──────────────────────────────────────────── */
 #panel-proven { width: 100vw; background: var(--tk-ink); }
@@ -664,23 +668,27 @@ textarea.form-input { resize: vertical; }
         </div>
       </section>
 
-      <!-- FOUNDERS -->
-      <section class="panel" id="panel-founders">
+      <!-- FOUNDERS INTRO -->
+      <section class="panel" id="panel-founders-intro">
         <div class="panel-label"><span>Founders</span><span>06</span></div>
         <div class="panel-inner">
-          <div class="founders-head">
-            <div>
-              <div class="eyebrow">Senior operators · No layers · No theater</div>
-              <h2>The team you actually work with.</h2>
-            </div>
-            <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.55;color:var(--tk-ink-2);margin:0;max-width:520px">Every Title TK engagement is led by a partner. We're a San Francisco and Marin studio, built by senior operators who've worked through multiple technology and economic cycles — across startups, growth companies, and the Fortune 50.</p>
+          <div>
+            <div class="eyebrow">Senior operators · No layers · No theater</div>
+            <h2>The team you actually work with.</h2>
           </div>
+          <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.55;color:var(--tk-ink-2);max-width:640px">Every Title TK engagement is led by a partner. We're a San Francisco and Marin studio, built by senior operators who've worked through multiple technology and economic cycles — across startups, growth companies, and the Fortune 50.</p>
+        </div>
+      </section>
+
+      <!-- FOUNDERS CARDS -->
+      <section class="panel" id="panel-founders">
+        <div class="panel-inner">
           <div class="founder-cards">
             <article class="founder-card">
-              <div class="ph ph-portrait" style="width:100%;aspect-ratio:4/5;border-radius:8px"><span class="ph-cap">Cristina Pena</span></div>
+              <div class="ph ph-portrait founder-photo"><span class="ph-cap">Cristina Pena</span></div>
               <div>
                 <h3>Cristina Pena</h3>
-                <div style="font-family:var(--tk-sans);font-size:13.5px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
+                <div style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
               </div>
               <p>Cristina has built award-winning programs for companies redefining their categories — from Fortune 50 platforms to the founders writing what's next. Twenty years of senior operating experience across earned media, brand, and integrated marketing.</p>
               <div class="founder-card-footer">
@@ -689,10 +697,10 @@ textarea.form-input { resize: vertical; }
               </div>
             </article>
             <article class="founder-card">
-              <div class="ph ph-portrait" style="width:100%;aspect-ratio:4/5;border-radius:8px"><span class="ph-cap">Jason Throckmorton</span></div>
+              <img class="founder-photo" src="/jason.jpg" alt="Jason Throckmorton">
               <div>
                 <h3>Jason Throckmorton</h3>
-                <div style="font-family:var(--tk-sans);font-size:13.5px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
+                <div style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
               </div>
               <p>Jason has co-founded and led some of the most respected agencies in technology PR. He partners with founders at the moments that matter — IPO, acquisition, the launches that change the trajectory.</p>
               <div class="founder-card-footer">
@@ -701,10 +709,10 @@ textarea.form-input { resize: vertical; }
               </div>
             </article>
             <article class="founder-card">
-              <div class="ph ph-portrait" style="width:100%;aspect-ratio:4/5;border-radius:8px"><span class="ph-cap">Mike Barash</span></div>
+              <div class="ph ph-portrait founder-photo"><span class="ph-cap">Mike Barash</span></div>
               <div>
                 <h3>Mike Barash</h3>
-                <div style="font-family:var(--tk-sans);font-size:13.5px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
+                <div style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-3);margin-top:4px">Co-Founder · Partner</div>
               </div>
               <p>Mike runs strategy and creative for Title TK. He has led narrative work for category-defining technology brands across two decades and three economic cycles, with a focus on positioning that compounds.</p>
               <div class="founder-card-footer">
@@ -921,6 +929,7 @@ textarea.form-input { resize: vertical; }
   }
 
   setHeight();
+  window.addEventListener('load', setHeight); // re-measure after fonts load
   if (typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(setHeight).observe(track);
   }
