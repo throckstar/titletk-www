@@ -263,7 +263,7 @@ footer {
   max-height: 30px; max-width: 130px;
   width: auto; height: auto;
   object-fit: contain; display: block;
-  filter: brightness(0); /* renders all logos dark on coral bg */
+  mix-blend-mode: multiply; /* blends white bg away, keeps logo on coral */
 }
 
 /* ─── PANEL: MANIFESTO ───────────────────────────────────────── */
