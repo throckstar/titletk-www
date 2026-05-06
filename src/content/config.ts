@@ -9,6 +9,7 @@ const blog = defineCollection({
     author: z.string().optional(),
     category: z.enum(['Strategy', 'Field Notes', 'Press', 'Studio']).optional(),
     cover: z.enum(['editorial', 'ticker', 'index', 'staggered']).optional(),
+    heroImage: z.string().optional(),
   }),
 });
 
