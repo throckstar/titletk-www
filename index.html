@@ -39,6 +39,9 @@
 
 /* ─── RESET ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+}
 html, body {
   background: var(--tk-parchment);
   color: var(--tk-ink);
@@ -46,7 +49,6 @@ html, body {
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  /* overflow-x: hidden removed — it breaks position: sticky */
 }
 em, i { font-style: normal; }
 a { color: inherit; text-decoration: none; }
@@ -136,7 +138,6 @@ input, select, textarea, button { font-family: var(--tk-sans); }
   background: rgba(242,235,221,.85); backdrop-filter: blur(8px);
   padding: 8px 14px; border-radius: 999px; border: 1px solid var(--tk-rule);
 }
-#nav-pill strong { color: var(--tk-ink); font-weight: 500; }
 #menu-btn {
   justify-self: end;
   background: transparent; border: none; cursor: pointer;
@@ -178,26 +179,18 @@ input, select, textarea, button { font-family: var(--tk-sans); }
   color: rgba(255,255,255,.5); padding-top: 32px; border-top: 1px solid rgba(255,255,255,.15);
 }
 
-/* ─── HORIZONTAL SCROLL ──────────────────────────────────────── */
-#scroll-track {
-  display: flex; height: 100vh; will-change: transform;
-}
-#scroll-sticky {
-  position: sticky; top: 0; height: 100vh; overflow: hidden;
-}
-
-/* ─── PANEL ──────────────────────────────────────────────────── */
+/* ─── PANEL (vertical scroll) ────────────────────────────────── */
 .panel {
-  flex: 0 0 auto; height: 100vh; position: relative; overflow: hidden;
+  width: 100%; min-height: 100dvh; position: relative; display: block;
 }
 .panel-label {
-  position: absolute; top: 96px; left: 64px; right: 64px; z-index: 5;
+  position: absolute; top: 40px; left: 96px; right: 96px; z-index: 5;
   display: flex; justify-content: space-between; align-items: center;
   font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
   opacity: .55;
 }
 .panel-inner {
-  position: absolute; inset: 160px 96px 96px;
+  padding: 100px 96px 80px;
 }
 
 /* ─── FOOTER ─────────────────────────────────────────────────── */
@@ -214,22 +207,21 @@ footer {
 .wrap { max-width: 1480px; margin: 0 auto; padding: 0 56px; }
 
 /* ─── PANEL: HERO ────────────────────────────────────────────── */
-#panel-hero { width: 100vw; background: var(--tk-parchment); }
-#panel-hero .ph { position: absolute; inset: 0; }
-#panel-hero .overlay { position: absolute; inset: 0; background: rgba(242,235,221,.55); }
+#panel-hero { background: var(--tk-parchment); overflow: hidden; }
 #panel-hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+#panel-hero .overlay { position: absolute; inset: 0; background: rgba(242,235,221,.55); }
 #panel-hero .content {
   position: absolute; inset: 120px 64px 64px;
   display: grid; grid-template-rows: auto 1fr auto;
 }
 #panel-hero h1 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(96px, 13vw, 240px);
+  font-size: clamp(72px, 10vw, 200px);
   line-height: .92; letter-spacing: -.028em; color: var(--tk-ink); margin: 0;
 }
 .hero-sub {
   font-family: var(--tk-display); font-weight: 400;
-  font-size: clamp(24px, 2.4vw, 36px);
+  font-size: clamp(20px, 2.2vw, 32px);
   line-height: 1.2; letter-spacing: -.012em; color: var(--tk-ink-2); margin: 32px 0 0;
 }
 .hero-bar {
@@ -243,57 +235,50 @@ footer {
   border-bottom: 1px solid var(--tk-ink); padding-bottom: 4px;
 }
 
-/* ─── PANEL: LOGOS ───────────────────────────────────────────── */
-#panel-logos { width: 100vw; background: var(--tk-paper); }
-#panel-logos h2 {
-  font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 7vw, 120px);
-  line-height: .96; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0; max-width: 70%;
-}
-.logo-grid { display: grid; grid-template-rows: repeat(4, 1fr); align-content: center; }
-.logo-row { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; border-top: 1px solid var(--tk-rule); }
-.logo-row:last-child { border-bottom: 1px solid var(--tk-rule); }
-.logo-cell {
-  display: flex; align-items: center; justify-content: center;
-  padding: 32px 24px;
-  border-left: 1px solid var(--tk-rule);
-}
-.logo-cell:first-child { border-left: none; }
-.client-logo-img {
-  height: 44px; width: auto;
-  max-width: 180px;
-  object-fit: contain; display: block;
-}
-
 /* ─── PANEL: MANIFESTO ───────────────────────────────────────── */
-#panel-manifesto { width: 100vw; background: var(--tk-ink); }
-#panel-manifesto .panel-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 96px; align-items: center; }
+#panel-manifesto { background: var(--tk-ink); }
+#panel-manifesto .panel-inner {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
+  min-height: 100dvh; padding: 100px 96px 80px;
+}
 #panel-manifesto .panel-label { color: rgba(255,255,255,.55); }
+#panel-manifesto .panel-inner > div { min-width: 0; }
 #panel-manifesto h2 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 7vw, 128px);
+  font-size: clamp(48px, 5vw, 120px);
   line-height: .95; letter-spacing: -.028em; color: var(--tk-paper); margin: 32px 0 0;
 }
 #panel-manifesto h2.secondary {
-  font-weight: 400; font-size: clamp(40px, 5vw, 80px);
+  font-weight: 400; font-size: clamp(32px, 3.5vw, 72px);
   line-height: 1; letter-spacing: -.022em; color: rgba(255,255,255,.65); margin: 12px 0 0;
 }
 #panel-manifesto .mono { color: rgba(255,255,255,.5); }
 .manifesto-right { border-left: 1px solid rgba(255,255,255,.2); padding-left: 64px; }
-.manifesto-right p { font-family: var(--tk-sans); font-weight: 400; font-size: 22px; line-height: 1.45; color: rgba(255,255,255,.85); }
-.manifesto-right p + p { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.6); margin-top: 28px; }
+.manifesto-right p { font-family: var(--tk-sans); font-weight: 400; font-size: 20px; line-height: 1.5; color: rgba(255,255,255,.85); }
+.manifesto-right p + p { font-size: 17px; line-height: 1.55; color: rgba(255,255,255,.6); margin-top: 24px; }
 
 /* ─── PANEL: WORK ────────────────────────────────────────────── */
-#panel-work { width: 155vw; background: var(--tk-parchment); }
-#panel-work .panel-inner { inset: 160px 0 96px 96px; display: flex; align-items: stretch; gap: 24px; }
+#panel-work { background: var(--tk-parchment); }
+#panel-work .panel-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: start;
+}
 #panel-work h2 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 6.5vw, 112px);
+  font-size: clamp(48px, 5.5vw, 96px);
   line-height: .95; letter-spacing: -.024em; color: var(--tk-ink); margin: 0;
 }
-.work-intro { flex: 0 0 28vw; display: flex; flex-direction: column; justify-content: space-between; padding-right: 24px; }
+.work-intro {
+  grid-column: 1 / -1;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-bottom: 32px; border-bottom: 1px solid var(--tk-rule);
+  margin-bottom: 8px;
+}
+.work-intro-text { max-width: 480px; }
 .work-card {
-  flex: 0 0 26vw; height: 100%; border-radius: 14px;
+  height: 380px; border-radius: 14px;
   position: relative; overflow: hidden;
   box-shadow: 0 2px 16px rgba(0,0,0,.18);
 }
@@ -315,83 +300,15 @@ footer {
 .work-card-meta { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #fff; }
 .work-card-footer { display: flex; justify-content: space-between; align-items: center; font-family: var(--tk-sans); font-size: 13px; font-weight: 500; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.25); }
 
-/* ─── PANEL: SERVICES ────────────────────────────────────────── */
-#panel-services { width: 120vw; background: var(--tk-paper); }
-#panel-services .panel-inner { display: grid; grid-template-columns: .7fr 2.4fr; gap: 80px; }
-#panel-services h2 {
-  font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(48px, 5vw, 88px);
-  line-height: .96; letter-spacing: -.022em; color: var(--tk-ink); margin: 24px 0 0;
-}
-.svc-left { border-top: 2px solid var(--tk-ink); padding-top: 24px; }
-.svc-cols {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--tk-rule);
-  border-left: 1px solid var(--tk-rule);
-}
-.svc-col {
-  padding: 28px 32px;
-  border-right: 1px solid var(--tk-rule);
-  border-bottom: 1px solid var(--tk-rule);
-  display: flex; flex-direction: column; gap: 16px;
-}
-.svc-col h3 {
-  font-family: var(--tk-display); font-weight: 600; font-size: 32px;
-  line-height: 1.02; letter-spacing: -.02em; color: var(--tk-ink); margin: 0;
-}
-.svc-col p { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
-.svc-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; }
-.svc-list li { font-family: var(--tk-sans); font-size: 13px; color: var(--tk-ink-2); padding: 7px 0; border-top: 1px solid var(--tk-rule); }
-
-/* ─── PANEL: PRODUCT ─────────────────────────────────────────── */
-#panel-product { width: 140vw; background: var(--tk-ink); }
-#panel-product .panel-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 96px; }
-#panel-product .panel-label { color: rgba(255,255,255,.55); }
-#panel-product h2 {
-  font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 6.5vw, 112px);
-  line-height: .96; letter-spacing: -.024em; color: var(--tk-paper); margin: 24px 0 0;
-}
-.product-left { color: var(--tk-paper); display: flex; flex-direction: column; justify-content: space-between; }
-.module-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  align-content: start;
-}
-.module-card {
-  background: var(--tk-paper);
-  border: 1px dashed rgba(26,24,21,.22);
-  border-radius: 10px;
-  padding: 24px 24px 20px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  gap: 20px; min-height: 180px;
-  position: relative; overflow: hidden;
-}
-.module-card.module-featured { grid-column: 1 / -1; min-height: 140px; flex-direction: row; align-items: center; gap: 0; }
-.module-card-text { flex: 1; }
-.module-card-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); margin-bottom: 8px; }
-.module-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -.018em; line-height: 1; color: var(--tk-ink); margin: 0 0 8px; }
-.module-card p { font-family: var(--tk-sans); font-size: 13px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; max-width: 260px; }
-.module-card-footer { display: flex; align-items: center; gap: 6px; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none; border-top: 1px solid rgba(26,24,21,.12); padding-top: 14px; width: fit-content; }
-.module-card-footer:hover { color: var(--nk-lapis); }
-.module-illus {
-  flex-shrink: 0; align-self: flex-end;
-  width: 80px; height: 80px;
-  opacity: .55;
-}
-.module-featured .module-illus { width: 120px; height: 80px; align-self: center; margin-left: 24px; }
-
 /* ─── PANEL: TEAM ────────────────────────────────────────────── */
-#panel-founders-intro { width: 65vw; background: #F0F2FA; }
-#panel-founders-intro .panel-inner { display: grid; grid-template-rows: auto auto; align-content: center; gap: 48px; }
-.founder-cards { display: flex; gap: 32px; align-items: flex-start; }
+#panel-founders-intro { background: #F0F2FA; }
+#panel-founders-intro .panel-inner { display: flex; flex-direction: column; gap: 48px; }
+.founder-cards { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
 #panel-founders-intro h2 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 6.5vw, 112px);
+  font-size: clamp(48px, 5.5vw, 96px);
   line-height: .95; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0;
 }
-.founder-cards { display: flex; gap: 48px; align-items: flex-start; justify-content: flex-start; }
 
 /* Badge flip card */
 .badge-wrap { perspective: 900px; flex-shrink: 0; }
@@ -474,8 +391,98 @@ footer {
   text-align: center; margin-top: 8px;
 }
 
+/* ─── PANEL: SERVICES ────────────────────────────────────────── */
+#panel-services { background: var(--tk-paper); }
+#panel-services .panel-inner { display: grid; grid-template-columns: .7fr 2.4fr; gap: 80px; }
+#panel-services h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(40px, 4vw, 72px);
+  line-height: .96; letter-spacing: -.022em; color: var(--tk-ink); margin: 24px 0 0;
+}
+.svc-left { border-top: 2px solid var(--tk-ink); padding-top: 24px; }
+.svc-cols {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--tk-rule);
+  border-left: 1px solid var(--tk-rule);
+}
+.svc-col {
+  padding: 28px 32px;
+  border-right: 1px solid var(--tk-rule);
+  border-bottom: 1px solid var(--tk-rule);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.svc-col h3 {
+  font-family: var(--tk-display); font-weight: 600; font-size: 28px;
+  line-height: 1.02; letter-spacing: -.02em; color: var(--tk-ink); margin: 0;
+}
+.svc-col p { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
+.svc-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; }
+.svc-list li { font-family: var(--tk-sans); font-size: 13px; color: var(--tk-ink-2); padding: 7px 0; border-top: 1px solid var(--tk-rule); }
+
+/* ─── PANEL: PRODUCT ─────────────────────────────────────────── */
+#panel-product { background: var(--tk-ink); }
+#panel-product .panel-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; }
+#panel-product .panel-label { color: rgba(255,255,255,.55); }
+#panel-product h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(48px, 5.5vw, 100px);
+  line-height: .96; letter-spacing: -.024em; color: var(--tk-paper); margin: 24px 0 0;
+}
+.product-left { color: var(--tk-paper); display: flex; flex-direction: column; justify-content: space-between; }
+.module-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-content: start;
+}
+.module-card {
+  background: var(--tk-paper);
+  border: 1px dashed rgba(26,24,21,.22);
+  border-radius: 10px;
+  padding: 24px 24px 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  gap: 20px; min-height: 180px;
+  position: relative; overflow: hidden;
+}
+.module-card.module-featured { grid-column: 1 / -1; min-height: 140px; flex-direction: row; align-items: center; gap: 0; }
+.module-card-text { flex: 1; }
+.module-card-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); margin-bottom: 8px; }
+.module-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -.018em; line-height: 1; color: var(--tk-ink); margin: 0 0 8px; }
+.module-card p { font-family: var(--tk-sans); font-size: 13px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; max-width: 260px; }
+.module-card-footer { display: flex; align-items: center; gap: 6px; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none; border-top: 1px solid rgba(26,24,21,.12); padding-top: 14px; width: fit-content; }
+.module-card-footer:hover { color: var(--nk-lapis); }
+.module-illus {
+  flex-shrink: 0; align-self: flex-end;
+  width: 80px; height: 80px;
+  opacity: .55;
+}
+.module-featured .module-illus { width: 120px; height: 80px; align-self: center; margin-left: 24px; }
+
+/* ─── PANEL: LOGOS ───────────────────────────────────────────── */
+#panel-logos { background: var(--tk-paper); }
+#panel-logos .panel-inner { display: grid; grid-template-rows: auto 1fr auto; gap: 48px; }
+#panel-logos h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(48px, 5.5vw, 100px);
+  line-height: .96; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0; max-width: 70%;
+}
+.logo-grid { display: grid; grid-template-rows: repeat(4, 1fr); align-content: center; }
+.logo-row { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; border-top: 1px solid var(--tk-rule); }
+.logo-row:last-child { border-bottom: 1px solid var(--tk-rule); }
+.logo-cell {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 24px;
+  border-left: 1px solid var(--tk-rule);
+}
+.logo-cell:first-child { border-left: none; }
+.client-logo-img {
+  height: 44px; width: auto;
+  max-width: 180px;
+  object-fit: contain; display: block;
+}
+
 /* ─── PANEL: PROVEN ──────────────────────────────────────────── */
-#panel-proven { width: 100vw; background: var(--tk-ink); }
+#panel-proven { background: var(--tk-ink); }
 #panel-proven .panel-inner { display: grid; grid-template-rows: auto 1fr; gap: 64px; }
 #panel-proven .panel-label { color: rgba(255,255,255,.55); }
 #panel-proven h2 {
@@ -499,11 +506,11 @@ footer {
 .stat-label { font-family: var(--tk-sans); font-size: 15px; line-height: 1.4; color: rgba(255,255,255,.7); }
 
 /* ─── PANEL: STORIES ─────────────────────────────────────────── */
-#panel-stories { width: 140vw; background: var(--tk-paper); }
+#panel-stories { background: var(--tk-paper); }
 #panel-stories .panel-inner { display: grid; grid-template-rows: auto 1fr; gap: 48px; }
 #panel-stories h2 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 7vw, 120px);
+  font-size: clamp(48px, 5.5vw, 100px);
   line-height: .96; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0;
 }
 .stories-head { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
@@ -519,20 +526,20 @@ footer {
 .story-read { font-family: var(--tk-sans); font-size: 14px; font-weight: 500; color: var(--tk-ink); display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--tk-ink); padding-bottom: 2px; }
 
 /* ─── PANEL: CONTACT ─────────────────────────────────────────── */
-#panel-contact { width: 140vw; background: #2C2A28; }
+#panel-contact { background: #2C2A28; }
 #panel-contact .panel-label { color: rgba(255,255,255,.55); }
-#panel-contact .panel-inner { inset: 140px 96px 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: stretch; }
+#panel-contact .panel-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
 #panel-contact h2 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(80px, 10vw, 200px);
+  font-size: clamp(64px, 8vw, 160px);
   line-height: .9; letter-spacing: -.03em; color: #FFFFFF; margin: 20px 0 0;
 }
-.contact-left { display: flex; flex-direction: column; justify-content: space-between; }
-.contact-moments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+.contact-left { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+.contact-moments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 8px; }
 .contact-moment { padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); }
 .contact-moment-k { font-family: var(--tk-display); font-weight: 600; font-size: 22px; letter-spacing: -.014em; color: rgba(255,255,255,.9); }
 .contact-moment-d { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.55); margin-top: 6px; }
-.contact-reach { display: flex; gap: 32px; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.contact-reach { display: flex; gap: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); }
 .contact-form-wrap { background: var(--tk-paper); padding: 32px; border-radius: 6px; border: 1px solid rgba(26,24,21,.1); display: flex; flex-direction: column; }
 .contact-form-wrap form { display: grid; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -549,50 +556,23 @@ textarea.form-input { resize: vertical; }
 /* ─── ARROW SVG ──────────────────────────────────────────────── */
 .arrow { display: inline-block; vertical-align: middle; }
 
-/* ─── MEDIUM SCREENS: tighten panel padding ─────────────────── */
-@media (max-width: 1440px) {
-  .panel-inner { inset: 120px 56px 72px; }
-  .panel-label { top: 72px; left: 40px; right: 40px; }
-  #panel-manifesto .panel-inner { gap: 64px; }
-  #panel-manifesto h2 { font-size: clamp(44px, 5vw, 96px); }
-  #panel-manifesto h2.secondary { font-size: clamp(32px, 3.5vw, 64px); }
-  .manifesto-right { padding-left: 40px; }
-  .manifesto-right p { font-size: 18px; }
+/* ─── MEDIUM SCREENS ─────────────────────────────────────────── */
+@media (max-width: 1280px) {
+  .panel-inner { padding: 88px 64px 72px; }
+  .panel-label { left: 64px; right: 64px; }
+  #panel-manifesto .panel-inner { padding: 88px 64px 72px; gap: 56px; }
   #panel-services .panel-inner { gap: 48px; }
   #panel-product .panel-inner { gap: 56px; }
-  #panel-product h2 { font-size: clamp(48px, 5.5vw, 96px); }
-  .module-card { min-height: 160px; }
-  .module-card.module-featured { min-height: 120px; }
+  #panel-work .panel-inner { gap: 20px; }
+  .work-card { height: 320px; }
+  .svc-col h3 { font-size: 24px; }
   #menu-overlay { padding: 100px 48px 40px; }
 }
 
-@media (max-width: 1280px) {
-  .panel-inner { inset: 96px 40px 56px; }
-  .panel-label { top: 56px; left: 32px; right: 32px; }
-  #panel-manifesto .panel-inner { gap: 40px; grid-template-columns: 1fr 1.5fr; }
-  #panel-manifesto h2 { font-size: clamp(36px, 4vw, 72px); }
-  #panel-manifesto h2.secondary { font-size: clamp(28px, 2.8vw, 52px); }
-  .manifesto-right { padding-left: 28px; }
-  .manifesto-right p { font-size: 16px; line-height: 1.5; }
-  .manifesto-right p + p { font-size: 14px; }
-  #panel-logos h2 { font-size: clamp(40px, 5vw, 80px); }
-  #panel-services .panel-inner { gap: 32px; }
-  .svc-col h3 { font-size: 26px; }
-  #panel-product .panel-inner { gap: 40px; }
-  #panel-product h2 { font-size: clamp(40px, 4.5vw, 80px); }
-}
-
-/* ─── MOBILE: vertical stacking (<768px) ────────────────────── */
+/* ─── MOBILE ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Disable horizontal scroll */
-  #scroll-section { height: auto !important; }
-  #scroll-sticky { position: relative !important; height: auto !important; overflow: visible !important; }
-  #scroll-track { flex-direction: column !important; transform: none !important; will-change: auto !important; }
-
-  /* Panels become normal block flow */
-  .panel { width: 100% !important; height: auto !important; min-height: auto !important; position: relative !important; overflow: visible !important; }
-  .panel-inner { position: relative !important; inset: auto !important; padding: 72px 24px 56px !important; }
-  .panel-label { position: relative !important; top: auto !important; left: auto !important; right: auto !important; padding: 24px 24px 0 !important; opacity: 0.7; }
+  .panel-inner { padding: 80px 24px 56px; }
+  .panel-label { top: 32px; left: 24px; right: 24px; }
 
   /* Nav */
   #nav-bar { grid-template-columns: 1fr 1fr; padding: 16px 24px; }
@@ -602,57 +582,58 @@ textarea.form-input { resize: vertical; }
   .menu-link { font-size: clamp(40px, 11vw, 72px); }
 
   /* Hero */
-  #panel-hero { min-height: 100svh; }
-  #panel-hero .content { position: absolute !important; inset: 72px 24px 24px !important; }
-  #panel-hero h1 { font-size: clamp(52px, 13vw, 96px) !important; }
+  #panel-hero .content { inset: 72px 24px 24px; }
+  #panel-hero h1 { font-size: clamp(52px, 13vw, 96px); }
   .hero-bar .mono { display: none; }
 
   /* Manifesto */
-  #panel-manifesto .panel-inner { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .manifesto-right { border-left: none !important; border-top: 1px solid rgba(255,255,255,.2); padding-left: 0 !important; padding-top: 28px; }
+  #panel-manifesto .panel-inner { grid-template-columns: 1fr; gap: 40px; padding: 80px 24px 56px; }
+  .manifesto-right { border-left: none; border-top: 1px solid rgba(255,255,255,.2); padding-left: 0; padding-top: 28px; }
 
   /* Work */
-  #panel-work .panel-inner { flex-direction: column !important; gap: 24px !important; }
-  .work-intro { flex: none !important; width: 100% !important; padding-right: 0 !important; }
-  .work-card { flex: 0 0 240px !important; width: 100% !important; height: 240px !important; border-radius: 10px; }
+  #panel-work .panel-inner { grid-template-columns: 1fr; }
+  .work-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .work-card { height: 260px; }
 
   /* Team */
-  .founder-cards { flex-direction: column !important; align-items: center !important; gap: 24px !important; }
-  .badge { width: 240px !important; height: 320px !important; }
+  #panel-founders-intro .panel-inner { gap: 32px; }
+  .founder-cards { justify-content: center; gap: 24px; }
+  .badge { width: 240px; height: 320px; }
 
   /* Services */
-  #panel-services .panel-inner { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .svc-cols { grid-template-columns: 1fr !important; }
-  .svc-col h3 { font-size: 24px; }
+  #panel-services .panel-inner { grid-template-columns: 1fr; gap: 32px; }
+  .svc-cols { grid-template-columns: 1fr; }
+  .svc-col h3 { font-size: 22px; }
 
   /* Product */
-  #panel-product .panel-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
-  .module-grid { grid-template-columns: 1fr !important; }
-  .module-card.module-featured { flex-direction: column !important; align-items: flex-start !important; }
-  .module-featured .module-illus { margin-left: 0 !important; align-self: flex-end; }
+  #panel-product .panel-inner { grid-template-columns: 1fr; gap: 40px; }
+  .module-grid { grid-template-columns: 1fr; }
+  .module-card.module-featured { flex-direction: column; align-items: flex-start; }
+  .module-featured .module-illus { margin-left: 0; align-self: flex-end; }
 
   /* Logos */
-  .logo-row { grid-template-columns: repeat(2, 1fr) !important; }
+  .logo-row { grid-template-columns: repeat(2, 1fr); }
 
   /* Proven */
-  .stats-grid { grid-template-columns: 1fr !important; }
-  .stat-k { font-size: clamp(64px, 18vw, 120px) !important; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-k { font-size: clamp(64px, 18vw, 120px); }
 
   /* Stories */
-  .stories-head { grid-template-columns: 1fr !important; gap: 16px !important; }
-  .story-cards { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .stories-head { grid-template-columns: 1fr; gap: 16px; }
+  .story-cards { grid-template-columns: 1fr; gap: 48px; }
 
   /* Contact */
-  #panel-contact .panel-inner { grid-template-columns: 1fr !important; gap: 40px !important; inset: auto !important; }
-  .contact-moments { grid-template-columns: 1fr !important; }
-  .contact-form-wrap { padding: 24px !important; }
+  #panel-contact .panel-inner { grid-template-columns: 1fr; gap: 40px; }
+  #panel-contact h2 { font-size: clamp(52px, 12vw, 100px); }
+  .contact-moments { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 24px; }
   .contact-reach { flex-direction: column; gap: 8px; }
 
   /* Footer */
   .wrap { padding: 0 24px; }
   footer { padding: 56px 0 32px; }
-  .footer-grid { grid-template-columns: 1fr !important; gap: 40px; }
-  .footer-bottom { grid-template-columns: 1fr !important; gap: 6px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { grid-template-columns: 1fr; gap: 6px; }
 }
 </style>
 </head>
@@ -667,7 +648,7 @@ textarea.form-input { resize: vertical; }
     </svg>
     title tk
   </a>
-  <div id="nav-pill"><strong id="nav-progress">0</strong>% <span style="margin:0 10px;opacity:.4">·</span> Title TK · 2026</div>
+  <div id="nav-pill"><a href="#" style="text-decoration:none;color:inherit">↑ Back to top</a></div>
   <button id="menu-btn" aria-label="Toggle menu">
     <span id="menu-label">Menu</span>
     <span class="hamburger">
@@ -692,523 +673,515 @@ textarea.form-input { resize: vertical; }
   </div>
 </div>
 
-<!-- ── HORIZONTAL SCROLL ─────────────────────────────────────────── -->
-<div id="scroll-section">
-  <div id="scroll-sticky">
-    <div id="scroll-track">
+<!-- ── MAIN CONTENT ──────────────────────────────────────────────── -->
+<main>
 
-      <!-- HERO -->
-      <section class="panel" id="panel-hero">
-        <video autoplay muted loop playsinline>
-          <source src="/images/coverr-a-road-through-the-hills-6377-1080p.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-        <div class="content">
-          <div style="display:flex;justify-content:space-between;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff">
-            <span>Title TK · Strategic Communications, Content and Engagement</span>
-            <span>San Francisco · Marin</span>
-          </div>
-          <div style="align-self:end;max-width:70vw">
-            <h1>Built for<br>breakthroughs.</h1>
-            <p class="hero-sub">Storytelling for world-changing companies.</p>
-          </div>
-          <div class="hero-bar">
-            <a href="mailto:partners@titletk.co" class="hero-cta">Get in touch <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            <span class="mono">Scroll → 00 / 09</span>
-          </div>
+  <!-- HERO -->
+  <section class="panel" id="panel-hero">
+    <video autoplay muted loop playsinline>
+      <source src="/images/coverr-a-road-through-the-hills-6377-1080p.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="content">
+      <div style="display:flex;justify-content:space-between;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff">
+        <span>Title TK · Strategic Communications, Content and Engagement</span>
+        <span>San Francisco · Marin</span>
+      </div>
+      <div style="align-self:end;max-width:70vw">
+        <h1>Built for<br>breakthroughs.</h1>
+        <p class="hero-sub">Storytelling for world-changing companies.</p>
+      </div>
+      <div class="hero-bar">
+        <a href="mailto:partners@titletk.co" class="hero-cta">Get in touch <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <span class="mono">↓ Scroll to explore</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="panel" id="panel-manifesto">
+    <div class="panel-label"><span></span><span>02</span></div>
+    <div class="panel-inner">
+      <div>
+        <div class="mono">A different kind of partner</div>
+        <h2>The world doesn't need another "PR" agency.</h2>
+        <h2 class="secondary">It needs a different kind of partner.</h2>
+      </div>
+      <div class="manifesto-right">
+        <p>We're hands-on, high-impact partners at your most important moments in growth.</p>
+        <p>We've founded agencies, led programs for some of the greatest companies in the world, and spent decades learning what actually helps a business drive recognition, relevance, and revenue.</p>
+        <p>We built Title TK to do things differently — senior operators who embed with your team, build the story, and drive the outcomes that matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="panel" id="panel-work">
+    <div class="panel-label"><span>Selected Work</span><span>03</span></div>
+    <div class="panel-inner">
+      <div class="work-intro">
+        <div class="work-intro-text">
+          <h2>Work</h2>
+          <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.5;color:var(--tk-ink-2);margin-top:16px">Our motivation is to be an agency that companies turn to when they need hands-on, high impact partners at the most important moments in their growth.</p>
         </div>
-      </section>
-
-      <!-- MANIFESTO -->
-      <section class="panel" id="panel-manifesto">
-        <div class="panel-label"><span></span><span>02</span></div>
-        <div class="panel-inner">
-          <div>
-            <div class="mono">A different kind of partner</div>
-            <h2>The world doesn't need another "PR" agency.</h2>
-            <h2 class="secondary">It needs a different kind of partner.</h2>
-          </div>
-          <div class="manifesto-right">
-            <p>We're hands-on, high-impact partners at your most important moments in growth.</p>
-            <p>We've founded agencies, led programs for some of the greatest companies in the world, and spent decades learning what actually helps a business drive recognition, relevance, and revenue.</p>
-            <p>We built Title TK to do things differently — senior operators who embed with your team, build the story, and drive the outcomes that matter.</p>
-          </div>
+        <span class="mono">Showing 4 of 150+ engagements</span>
+      </div>
+      <div class="work-card">
+        <img class="work-card-img" src="/images/work/narvar.png" alt="Narvar" loading="lazy">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-meta"><span>Case · 01</span><span>Customer Experience</span></div>
         </div>
-      </section>
-
-      <!-- WORK -->
-      <section class="panel" id="panel-work">
-        <div class="panel-label"><span>Selected Work</span><span>03</span></div>
-        <div class="panel-inner">
-          <div class="work-intro">
-            <div>
-              <h2>Work</h2>
-              <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.5;color:var(--tk-ink-2);margin-top:32px;max-width:380px">Our motivation is to be an agency that companies turn to when they need hands-on, high impact partners at the most important moments in their growth.</p>
-            </div>
-            <span class="mono">Showing 6 of 150+ engagements</span>
-          </div>
-          <div class="work-card">
-            <img class="work-card-img" src="/images/work/narvar.png" alt="Narvar">
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <div class="work-card-meta"><span>Case · 01</span><span>Customer Experience</span></div>
-            </div>
-          </div>
-          <div class="work-card">
-            <img class="work-card-img" src="/images/work/arcjet.png" alt="Arcjet">
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <div class="work-card-meta"><span>Case · 02</span><span>Developer Security</span></div>
-            </div>
-          </div>
-          <div class="work-card">
-            <img class="work-card-img" src="/images/work/moab.png" alt="Moab">
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <div class="work-card-meta"><span>Case · 03</span><span>Equipment Rental</span></div>
-            </div>
-          </div>
-          <div class="work-card">
-            <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" style="object-fit:contain;background:linear-gradient(135deg,#F0B8D8 0%,#C47ECC 45%,#7B5CB8 100%);">
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <div class="work-card-meta"><span>Case · 04</span><span>Digital Fashion</span></div>
-            </div>
-          </div>
+      </div>
+      <div class="work-card">
+        <img class="work-card-img" src="/images/work/arcjet.png" alt="Arcjet" loading="lazy">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-meta"><span>Case · 02</span><span>Developer Security</span></div>
         </div>
-      </section>
+      </div>
+      <div class="work-card">
+        <img class="work-card-img" src="/images/work/moab.png" alt="Moab" loading="lazy">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-meta"><span>Case · 03</span><span>Equipment Rental</span></div>
+        </div>
+      </div>
+      <div class="work-card">
+        <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" loading="lazy" style="object-fit:contain;background:linear-gradient(135deg,#F0B8D8 0%,#C47ECC 45%,#7B5CB8 100%);">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-content">
+          <div class="work-card-meta"><span>Case · 04</span><span>Digital Fashion</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <!-- TEAM -->
-      <section class="panel" id="panel-founders-intro">
-        <div class="panel-label"><span>Team</span><span>04</span></div>
-        <div class="panel-inner">
-          <div>
-            <div class="eyebrow">Senior operators · No layers · No theater</div>
-            <h2>Team</h2>
-            <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.6;color:var(--tk-ink-2);max-width:560px;margin-top:24px">We're a small team with a passion for great stories and the people behind them. Every Title TK engagement program runs through our founders who bring decades of leadership and hands-on experience running programs for some of the world's most exciting upstarts and household name brands.</p>
-          </div>
-          <div class="founder-cards">
+  <!-- TEAM -->
+  <section class="panel" id="panel-founders-intro">
+    <div class="panel-label"><span>Team</span><span>04</span></div>
+    <div class="panel-inner">
+      <div>
+        <div class="eyebrow">Senior operators · No layers · No theater</div>
+        <h2>Team</h2>
+        <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.6;color:var(--tk-ink-2);max-width:560px;margin-top:24px">We're a small team with a passion for great stories and the people behind them. Every Title TK engagement program runs through our founders who bring decades of leadership and hands-on experience running programs for some of the world's most exciting upstarts and household name brands.</p>
+      </div>
+      <div class="founder-cards">
 
-            <!-- Cristina -->
-            <div class="badge-wrap">
-              <div class="badge">
-                <div class="badge-front">
-                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <img class="founder-photo" src="/images/Cristina.png" alt="Cristina Pena">
-                  <div class="badge-front-info">
-                    <h3>Cristina Pena</h3>
-                    <span>Co-Founder · Partner</span>
-                  </div>
-                </div>
-                <div class="badge-back">
-                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <hr class="badge-back-divider">
-                  <a href="mailto:cristina@titletk.com" class="badge-back-email">cristina@titletk.com</a>
-                  <hr class="badge-back-divider">
-                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
-                </div>
+        <!-- Cristina -->
+        <div class="badge-wrap">
+          <div class="badge">
+            <div class="badge-front">
+              <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+              <img class="founder-photo" src="/images/Cristina.png" alt="Cristina Pena" loading="lazy">
+              <div class="badge-front-info">
+                <h3>Cristina Pena</h3>
+                <span>Co-Founder · Partner</span>
               </div>
             </div>
-
-            <!-- Jason -->
-            <div class="badge-wrap">
-              <div class="badge">
-                <div class="badge-front">
-                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton">
-                  <div class="badge-front-info">
-                    <h3>Jason Throckmorton</h3>
-                    <span>Co-Founder · Partner</span>
-                  </div>
-                </div>
-                <div class="badge-back">
-                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <hr class="badge-back-divider">
-                  <a href="mailto:jason@titletk.com" class="badge-back-email">jason@titletk.com</a>
-                  <hr class="badge-back-divider">
-                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mike -->
-            <div class="badge-wrap">
-              <div class="badge">
-                <div class="badge-front">
-                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash">
-                  <div class="badge-front-info">
-                    <h3>Mike Barash</h3>
-                    <span>Co-Founder · Partner</span>
-                  </div>
-                </div>
-                <div class="badge-back">
-                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <hr class="badge-back-divider">
-                  <a href="mailto:mike@titletk.com" class="badge-back-email">mike@titletk.com</a>
-                  <hr class="badge-back-divider">
-                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div style="display:flex;gap:48px;padding-top:8px">
-            <div style="width:275px;display:flex;flex-direction:column;gap:6px">
-              <a href="mailto:cristina@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">cristina@titletk.co</a>
-              <a href="https://linkedin.com/in/cristinapena" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
-            </div>
-            <div style="width:275px;display:flex;flex-direction:column;gap:6px">
-              <a href="mailto:jason@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">jason@titletk.co</a>
-              <a href="https://linkedin.com/in/jasonthrockmorton" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
-            </div>
-            <div style="width:275px;display:flex;flex-direction:column;gap:6px">
-              <a href="mailto:mike@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">mike@titletk.co</a>
-              <a href="https://linkedin.com/in/mikebarash" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
+            <div class="badge-back">
+              <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+              <hr class="badge-back-divider">
+              <a href="mailto:cristina@titletk.com" class="badge-back-email">cristina@titletk.com</a>
+              <hr class="badge-back-divider">
+              <a href="#" class="badge-back-linkedin">LinkedIn →</a>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- SERVICES -->
-      <section class="panel" id="panel-services">
-        <div class="panel-label"><span>Services</span><span>05</span></div>
-        <div class="panel-inner">
-          <div class="svc-left">
-            <div class="eyebrow">What we do</div>
-            <h2>Approach</h2>
-            <p style="font-family:var(--tk-display);font-size:20px;font-weight:600;line-height:1.3;color:var(--tk-ink);margin-top:20px;letter-spacing:-.012em">Story. Strategy. Engagement.</p>
-            <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.5;color:var(--tk-ink-2);margin-top:10px">Every Title TK program is led by a company co-founder.</p>
-          </div>
-          <div class="svc-cols">
-            <div class="svc-col">
-              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 01</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-              <h3>Clarity that drives scale</h3>
-              <p>Most growth companies try to scale a story they haven't finished writing. We nail that first. Before a single pitch goes out, we build the foundational narrative — positioning, messaging, architecture.</p>
-              <ul class="svc-list">
-                <li>Brand &amp; narrative strategy</li>
-                <li>Messaging architecture</li>
-                <li>Executive positioning</li>
-                <li>Corporate communications</li>
-              </ul>
+        <!-- Jason -->
+        <div class="badge-wrap">
+          <div class="badge">
+            <div class="badge-front">
+              <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+              <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton" loading="lazy">
+              <div class="badge-front-info">
+                <h3>Jason Throckmorton</h3>
+                <span>Co-Founder · Partner</span>
+              </div>
             </div>
-            <div class="svc-col">
-              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 02</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-              <h3>Deep partnering</h3>
-              <p>We embed with your team, think like operators, and work like founders. Senior people doing the work, from day one — no junior layers, no account-management theater.</p>
-              <ul class="svc-list">
-                <li>Earned media &amp; storytelling</li>
-                <li>Integrated marketing</li>
-                <li>Stakeholder engagement</li>
-                <li>Crisis &amp; inflection moments</li>
-              </ul>
-            </div>
-            <div class="svc-col">
-              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 03</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-              <h3>Momentum that compounds</h3>
-              <p>The work. Putting the story in front of the people who need to hear it — and making sure it shows up everywhere it matters next.</p>
-              <ul class="svc-list">
-                <li>Content &amp; coverage amplification</li>
-                <li>Social &amp; influencer programs</li>
-                <li>Awards &amp; speakers bureaus</li>
-                <li>Measurement &amp; analytics</li>
-              </ul>
-            </div>
-            <div class="svc-col">
-              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 04</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
-              <h3>Ruthless efficiency, human creativity</h3>
-              <p>NorthTK puts AI-assisted intelligence underneath every engagement — so our team moves faster, sees further, and never loses the thread.</p>
-              <ul class="svc-list">
-                <li>AI-assisted story discovery</li>
-                <li>Narrative intelligence</li>
-                <li>Signal monitoring &amp; alerts</li>
-                <li>Coverage &amp; share of voice tracking</li>
-              </ul>
+            <div class="badge-back">
+              <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+              <hr class="badge-back-divider">
+              <a href="mailto:jason@titletk.com" class="badge-back-email">jason@titletk.com</a>
+              <hr class="badge-back-divider">
+              <a href="#" class="badge-back-linkedin">LinkedIn →</a>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- PRODUCT -->
-      <section class="panel" id="panel-product">
-        <div class="panel-label"><span>Product · NorthTK</span><span>06</span></div>
-        <div class="panel-inner">
-          <div class="product-left">
-            <div>
-              <div class="eyebrow" style="color:var(--tk-coral)">Introducing North TK</div>
-              <h2>NorthTK</h2>
-              <p style="font-family:var(--tk-sans);font-size:22px;line-height:1.4;color:rgba(255,255,255,.85);margin-top:28px">North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.</p>
-              <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:rgba(255,255,255,.6);margin-top:20px">NorthTK connects raw organizational intelligence to published story — from signal capture through brief, narrative, and campaign — so nothing falls through the cracks and every piece of content traces back to a real strategic insight.</p>
-            </div>
-            <div style="display:flex;gap:12px;margin-top:32px">
-              <a href="mailto:partners@titletk.co" class="tk-btn" style="background:var(--nk-lapis);color:#fff">Request access <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-            </div>
-          </div>
-          <div class="module-grid">
-
-            <!-- Capture — featured full-width -->
-            <div class="module-card module-featured">
-              <div class="module-card-text">
-                <div class="module-card-num">01 · Capture</div>
-                <h3>Every signal, in one place.</h3>
-                <p>Calls, meetings, documents, and observations flow into a single intake layer — nothing slips, nothing gets missed.</p>
+        <!-- Mike -->
+        <div class="badge-wrap">
+          <div class="badge">
+            <div class="badge-front">
+              <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+              <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash" loading="lazy">
+              <div class="badge-front-info">
+                <h3>Mike Barash</h3>
+                <span>Co-Founder · Partner</span>
               </div>
-              <svg class="module-illus" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="8" y="8" width="104" height="16" rx="4" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
-                <rect x="8" y="32" width="76" height="12" rx="3" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2" opacity=".7"/>
-                <rect x="8" y="52" width="56" height="12" rx="3" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2" opacity=".45"/>
-                <path d="M98 38 L112 50 L98 62" stroke="#2D46B9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
             </div>
-
-            <!-- Briefs -->
-            <div class="module-card">
-              <div class="module-card-text">
-                <div class="module-card-num">02 · Briefs</div>
-                <h3>Raw intel, structured.</h3>
-                <p>AI turns signals into concise briefs. You advance what matters.</p>
-              </div>
-              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="10" width="50" height="60" rx="5" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
-                <line x1="20" y1="26" x2="50" y2="26" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
-                <line x1="20" y1="36" x2="50" y2="36" stroke="#2D46B9" stroke-width="1.2" opacity=".4"/>
-                <line x1="20" y1="46" x2="40" y2="46" stroke="#2D46B9" stroke-width="1.2" opacity=".3"/>
-                <circle cx="62" cy="62" r="12" fill="#2D46B9" opacity=".15" stroke="#2D46B9" stroke-width="1.2"/>
-                <path d="M57 62h10M62 57v10" stroke="#2D46B9" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <!-- Storylines -->
-            <div class="module-card">
-              <div class="module-card-text">
-                <div class="module-card-num">03 · Storylines</div>
-                <h3>Briefs become narrative.</h3>
-                <p>Multiple briefs synthesize into a single arc with a clear through-line.</p>
-              </div>
-              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="40" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
-                <circle cx="40" cy="22" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
-                <circle cx="40" cy="58" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
-                <circle cx="66" cy="40" r="9" fill="#2D46B9" opacity=".18" stroke="#2D46B9" stroke-width="1.4"/>
-                <path d="M23 37 L33 26" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
-                <path d="M23 43 L33 54" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
-                <path d="M47 26 L57 36" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
-                <path d="M47 54 L57 44" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
-              </svg>
-            </div>
-
-            <!-- Campaigns -->
-            <div class="module-card">
-              <div class="module-card-text">
-                <div class="module-card-num">04 · Campaigns</div>
-                <h3>Content at the moment of need.</h3>
-                <p>Anchor content, coordinated across earned and owned channels.</p>
-              </div>
-              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 44 L14 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".2"/>
-                <path d="M30 34 L30 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".35"/>
-                <path d="M46 20 L46 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".55"/>
-                <path d="M62 10 L62 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".8"/>
-                <line x1="8" y1="66" x2="72" y2="66" stroke="#2D46B9" stroke-width="1.2" opacity=".4"/>
-              </svg>
-            </div>
-
-            <!-- Brand Voice -->
-            <div class="module-card">
-              <div class="module-card-text">
-                <div class="module-card-num">05 · Brand Voice</div>
-                <h3>Consistency at every touchpoint.</h3>
-                <p>Positioning, messaging, and terminology that stays consistent across every output.</p>
-              </div>
-              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 40 Q20 24 32 40 Q44 56 56 40 Q68 24 80 40" stroke="#2D46B9" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".7"/>
-                <path d="M8 52 Q20 40 32 52 Q44 64 56 52 Q68 40 80 52" stroke="#2D46B9" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".35"/>
-                <path d="M8 28 Q20 18 32 28 Q44 38 56 28 Q68 18 80 28" stroke="#2D46B9" stroke-width="1" stroke-linecap="round" fill="none" opacity=".2"/>
-              </svg>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      </section>
-
-      <!-- LOGOS -->
-
-      <section class="panel" id="panel-logos">
-        <div class="panel-label"><span>Experience</span><span>01</span></div>
-        <div class="panel-inner" style="inset:160px 96px 96px;display:grid;grid-template-rows:auto 1fr auto;gap:48px">
-          <div>
-            <div class="mono">Our History</div>
-            <h2>150+ companies, from pre-seed to Fortune 50.</h2>
-            <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:var(--tk-ink-2);margin-top:16px;max-width:640px">As co-founders and executives from LaunchSquad, Codeword and Sparkpr, our team has led programs for some of the world's most respected brands.</p>
-          </div>
-          <div class="logo-grid">
-            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/ASAN_BIG.png" alt="Asana"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/CSCO.png" alt="Cisco"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/github_BIG.png" alt="GitHub"></div>
-            </div>
-            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/headspace%20(1).jpeg" alt="Headspace" style="height:64px"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NFLX_BIG.png" alt="Netflix"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NEWR_BIG.png" alt="New Relic"></div>
-            </div>
-            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/OKTA_BIG.png" alt="Okta"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/QCOM_BIG.png" alt="Qualcomm"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/SNAP_BIG.png" alt="Snap"></div>
-            </div>
-            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/Scope3-logo-dark-green-1.jpg" alt="Scope3"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/soundcloud.png" alt="SoundCloud"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/UBER.png" alt="Uber" style="height:60px"></div>
-            </div>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
-            <span>Representative past client experience</span>
-            <span>Scroll for case studies →</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROVEN -->
-      <section class="panel" id="panel-proven">
-        <div class="panel-label" style="color:rgba(255,255,255,.55)"><span>By the numbers</span><span>07</span></div>
-        <div class="panel-inner">
-          <div style="max-width:880px">
-            <div class="eyebrow" style="color:var(--tk-coral)">By the numbers</div>
-            <h2>Track record</h2>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-cell">
-              <div class="stat-tag">Proven founders</div>
-              <div class="stat-k">3</div>
-              <p class="stat-label">Our team are co-founders and former executive leaders at LaunchSquad, Codeword and Sparkpr.</p>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-tag">Proven scale</div>
-              <div class="stat-k">150+</div>
-              <p class="stat-label">Companies served, pre-seed to Fortune 50.</p>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-tag">Proven outcomes</div>
-              <div class="stat-k">20+</div>
-              <p class="stat-label">IPOs and M&amp;A exits supported.</p>
-            </div>
-            <div class="stat-cell">
-              <div class="stat-tag">Proven under pressure</div>
-              <div class="stat-k">50+</div>
-              <p class="stat-label">Companies, products and major initiatives launched.</p>
+            <div class="badge-back">
+              <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+              <hr class="badge-back-divider">
+              <a href="mailto:mike@titletk.com" class="badge-back-email">mike@titletk.com</a>
+              <hr class="badge-back-divider">
+              <a href="#" class="badge-back-linkedin">LinkedIn →</a>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- STORIES -->
-      <section class="panel" id="panel-stories">
-        <div class="panel-label"><span>Journal</span><span>08</span></div>
-        <div class="panel-inner">
-          <div class="stories-head">
-            <div>
-              <div class="eyebrow">Journal</div>
-              <h2>Stories &amp; field notes</h2>
-              <div class="story-filters">
-                <a href="#" class="story-filter active">All</a>
-                <a href="#" class="story-filter">Strategy</a>
-                <a href="#" class="story-filter">Field Notes</a>
-                <a href="#" class="story-filter">Press</a>
-                <a href="#" class="story-filter">Studio</a>
-              </div>
-            </div>
-            <a href="/journal" class="tk-btn" style="background:transparent;color:var(--tk-ink);border:1px solid var(--tk-ink)">Read the journal <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          </div>
-          <div class="story-cards">
-            <a href="/journal/narrative-isnt-a-deck" class="story-card">
-              <div class="story-meta"><span class="tag">Strategy</span><span>April 18, 2026</span></div>
-              <h3>The narrative isn't a deck. It's a discipline.</h3>
-              <p>Why most growth companies lose the room before the pitch even starts — and the three questions every founder should answer before going to market.</p>
-              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </a>
-            <a href="/journal/information-rich-insights-poor" class="story-card">
-              <div class="story-meta"><span class="tag">Field Notes</span><span>May 6, 2026</span></div>
-              <h3>Information rich, insights poor.</h3>
-              <p>Every technology company has more signal than it knows what to do with. Most marketing organizations never see it. That gap is where North TK was born.</p>
-              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </a>
-            <a href="/journal" class="story-card">
-              <div class="story-meta"><span class="tag">Strategy</span><span>Coming soon</span></div>
-              <h3>Slow signals, fast stories.</h3>
-              <p>The patterns that matter rarely announce themselves. How to build a radar for signals that compound before the market catches up.</p>
-              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </a>
-            <a href="/journal" class="story-card">
-              <div class="story-meta"><span class="tag">Field Notes</span><span>Coming soon</span></div>
-              <h3>Five disciplines. One operating system.</h3>
-              <p>How the best communications teams think about capture, synthesis, and execution — and why most companies only get one of the three right.</p>
-              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-            </a>
-          </div>          </div>
+      </div>
+      <div style="display:flex;gap:48px;padding-top:8px;flex-wrap:wrap">
+        <div style="width:275px;display:flex;flex-direction:column;gap:6px">
+          <a href="mailto:cristina@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">cristina@titletk.co</a>
+          <a href="https://linkedin.com/in/cristinapena" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
         </div>
-      </section>
+        <div style="width:275px;display:flex;flex-direction:column;gap:6px">
+          <a href="mailto:jason@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">jason@titletk.co</a>
+          <a href="https://linkedin.com/in/jasonthrockmorton" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
+        </div>
+        <div style="width:275px;display:flex;flex-direction:column;gap:6px">
+          <a href="mailto:mike@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">mike@titletk.co</a>
+          <a href="https://linkedin.com/in/mikebarash" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <!-- CONTACT -->
-      <section class="panel" id="panel-contact">
-        <div class="panel-label"><span>Contact</span><span>09</span></div>
-        <div class="panel-inner">
-          <div class="contact-left">
-            <div>
-              <div class="eyebrow" style="color:rgba(255,255,255,.5)">If it matters, we want to hear about it</div>
-              <h2>Connect</h2>
-              <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:28px;max-width:600px">Companies turn to Title TK for big moments that call for a partner that is experienced, nimble, creative and senior. A partner will write back within one business day.</p>
-            </div>
-            <p style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:0">A few examples</p>
-            <div class="contact-moments">
-              <div class="contact-moment">
-                <div class="contact-moment-k">A launch</div>
-                <div class="contact-moment-d">Product, company, category, expansion or big idea.</div>
-              </div>
-              <div class="contact-moment">
-                <div class="contact-moment-k">A campaign</div>
-                <div class="contact-moment-d">A fresh story to tell, new audiences to reach, or a seasonal activation to drive.</div>
-              </div>
-              <div class="contact-moment">
-                <div class="contact-moment-k">An evolution</div>
-                <div class="contact-moment-d">When the story you've been telling has stopped doing the work it needs to do.</div>
-              </div>
-              <div class="contact-moment">
-                <div class="contact-moment-k">A realignment</div>
-                <div class="contact-moment-d">Crisis, leadership change, the moment that needs the right voice in the right room.</div>
-              </div>
-            </div>
-            <div class="contact-reach">
-              <span>partners@titletk.co</span>
-              <span>+1 (415) 305-9476</span>
-              <span>San Francisco · Marin</span>
-            </div>
+  <!-- SERVICES -->
+  <section class="panel" id="panel-services">
+    <div class="panel-label"><span>Services</span><span>05</span></div>
+    <div class="panel-inner">
+      <div class="svc-left">
+        <div class="eyebrow">What we do</div>
+        <h2>Approach</h2>
+        <p style="font-family:var(--tk-display);font-size:20px;font-weight:600;line-height:1.3;color:var(--tk-ink);margin-top:20px;letter-spacing:-.012em">Story. Strategy. Engagement.</p>
+        <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.5;color:var(--tk-ink-2);margin-top:10px">Every Title TK program is led by a company co-founder.</p>
+      </div>
+      <div class="svc-cols">
+        <div class="svc-col">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 01</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <h3>Clarity that drives scale</h3>
+          <p>Most growth companies try to scale a story they haven't finished writing. We nail that first. Before a single pitch goes out, we build the foundational narrative — positioning, messaging, architecture.</p>
+          <ul class="svc-list">
+            <li>Brand &amp; narrative strategy</li>
+            <li>Messaging architecture</li>
+            <li>Executive positioning</li>
+            <li>Corporate communications</li>
+          </ul>
+        </div>
+        <div class="svc-col">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 02</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <h3>Deep partnering</h3>
+          <p>We embed with your team, think like operators, and work like founders. Senior people doing the work, from day one — no junior layers, no account-management theater.</p>
+          <ul class="svc-list">
+            <li>Earned media &amp; storytelling</li>
+            <li>Integrated marketing</li>
+            <li>Stakeholder engagement</li>
+            <li>Crisis &amp; inflection moments</li>
+          </ul>
+        </div>
+        <div class="svc-col">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 03</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <h3>Momentum that compounds</h3>
+          <p>The work. Putting the story in front of the people who need to hear it — and making sure it shows up everywhere it matters next.</p>
+          <ul class="svc-list">
+            <li>Content &amp; coverage amplification</li>
+            <li>Social &amp; influencer programs</li>
+            <li>Awards &amp; speakers bureaus</li>
+            <li>Measurement &amp; analytics</li>
+          </ul>
+        </div>
+        <div class="svc-col">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 04</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+          <h3>Ruthless efficiency, human creativity</h3>
+          <p>NorthTK puts AI-assisted intelligence underneath every engagement — so our team moves faster, sees further, and never loses the thread.</p>
+          <ul class="svc-list">
+            <li>AI-assisted story discovery</li>
+            <li>Narrative intelligence</li>
+            <li>Signal monitoring &amp; alerts</li>
+            <li>Coverage &amp; share of voice tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="panel" id="panel-product">
+    <div class="panel-label"><span>Product · NorthTK</span><span>06</span></div>
+    <div class="panel-inner">
+      <div class="product-left">
+        <div>
+          <div class="eyebrow" style="color:var(--tk-coral)">Introducing North TK</div>
+          <h2>NorthTK</h2>
+          <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.4;color:rgba(255,255,255,.85);margin-top:28px">North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.</p>
+          <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:rgba(255,255,255,.6);margin-top:20px">NorthTK connects raw organizational intelligence to published story — from signal capture through brief, narrative, and campaign — so nothing falls through the cracks and every piece of content traces back to a real strategic insight.</p>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:32px">
+          <a href="mailto:partners@titletk.co" class="tk-btn" style="background:var(--nk-lapis);color:#fff">Request access <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
+      </div>
+      <div class="module-grid">
+
+        <!-- Capture — featured full-width -->
+        <div class="module-card module-featured">
+          <div class="module-card-text">
+            <div class="module-card-num">01 · Capture</div>
+            <h3>Every signal, in one place.</h3>
+            <p>Calls, meetings, documents, and observations flow into a single intake layer — nothing slips, nothing gets missed.</p>
           </div>
-          <div class="contact-form-wrap">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px">
-              <span class="eyebrow">Tell us what you're working on</span>
-              <span style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3)">~30 sec</span>
-            </div>
-            <form onsubmit="return false">
-              <div class="form-row">
-                <div><label class="form-label">Name</label><input class="form-input" placeholder="Riley Park"></div>
-                <div><label class="form-label">Company</label><input class="form-input" placeholder="Acme, Inc."></div>
-              </div>
-              <div><label class="form-label">Email</label><input type="email" class="form-input" placeholder="riley@acme.com"></div>
-              <div><label class="form-label">How can we help?</label><textarea rows="4" class="form-input" placeholder="Tell us what you're working on…"></textarea></div>
-              <button type="submit" class="tk-btn tk-btn-ink" style="width:100%;margin-top:4px">Send <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-            </form>
-            <p class="contact-fine">We respond within one business day. Conversations stay confidential — even when we don't end up working together.</p>
+          <svg class="module-illus" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="8" width="104" height="16" rx="4" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+            <rect x="8" y="32" width="76" height="12" rx="3" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2" opacity=".7"/>
+            <rect x="8" y="52" width="56" height="12" rx="3" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2" opacity=".45"/>
+            <path d="M98 38 L112 50 L98 62" stroke="#2D46B9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Briefs -->
+        <div class="module-card">
+          <div class="module-card-text">
+            <div class="module-card-num">02 · Briefs</div>
+            <h3>Raw intel, structured.</h3>
+            <p>AI turns signals into concise briefs. You advance what matters.</p>
+          </div>
+          <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="50" height="60" rx="5" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+            <line x1="20" y1="26" x2="50" y2="26" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+            <line x1="20" y1="36" x2="50" y2="36" stroke="#2D46B9" stroke-width="1.2" opacity=".4"/>
+            <line x1="20" y1="46" x2="40" y2="46" stroke="#2D46B9" stroke-width="1.2" opacity=".3"/>
+            <circle cx="62" cy="62" r="12" fill="#2D46B9" opacity=".15" stroke="#2D46B9" stroke-width="1.2"/>
+            <path d="M57 62h10M62 57v10" stroke="#2D46B9" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Storylines -->
+        <div class="module-card">
+          <div class="module-card-text">
+            <div class="module-card-num">03 · Storylines</div>
+            <h3>Briefs become narrative.</h3>
+            <p>Multiple briefs synthesize into a single arc with a clear through-line.</p>
+          </div>
+          <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="40" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+            <circle cx="40" cy="22" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+            <circle cx="40" cy="58" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+            <circle cx="66" cy="40" r="9" fill="#2D46B9" opacity=".18" stroke="#2D46B9" stroke-width="1.4"/>
+            <path d="M23 37 L33 26" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+            <path d="M23 43 L33 54" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+            <path d="M47 26 L57 36" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+            <path d="M47 54 L57 44" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+          </svg>
+        </div>
+
+        <!-- Campaigns -->
+        <div class="module-card">
+          <div class="module-card-text">
+            <div class="module-card-num">04 · Campaigns</div>
+            <h3>Content at the moment of need.</h3>
+            <p>Anchor content, coordinated across earned and owned channels.</p>
+          </div>
+          <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 44 L14 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".2"/>
+            <path d="M30 34 L30 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+            <path d="M46 20 L46 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+            <path d="M62 10 L62 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+            <line x1="8" y1="66" x2="72" y2="66" stroke="#2D46B9" stroke-width="1.2" opacity=".4"/>
+          </svg>
+        </div>
+
+        <!-- Brand Voice -->
+        <div class="module-card">
+          <div class="module-card-text">
+            <div class="module-card-num">05 · Brand Voice</div>
+            <h3>Consistency at every touchpoint.</h3>
+            <p>Positioning, messaging, and terminology that stays consistent across every output.</p>
+          </div>
+          <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 40 Q20 24 32 40 Q44 56 56 40 Q68 24 80 40" stroke="#2D46B9" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".7"/>
+            <path d="M8 52 Q20 40 32 52 Q44 64 56 52 Q68 40 80 52" stroke="#2D46B9" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".35"/>
+            <path d="M8 28 Q20 18 32 28 Q44 38 56 28 Q68 18 80 28" stroke="#2D46B9" stroke-width="1" stroke-linecap="round" fill="none" opacity=".2"/>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section class="panel" id="panel-logos">
+    <div class="panel-label"><span>Experience</span><span>07</span></div>
+    <div class="panel-inner">
+      <div>
+        <div class="mono">Our History</div>
+        <h2>150+ companies, from pre-seed to Fortune 50.</h2>
+        <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:var(--tk-ink-2);margin-top:16px;max-width:640px">As co-founders and executives from LaunchSquad, Codeword and Sparkpr, our team has led programs for some of the world's most respected brands.</p>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-row">
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/ASAN_BIG.png" alt="Asana" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/CSCO.png" alt="Cisco" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/github_BIG.png" alt="GitHub" loading="lazy"></div>
+        </div>
+        <div class="logo-row">
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/headspace%20(1).jpeg" alt="Headspace" loading="lazy" style="height:64px"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NFLX_BIG.png" alt="Netflix" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NEWR_BIG.png" alt="New Relic" loading="lazy"></div>
+        </div>
+        <div class="logo-row">
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/OKTA_BIG.png" alt="Okta" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/QCOM_BIG.png" alt="Qualcomm" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/SNAP_BIG.png" alt="Snap" loading="lazy"></div>
+        </div>
+        <div class="logo-row">
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/Scope3-logo-dark-green-1.jpg" alt="Scope3" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/soundcloud.png" alt="SoundCloud" loading="lazy"></div>
+          <div class="logo-cell"><img class="client-logo-img" src="/images/logos/UBER.png" alt="Uber" loading="lazy" style="height:60px"></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
+        <span>Representative past client experience</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVEN -->
+  <section class="panel" id="panel-proven">
+    <div class="panel-label" style="color:rgba(255,255,255,.55)"><span>By the numbers</span><span>08</span></div>
+    <div class="panel-inner">
+      <div style="max-width:880px">
+        <div class="eyebrow" style="color:var(--tk-coral)">By the numbers</div>
+        <h2>Track record</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-tag">Proven founders</div>
+          <div class="stat-k">3</div>
+          <p class="stat-label">Our team are co-founders and former executive leaders at LaunchSquad, Codeword and Sparkpr.</p>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-tag">Proven scale</div>
+          <div class="stat-k">150+</div>
+          <p class="stat-label">Companies served, pre-seed to Fortune 50.</p>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-tag">Proven outcomes</div>
+          <div class="stat-k">20+</div>
+          <p class="stat-label">IPOs and M&amp;A exits supported.</p>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-tag">Proven under pressure</div>
+          <div class="stat-k">50+</div>
+          <p class="stat-label">Companies, products and major initiatives launched.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section class="panel" id="panel-stories">
+    <div class="panel-label"><span>Journal</span><span>09</span></div>
+    <div class="panel-inner">
+      <div class="stories-head">
+        <div>
+          <div class="eyebrow">Journal</div>
+          <h2>Stories &amp; field notes</h2>
+          <div class="story-filters">
+            <a href="#" class="story-filter active">All</a>
+            <a href="#" class="story-filter">Strategy</a>
+            <a href="#" class="story-filter">Field Notes</a>
+            <a href="#" class="story-filter">Press</a>
+            <a href="#" class="story-filter">Studio</a>
           </div>
         </div>
-      </section>
+        <a href="/journal" class="tk-btn" style="background:transparent;color:var(--tk-ink);border:1px solid var(--tk-ink)">Read the journal <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="story-cards">
+        <a href="/journal/narrative-isnt-a-deck" class="story-card">
+          <div class="story-meta"><span class="tag">Strategy</span><span>April 18, 2026</span></div>
+          <h3>The narrative isn't a deck. It's a discipline.</h3>
+          <p>Why most growth companies lose the room before the pitch even starts — and the three questions every founder should answer before going to market.</p>
+          <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <a href="/journal/information-rich-insights-poor" class="story-card">
+          <div class="story-meta"><span class="tag">Field Notes</span><span>May 6, 2026</span></div>
+          <h3>Information rich, insights poor.</h3>
+          <p>Every technology company has more signal than it knows what to do with. Most marketing organizations never see it. That gap is where North TK was born.</p>
+          <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <a href="/journal" class="story-card">
+          <div class="story-meta"><span class="tag">Strategy</span><span>Coming soon</span></div>
+          <h3>Slow signals, fast stories.</h3>
+          <p>The patterns that matter rarely announce themselves. How to build a radar for signals that compound before the market catches up.</p>
+          <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+        <a href="/journal" class="story-card">
+          <div class="story-meta"><span class="tag">Field Notes</span><span>Coming soon</span></div>
+          <h3>Five disciplines. One operating system.</h3>
+          <p>How the best communications teams think about capture, synthesis, and execution — and why most companies only get one of the three right.</p>
+          <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    </div><!-- /scroll-track -->
-  </div><!-- /scroll-sticky -->
-</div><!-- /scroll-section -->
+  <!-- CONTACT -->
+  <section class="panel" id="panel-contact">
+    <div class="panel-label"><span>Contact</span><span>10</span></div>
+    <div class="panel-inner">
+      <div class="contact-left">
+        <div>
+          <div class="eyebrow" style="color:rgba(255,255,255,.5)">If it matters, we want to hear about it</div>
+          <h2>Connect</h2>
+          <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:28px;max-width:600px">Companies turn to Title TK for big moments that call for a partner that is experienced, nimble, creative and senior. A partner will write back within one business day.</p>
+        </div>
+        <p style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:0">A few examples</p>
+        <div class="contact-moments">
+          <div class="contact-moment">
+            <div class="contact-moment-k">A launch</div>
+            <div class="contact-moment-d">Product, company, category, expansion or big idea.</div>
+          </div>
+          <div class="contact-moment">
+            <div class="contact-moment-k">A campaign</div>
+            <div class="contact-moment-d">A fresh story to tell, new audiences to reach, or a seasonal activation to drive.</div>
+          </div>
+          <div class="contact-moment">
+            <div class="contact-moment-k">An evolution</div>
+            <div class="contact-moment-d">When the story you've been telling has stopped doing the work it needs to do.</div>
+          </div>
+          <div class="contact-moment">
+            <div class="contact-moment-k">A realignment</div>
+            <div class="contact-moment-d">Crisis, leadership change, the moment that needs the right voice in the right room.</div>
+          </div>
+        </div>
+        <div class="contact-reach">
+          <span>partners@titletk.co</span>
+          <span>+1 (415) 305-9476</span>
+          <span>San Francisco · Marin</span>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px">
+          <span class="eyebrow">Tell us what you're working on</span>
+          <span style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3)">~30 sec</span>
+        </div>
+        <form onsubmit="return false">
+          <div class="form-row">
+            <div><label class="form-label">Name</label><input class="form-input" placeholder="Riley Park"></div>
+            <div><label class="form-label">Company</label><input class="form-input" placeholder="Acme, Inc."></div>
+          </div>
+          <div><label class="form-label">Email</label><input type="email" class="form-input" placeholder="riley@acme.com"></div>
+          <div><label class="form-label">How can we help?</label><textarea rows="4" class="form-input" placeholder="Tell us what you're working on…"></textarea></div>
+          <button type="submit" class="tk-btn tk-btn-ink" style="width:100%;margin-top:4px">Send <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        </form>
+        <p class="contact-fine">We respond within one business day. Conversations stay confidential — even when we don't end up working together.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
 <footer>
@@ -1241,49 +1214,13 @@ textarea.form-input { resize: vertical; }
       <span>© Title TK 2026 · All Rights Reserved</span>
       <span>NorthTK™ is a Title TK product</span>
       <span>Privacy</span>
-      <span>v.2.0</span>
+      <span>v.3.0</span>
     </div>
   </div>
 </footer>
 
 <script>
 (function () {
-  // ── Horizontal scroll ──────────────────────────────────────────
-  var section = document.getElementById('scroll-section');
-  var track   = document.getElementById('scroll-track');
-  var progEl  = document.getElementById('nav-progress');
-
-  function isMobile() { return window.innerWidth <= 768; }
-
-  function setHeight() {
-    if (isMobile()) {
-      section.style.height = '';
-      track.style.transform = '';
-      return;
-    }
-    section.style.height = track.scrollWidth + 'px';
-  }
-
-  function onScroll() {
-    if (isMobile()) return;
-    var rect    = section.getBoundingClientRect();
-    var total   = section.offsetHeight - window.innerHeight;
-    var scrolled = Math.max(0, -rect.top);
-    var p       = total > 0 ? Math.min(1, scrolled / total) : 0;
-    var moveable = track.scrollWidth - window.innerWidth;
-    track.style.transform = 'translate3d(' + (-p * moveable) + 'px, 0, 0)';
-    progEl.textContent = Math.round(p * 100);
-  }
-
-  setHeight();
-  window.addEventListener('load', setHeight);
-  if (typeof ResizeObserver !== 'undefined') {
-    new ResizeObserver(setHeight).observe(track);
-  }
-  window.addEventListener('resize', function() { setHeight(); onScroll(); });
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
   // ── Menu ──────────────────────────────────────────────────────
   var menuBtn     = document.getElementById('menu-btn');
   var menuOverlay = document.getElementById('menu-overlay');
