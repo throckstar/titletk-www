@@ -271,14 +271,15 @@ footer {
 #panel-manifesto .panel-label { color: rgba(255,255,255,.55); }
 #panel-manifesto h2 {
   font-family: var(--tk-display); font-weight: 700;
-  font-size: clamp(56px, 7vw, 128px);
+  font-size: clamp(48px, 5vw, 120px);
   line-height: .95; letter-spacing: -.028em; color: var(--tk-paper); margin: 32px 0 0;
 }
 #panel-manifesto h2.secondary {
-  font-weight: 400; font-size: clamp(40px, 5vw, 80px);
+  font-weight: 400; font-size: clamp(32px, 3.5vw, 72px);
   line-height: 1; letter-spacing: -.022em; color: rgba(255,255,255,.65); margin: 12px 0 0;
 }
 #panel-manifesto .mono { color: rgba(255,255,255,.5); }
+#panel-manifesto .panel-inner > div { min-width: 0; }
 .manifesto-right { border-left: 1px solid rgba(255,255,255,.2); padding-left: 64px; }
 .manifesto-right p { font-family: var(--tk-sans); font-weight: 400; font-size: 22px; line-height: 1.45; color: rgba(255,255,255,.85); }
 .manifesto-right p + p { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.6); margin-top: 28px; }
@@ -550,6 +551,19 @@ textarea.form-input { resize: vertical; }
 .arrow { display: inline-block; vertical-align: middle; }
 
 /* ─── MEDIUM SCREENS: tighten panel padding ─────────────────── */
+@media (max-width: 1600px) {
+  .panel-inner { inset: 128px 64px 80px; }
+  .panel-label { top: 80px; left: 48px; right: 48px; }
+  #panel-manifesto .panel-inner { gap: 56px; }
+  .manifesto-right { padding-left: 36px; }
+  .manifesto-right p { font-size: 18px; }
+  #panel-services .panel-inner { gap: 48px; }
+  #panel-product .panel-inner { gap: 56px; }
+  #panel-product h2 { font-size: clamp(48px, 5vw, 96px); }
+  .module-card { min-height: 160px; }
+  #menu-overlay { padding: 100px 48px 40px; }
+}
+
 @media (max-width: 1440px) {
   .panel-inner { inset: 120px 56px 72px; }
   .panel-label { top: 72px; left: 40px; right: 40px; }
@@ -602,7 +616,7 @@ textarea.form-input { resize: vertical; }
   .menu-link { font-size: clamp(40px, 11vw, 72px); }
 
   /* Hero */
-  #panel-hero { min-height: 100svh; }
+  #panel-hero { height: 100svh !important; min-height: 100svh !important; overflow: hidden !important; }
   #panel-hero .content { position: absolute !important; inset: 72px 24px 24px !important; }
   #panel-hero h1 { font-size: clamp(52px, 13vw, 96px) !important; }
   .hero-bar .mono { display: none; }
