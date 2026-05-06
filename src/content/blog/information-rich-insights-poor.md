@@ -4,6 +4,8 @@ date: 2026-05-06
 description: "Every technology company has more signal than it knows what to do with. Most marketing organizations never see it. That gap is where North TK was born."
 author: "Title TK"
 category: "Field Notes"
+cover: "ticker"
+heroImage: "/images/logos/Scope3-logo-dark-green-1.jpg"
 ---
 
 Brian O'Kelley takes more meetings in a week than most CEOs take in a month. When my friend Jessica Hoffman introduced us in December 2022, I had no idea what I was signing up for.

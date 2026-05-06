@@ -7,9 +7,10 @@ interface Props {
   date: Date;
   author?: string;
   category?: string;
+  heroImage?: string;
 }
 
-const { title, description, date, author, category } = Astro.props;
+const { title, description, date, author, category, heroImage } = Astro.props;
 const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 ---
 
@@ -44,6 +45,11 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
 
   <!-- Post body -->
   <article class="post-body">
+    {heroImage && (
+      <div class="post-hero-image">
+        <img src={heroImage} alt="" loading="lazy" />
+      </div>
+    )}
     <slot />
   </article>
 
@@ -94,7 +100,7 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
   .cover-title {
     font-family: var(--tk-display); font-weight: 700;
-    font-size: clamp(48px, 7vw, 116px);
+    font-size: clamp(40px, 7vw, 116px);
     line-height: 0.92; letter-spacing: -0.025em;
     color: var(--tk-ink); margin: 0;
     display: inline;
@@ -102,7 +108,7 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   .tk-badge {
     display: inline-flex; align-items: center;
     font-family: var(--tk-mono); font-weight: 500;
-    font-size: clamp(14px, 1.6vw, 28px);
+    font-size: clamp(12px, 1.6vw, 28px);
     background: var(--tk-yellow); color: var(--tk-ink);
     padding: 0.1em 0.45em; border-radius: 3px;
     letter-spacing: 0.04em; vertical-align: 0.2em;
@@ -130,6 +136,15 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
     padding: 80px 56px 120px;
     font-family: var(--tk-sans); font-size: 18px; line-height: 1.7;
     color: var(--tk-ink-2);
+  }
+  .post-hero-image {
+    margin-bottom: 56px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--tk-rule);
+  }
+  .post-hero-image img {
+    width: 100%; height: auto; display: block;
   }
   .post-body :global(h2) {
     font-family: var(--tk-display); font-weight: 700;
@@ -180,10 +195,20 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   }
   .post-footer-cta:hover { background: var(--tk-orange); color: var(--tk-ink); }
 
+  /* Tablet — reduce wide horizontal padding */
+  @media (max-width: 1024px) {
+    .post-nav,
+    .post-footer { padding-left: 56px; padding-right: 56px; }
+    .post-cover { padding: 64px 56px 56px; min-height: 360px; }
+  }
+
   @media (max-width: 768px) {
-    .post-nav, .post-footer { padding-left: 24px; padding-right: 24px; }
+    .post-nav,
+    .post-footer { padding-left: 24px; padding-right: 24px; }
     .post-cover { padding: 48px 24px; min-height: auto; }
     .post-body { padding: 48px 24px 80px; font-size: 16px; }
+    .post-body .post-hero-image { margin-bottom: 40px; }
     .post-footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .cover-rule { display: none; }
   }
 </style>
