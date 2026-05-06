@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title TK — PR, content, and strategy for breakthrough companies</title>
+<meta name="description" content="PR, content, and strategy for companies building what's next. Powered by NorthTK, our narrative intelligence platform for category-defining stories.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%231A1815' stroke-width='5.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56'/%3E%3Cpath d='M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --tk-orange:        #FF8534;
+  --tk-orange-deep:   #E5651A;
+  --tk-yellow:        #FFE259;
+  --tk-coral:         #FFADAD;
+  --tk-coral-deep:    #F58C8C;
+  --tk-charcoal:      #2C2A28;
+  --tk-ink:           #1A1815;
+  --tk-ink-2:         #3A3835;
+  --tk-ink-3:         #6E6A65;
+  --tk-paper:         #FFFFFF;
+  --tk-paper-2:       #FAF7F2;
+  --tk-parchment:     #F2EBDD;
+  --tk-rule:          #E5E0D6;
+  --tk-rule-strong:   #C8C2B5;
+  --nk-lapis:         #2D46B9;
+  --nk-lapis-deep:    #1E2F8A;
+
+  --tk-display: 'Archivo', 'Helvetica Neue', system-ui, sans-serif;
+  --tk-sans:    'IBM Plex Sans', system-ui, sans-serif;
+  --tk-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  --tk-dur: 180ms;
+  --tk-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ─── RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--tk-parchment);
+  color: var(--tk-ink);
+  font-family: var(--tk-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  /* overflow-x: hidden removed — it breaks position: sticky */
+}
+em, i { font-style: normal; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--tk-display); font-weight: 700; letter-spacing: -0.022em; line-height: 0.98; margin: 0; color: var(--tk-ink); }
+input, select, textarea, button { font-family: var(--tk-sans); }
+
+/* ─── UTILITY ────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--tk-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tk-ink-3);
+}
+.mono { font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-ink-3); }
+
+/* ─── LOGO ───────────────────────────────────────────────────── */
+.logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--tk-display); font-weight: 700; font-size: 19px;
+  letter-spacing: -0.018em; line-height: 1; color: var(--tk-ink);
+  text-decoration: none;
+}
+.logo svg { width: 26px; height: 26px; display: block; }
+.logo-light { color: var(--tk-paper); }
+.logo-light svg { stroke: var(--tk-paper); }
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
+.tk-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 0 22px; height: 48px; border-radius: 999px;
+  font-family: var(--tk-sans); font-weight: 500; font-size: 15px;
+  letter-spacing: -0.005em; cursor: pointer; border: 1px solid transparent;
+  transition: all var(--tk-dur) var(--tk-ease); text-decoration: none; white-space: nowrap;
+}
+.tk-btn-ink { background: var(--tk-ink); color: var(--tk-paper); }
+.tk-btn-ink:hover { background: var(--tk-orange); color: var(--tk-ink); }
+.tk-btn-coral { background: var(--tk-coral); color: var(--tk-ink); }
+.tk-btn-ghost { background: transparent; color: var(--tk-paper); border-color: rgba(255,255,255,0.3); }
+
+/* ─── PILL ───────────────────────────────────────────────────── */
+.tk-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: 999px;
+  font-family: var(--tk-sans); font-size: 13px; font-weight: 500;
+}
+.tk-pill-orange { background: var(--tk-orange); color: var(--tk-ink); }
+
+/* ─── PLACEHOLDER (photo stand-in) ──────────────────────────── */
+.ph {
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse at 30% 70%, rgba(255,133,52,.35) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 30%, rgba(255,173,173,.4) 0%, transparent 50%),
+              linear-gradient(135deg, #4a3d2e 0%, #2a221b 100%);
+}
+.ph::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(45deg, transparent 0 28px, rgba(255,255,255,.03) 28px 29px);
+}
+.ph-light {
+  background: radial-gradient(ellipse at 20% 80%, rgba(255,173,173,.5) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(255,226,89,.4) 0%, transparent 50%),
+              linear-gradient(135deg, #f2ebdd 0%, #e8dec9 100%);
+}
+.ph-coral { background: linear-gradient(135deg, #F58C8C 0%, #FFADAD 100%); }
+.ph-parchment { background: linear-gradient(135deg, #e8dece 0%, #d4c9b5 100%); }
+.ph-portrait {
+  background: radial-gradient(ellipse at 30% 70%, rgba(255,133,52,.25) 0%, transparent 50%),
+              linear-gradient(135deg, #3a342c 0%, #2a221b 100%);
+}
+.ph-cap {
+  position: absolute; bottom: 12px; left: 12px;
+  font-family: var(--tk-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255,255,255,.85); background: rgba(0,0,0,.4); padding: 4px 8px; border-radius: 2px;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────── */
+#nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; padding: 22px 32px; pointer-events: none;
+}
+#nav-bar > * { pointer-events: auto; }
+#nav-pill {
+  justify-self: center;
+  font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3);
+  background: rgba(242,235,221,.85); backdrop-filter: blur(8px);
+  padding: 8px 14px; border-radius: 999px; border: 1px solid var(--tk-rule);
+}
+#nav-pill strong { color: var(--tk-ink); font-weight: 500; }
+#menu-btn {
+  justify-self: end;
+  background: transparent; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink); padding: 0;
+}
+.hamburger { position: relative; width: 22px; height: 14px; }
+.bar {
+  position: absolute; left: 0; right: 0; height: 1.5px; background: var(--tk-ink);
+  transition: all 250ms cubic-bezier(.2,0,0,1);
+}
+.bar-1 { top: 2px; }
+.bar-2 { top: 7px; }
+.bar-3 { top: 12px; }
+#menu-overlay {
+  position: fixed; inset: 0; z-index: 40;
+  background: var(--tk-ink); color: var(--tk-paper);
+  opacity: 0; pointer-events: none;
+  transition: opacity 350ms cubic-bezier(.2,0,0,1);
+  display: grid; grid-template-rows: auto 1fr auto;
+  padding: 120px 64px 48px;
+}
+#menu-overlay.open { opacity: 1; pointer-events: auto; }
+.menu-links { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; }
+.menu-link {
+  display: flex; align-items: baseline; gap: 32px;
+  font-family: var(--tk-display); font-weight: 500;
+  font-size: clamp(48px, 6.5vw, 104px);
+  line-height: 1.05; letter-spacing: -0.022em;
+  color: var(--tk-paper); text-decoration: none; padding: 6px 0;
+  transform: translateX(40px); opacity: 0;
+  transition: all 600ms cubic-bezier(.2,0,0,1);
+}
+#menu-overlay.open .menu-link { transform: translateX(0); opacity: 1; }
+.menu-link-num { font-family: var(--tk-mono); font-size: 13px; font-weight: 400; letter-spacing: .16em; opacity: .4; }
+.menu-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.5); padding-top: 32px; border-top: 1px solid rgba(255,255,255,.15);
+}
+
+/* ─── HORIZONTAL SCROLL ──────────────────────────────────────── */
+#scroll-track {
+  display: flex; height: 100vh; will-change: transform;
+}
+#scroll-sticky {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+}
+
+/* ─── PANEL ──────────────────────────────────────────────────── */
+.panel {
+  flex: 0 0 auto; height: 100vh; position: relative; overflow: hidden;
+}
+.panel-label {
+  position: absolute; top: 96px; left: 64px; right: 64px; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  opacity: .55;
+}
+.panel-inner {
+  position: absolute; inset: 160px 96px 96px;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  background: var(--tk-ink); color: var(--tk-paper);
+  padding: 96px 0 40px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 64px; }
+.footer-col-title { font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 18px; }
+.footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col-links li { font-family: var(--tk-sans); font-size: 14.5px; color: rgba(255,255,255,.85); }
+.footer-hr { height: 1px; background: rgba(255,255,255,.12); border: 0; margin: 0; }
+.footer-bottom { display: grid; grid-template-columns: 1fr auto auto auto; gap: 24px; align-items: center; padding-top: 24px; font-family: var(--tk-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+.wrap { max-width: 1480px; margin: 0 auto; padding: 0 56px; }
+
+/* ─── PANEL: HERO ────────────────────────────────────────────── */
+#panel-hero { width: 100vw; background: var(--tk-parchment); }
+#panel-hero .ph { position: absolute; inset: 0; }
+#panel-hero .overlay { position: absolute; inset: 0; background: rgba(242,235,221,.55); }
+#panel-hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+#panel-hero .content {
+  position: absolute; inset: 120px 64px 64px;
+  display: grid; grid-template-rows: auto 1fr auto;
+}
+#panel-hero h1 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(96px, 13vw, 240px);
+  line-height: .92; letter-spacing: -.028em; color: var(--tk-ink); margin: 0;
+}
+.hero-sub {
+  font-family: var(--tk-display); font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.2; letter-spacing: -.012em; color: var(--tk-ink-2); margin: 32px 0 0;
+}
+.hero-bar {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-top: 24px; border-top: 1px solid var(--tk-ink);
+}
+.hero-cta {
+  font-family: var(--tk-display); font-weight: 500;
+  font-size: 22px; letter-spacing: -.01em; color: var(--tk-ink);
+  display: inline-flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--tk-ink); padding-bottom: 4px;
+}
+
+/* ─── PANEL: LOGOS ───────────────────────────────────────────── */
+#panel-logos { width: 100vw; background: var(--tk-paper); }
+#panel-logos h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(56px, 7vw, 120px);
+  line-height: .96; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0; max-width: 70%;
+}
+.logo-grid { display: grid; grid-template-rows: repeat(3, 1fr); align-content: center; }
+.logo-row { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; border-top: 1px solid var(--tk-rule); }
+.logo-row:last-child { border-bottom: 1px solid var(--tk-rule); }
+.logo-cell {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 24px;
+  border-left: 1px solid var(--tk-rule);
+}
+.logo-cell:first-child { border-left: none; }
+.client-logo-img {
+  height: 44px; width: auto;
+  max-width: 180px;
+  object-fit: contain; display: block;
+}
+
+/* ─── PANEL: MANIFESTO ───────────────────────────────────────── */
+#panel-manifesto { width: 100vw; background: var(--tk-ink); }
+#panel-manifesto .panel-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 96px; align-items: center; }
+#panel-manifesto .panel-label { color: rgba(255,255,255,.55); }
+#panel-manifesto h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(56px, 7vw, 128px);
+  line-height: .95; letter-spacing: -.028em; color: var(--tk-paper); margin: 32px 0 0;
+}
+#panel-manifesto h2.secondary {
+  font-weight: 400; font-size: clamp(40px, 5vw, 80px);
+  line-height: 1; letter-spacing: -.022em; color: rgba(255,255,255,.65); margin: 12px 0 0;
+}
+#panel-manifesto .mono { color: rgba(255,255,255,.5); }
+.manifesto-right { border-left: 1px solid rgba(255,255,255,.2); padding-left: 64px; }
+.manifesto-right p { font-family: var(--tk-sans); font-weight: 400; font-size: 22px; line-height: 1.45; color: rgba(255,255,255,.85); }
+.manifesto-right p + p { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.6); margin-top: 28px; }
+
+/* ─── PANEL: WORK ────────────────────────────────────────────── */
+#panel-work { width: 155vw; background: var(--tk-parchment); }
+#panel-work .panel-inner { inset: 160px 0 96px 96px; display: flex; align-items: stretch; gap: 24px; }
+#panel-work h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(56px, 6.5vw, 112px);
+  line-height: .95; letter-spacing: -.024em; color: var(--tk-ink); margin: 0;
+}
+.work-intro { flex: 0 0 28vw; display: flex; flex-direction: column; justify-content: space-between; padding-right: 24px; }
+.work-card {
+  flex: 0 0 26vw; height: 100%; border-radius: 14px;
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,.18);
+}
+.work-card-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+.work-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,9,8,.82) 0%, rgba(10,9,8,.35) 55%, rgba(10,9,8,.08) 100%);
+}
+.work-card-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 28px 32px; color: #fff;
+}
+.work-card-meta { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #fff; }
+.work-card-footer { display: flex; justify-content: space-between; align-items: center; font-family: var(--tk-sans); font-size: 13px; font-weight: 500; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.25); }
+
+/* ─── PANEL: SERVICES ────────────────────────────────────────── */
+#panel-services { width: 120vw; background: var(--tk-paper); }
+#panel-services .panel-inner { display: grid; grid-template-columns: .7fr 2.4fr; gap: 80px; }
+#panel-services h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(48px, 5vw, 88px);
+  line-height: .96; letter-spacing: -.022em; color: var(--tk-ink); margin: 24px 0 0;
+}
+.svc-left { border-top: 2px solid var(--tk-ink); padding-top: 24px; }
+.svc-cols {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--tk-rule);
+  border-left: 1px solid var(--tk-rule);
+}
+.svc-col {
+  padding: 28px 32px;
+  border-right: 1px solid var(--tk-rule);
+  border-bottom: 1px solid var(--tk-rule);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.svc-col h3 {
+  font-family: var(--tk-display); font-weight: 600; font-size: 32px;
+  line-height: 1.02; letter-spacing: -.02em; color: var(--tk-ink); margin: 0;
+}
+.svc-col p { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; }
+.svc-list { list-style: none; margin: 8px 0 0; display: flex; flex-direction: column; }
+.svc-list li { font-family: var(--tk-sans); font-size: 13px; color: var(--tk-ink-2); padding: 7px 0; border-top: 1px solid var(--tk-rule); }
+
+/* ─── PANEL: PRODUCT ─────────────────────────────────────────── */
+#panel-product { width: 140vw; background: var(--tk-ink); }
+#panel-product .panel-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 96px; }
+#panel-product .panel-label { color: rgba(255,255,255,.55); }
+#panel-product h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(56px, 6.5vw, 112px);
+  line-height: .96; letter-spacing: -.024em; color: var(--tk-paper); margin: 24px 0 0;
+}
+.product-left { color: var(--tk-paper); display: flex; flex-direction: column; justify-content: space-between; }
+.module-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-content: start;
+}
+.module-card {
+  background: var(--tk-paper);
+  border: 1px dashed rgba(26,24,21,.22);
+  border-radius: 10px;
+  padding: 24px 24px 20px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  gap: 20px; min-height: 180px;
+  position: relative; overflow: hidden;
+}
+.module-card.module-featured { grid-column: 1 / -1; min-height: 140px; flex-direction: row; align-items: center; gap: 0; }
+.module-card-text { flex: 1; }
+.module-card-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); margin-bottom: 8px; }
+.module-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -.018em; line-height: 1; color: var(--tk-ink); margin: 0 0 8px; }
+.module-card p { font-family: var(--tk-sans); font-size: 13px; line-height: 1.5; color: var(--tk-ink-2); margin: 0; max-width: 260px; }
+.module-card-footer { display: flex; align-items: center; gap: 6px; font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none; border-top: 1px solid rgba(26,24,21,.12); padding-top: 14px; width: fit-content; }
+.module-card-footer:hover { color: var(--nk-lapis); }
+.module-illus {
+  flex-shrink: 0; align-self: flex-end;
+  width: 80px; height: 80px;
+  opacity: .55;
+}
+.module-featured .module-illus { width: 120px; height: 80px; align-self: center; margin-left: 24px; }
+
+/* ─── PANEL: TEAM ────────────────────────────────────────────── */
+#panel-founders-intro { width: 65vw; background: #F0F2FA; }
+#panel-founders-intro .panel-inner { display: grid; grid-template-rows: auto auto; align-content: center; gap: 48px; }
+.founder-cards { display: flex; gap: 32px; align-items: flex-start; }
+#panel-founders-intro h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(56px, 6.5vw, 112px);
+  line-height: .95; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0;
+}
+.founder-cards { display: flex; gap: 48px; align-items: flex-start; justify-content: flex-start; }
+
+/* Badge flip card */
+.badge-wrap { perspective: 900px; flex-shrink: 0; }
+.badge {
+  width: 275px; height: 375px;
+  position: relative;
+  transform-style: preserve-3d; -webkit-transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  filter: drop-shadow(0 8px 24px rgba(26,24,21,.18));
+}
+.badge-wrap:hover .badge { transform: rotateY(180deg); }
+
+.badge-front, .badge-back {
+  position: absolute; inset: 0;
+  border-radius: 14px;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* Front */
+.badge-front { background: var(--tk-coral); }
+.badge-front-logo {
+  position: absolute; top: 16px; left: 16px; z-index: 2;
+  font-family: var(--tk-display); font-weight: 700; font-size: 13px;
+  letter-spacing: -.01em; color: #fff; opacity: .9;
+}
+.founder-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 35%;
+  display: block;
+}
+.badge-front-info {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  padding: 40px 16px 16px;
+  background: linear-gradient(to top, rgba(10,9,8,.75) 0%, transparent 100%);
+}
+.badge-front-info h3 {
+  font-family: var(--tk-display); font-weight: 700; font-size: 20px;
+  line-height: 1.05; letter-spacing: -.016em; color: #fff; margin: 0;
+}
+.badge-front-info span {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: 4px; display: block;
+}
+
+/* Placeholder front (no photo) */
+.badge-front-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--tk-mono); font-size: 32px; font-weight: 700;
+  color: rgba(255,255,255,.35); letter-spacing: .05em;
+}
+
+/* Back */
+.badge-back {
+  background: var(--tk-paper);
+  transform: rotateY(180deg); -webkit-transform: rotateY(180deg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 20px; padding: 28px 20px;
+  border: 1px solid var(--tk-rule);
+  text-align: center;
+}
+.badge-back-logo { color: var(--tk-ink); }
+.badge-back-email {
+  font-family: var(--tk-sans); font-size: 12px; color: var(--tk-ink-2);
+  text-decoration: none; word-break: break-all; line-height: 1.4;
+}
+.badge-back-email:hover { color: var(--tk-ink); }
+.badge-back-divider { width: 32px; border: none; border-top: 1px solid var(--tk-rule); margin: 0; }
+.badge-back-linkedin {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none;
+}
+.badge-back-linkedin:hover { color: var(--tk-ink); }
+.badge-hint {
+  font-family: var(--tk-mono); font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--tk-ink-3); opacity: .5;
+  text-align: center; margin-top: 8px;
+}
+
+/* ─── PANEL: PROVEN ──────────────────────────────────────────── */
+#panel-proven { width: 100vw; background: var(--tk-ink); }
+#panel-proven .panel-inner { display: grid; grid-template-rows: auto 1fr; gap: 64px; }
+#panel-proven .panel-label { color: rgba(255,255,255,.55); }
+#panel-proven h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(32px, 3.2vw, 56px);
+  line-height: 1.05; letter-spacing: -.022em; color: var(--tk-paper); margin: 20px 0 0;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid rgba(255,255,255,.15);
+  border-left: 1px solid rgba(255,255,255,.15);
+}
+.stat-cell {
+  padding: 40px 32px;
+  border-right: 1px solid rgba(255,255,255,.15);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  display: flex; flex-direction: column; gap: 24px; justify-content: space-between;
+}
+.stat-tag { font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-coral); }
+.stat-k { font-family: var(--tk-display); font-weight: 700; font-size: clamp(80px, 9vw, 168px); line-height: .9; letter-spacing: -.03em; color: var(--tk-paper); }
+.stat-label { font-family: var(--tk-sans); font-size: 15px; line-height: 1.4; color: rgba(255,255,255,.7); }
+
+/* ─── PANEL: STORIES ─────────────────────────────────────────── */
+#panel-stories { width: 140vw; background: var(--tk-paper); }
+#panel-stories .panel-inner { display: grid; grid-template-rows: auto 1fr; gap: 48px; }
+#panel-stories h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(56px, 7vw, 120px);
+  line-height: .96; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0;
+}
+.stories-head { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+.story-filters { display: flex; gap: 24px; margin-top: 24px; }
+.story-filter { font-family: var(--tk-sans); font-size: 15px; color: var(--tk-ink-3); text-decoration: none; }
+.story-filter.active { color: var(--tk-ink); text-decoration: underline; text-underline-offset: 4px; }
+.story-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.story-card { display: grid; grid-template-rows: 1fr auto; gap: 24px; text-decoration: none; color: inherit; min-height: 0; }
+.story-meta { display: flex; gap: 16px; align-items: center; font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); }
+.story-meta .tag { color: var(--tk-coral-deep); }
+.story-card h3 { font-family: var(--tk-display); font-weight: 600; font-size: 34px; line-height: 1.15; letter-spacing: -.018em; color: var(--tk-ink); margin: 12px 0 0; }
+.story-card p { font-family: var(--tk-sans); font-size: 16px; line-height: 1.55; color: var(--tk-ink-2); margin-top: 12px; margin-bottom: 16px; max-width: 560px; }
+.story-read { font-family: var(--tk-sans); font-size: 14px; font-weight: 500; color: var(--tk-ink); display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--tk-ink); padding-bottom: 2px; }
+
+/* ─── PANEL: CONTACT ─────────────────────────────────────────── */
+#panel-contact { width: 140vw; background: #2C2A28; }
+#panel-contact .panel-label { color: rgba(255,255,255,.55); }
+#panel-contact .panel-inner { inset: 140px 96px 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: stretch; }
+#panel-contact h2 {
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: clamp(80px, 10vw, 200px);
+  line-height: .9; letter-spacing: -.03em; color: #FFFFFF; margin: 20px 0 0;
+}
+.contact-left { display: flex; flex-direction: column; justify-content: space-between; }
+.contact-moments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+.contact-moment { padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); }
+.contact-moment-k { font-family: var(--tk-display); font-weight: 600; font-size: 22px; letter-spacing: -.014em; color: rgba(255,255,255,.9); }
+.contact-moment-d { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.55); margin-top: 6px; }
+.contact-reach { display: flex; gap: 32px; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.contact-form-wrap { background: var(--tk-paper); padding: 32px; border-radius: 6px; border: 1px solid rgba(26,24,21,.1); display: flex; flex-direction: column; }
+.contact-form-wrap form { display: grid; gap: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+label.form-label { font-family: var(--tk-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); margin-bottom: 6px; display: block; }
+.form-input {
+  display: block; width: 100%;
+  background: var(--tk-paper-2); border: 1px solid var(--tk-rule); border-radius: 4px;
+  padding: 12px 14px; font-family: var(--tk-sans); font-size: 15px; color: var(--tk-ink);
+}
+.form-input:focus { outline: none; border-color: var(--tk-ink); }
+textarea.form-input { resize: vertical; }
+.contact-fine { margin-top: auto; padding-top: 20px; font-family: var(--tk-sans); font-size: 12px; line-height: 1.5; color: var(--tk-ink-3); }
+
+/* ─── ARROW SVG ──────────────────────────────────────────────── */
+.arrow { display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<div id="nav-bar">
+  <a href="#" class="logo">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/>
+      <path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/>
+    </svg>
+    title tk
+  </a>
+  <div id="nav-pill"><strong id="nav-progress">0</strong>% <span style="margin:0 10px;opacity:.4">·</span> Title TK · 2026</div>
+  <button id="menu-btn" aria-label="Toggle menu">
+    <span id="menu-label">Menu</span>
+    <span class="hamburger">
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </span>
+  </button>
+</div>
+
+<!-- ── MENU OVERLAY ──────────────────────────────────────────────── -->
+<div id="menu-overlay" aria-hidden="true">
+  <div></div>
+  <div class="menu-links">
+    <a href="#" class="menu-link" style="transition-delay:100ms"><span class="menu-link-num">01</span>Home</a>
+    <a href="mailto:partners@titletk.co" class="menu-link" style="transition-delay:160ms"><span class="menu-link-num">02</span>Contact</a>
+  </div>
+  <div class="menu-footer">
+    <span>San Francisco · Marin</span>
+    <span>partners@titletk.co</span>
+    <span>+1 (415) 305-9476</span>
+  </div>
+</div>
+
+<!-- ── HORIZONTAL SCROLL ─────────────────────────────────────────── -->
+<div id="scroll-section">
+  <div id="scroll-sticky">
+    <div id="scroll-track">
+
+      <!-- HERO -->
+      <section class="panel" id="panel-hero">
+        <video autoplay muted loop playsinline>
+          <source src="/images/coverr-a-road-through-the-hills-6377-1080p.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="content">
+          <div style="display:flex;justify-content:space-between;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff">
+            <span>Title TK · Strategic Communications, Content and Engagement</span>
+            <span>San Francisco · Marin</span>
+          </div>
+          <div style="align-self:end;max-width:70vw">
+            <h1>Built for<br>breakthroughs.</h1>
+            <p class="hero-sub">Storytelling for world-changing companies.</p>
+          </div>
+          <div class="hero-bar">
+            <a href="mailto:partners@titletk.co" class="hero-cta">Get in touch <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            <span class="mono">Scroll → 00 / 09</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MANIFESTO -->
+      <section class="panel" id="panel-manifesto">
+        <div class="panel-label"><span></span><span>02</span></div>
+        <div class="panel-inner">
+          <div>
+            <div class="mono">A different kind of partner</div>
+            <h2>The world doesn't need another "PR" agency.</h2>
+            <h2 class="secondary">It needs a different kind of partner.</h2>
+          </div>
+          <div class="manifesto-right">
+            <p>We're hands-on, high-impact partners at your most important moments in growth.</p>
+            <p>We've founded agencies, led programs for some of the greatest companies in the world, and spent decades learning what actually helps a business drive recognition, relevance, and revenue.</p>
+            <p>We built Title TK to do things differently — senior operators who embed with your team, build the story, and drive the outcomes that matter.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WORK -->
+      <section class="panel" id="panel-work">
+        <div class="panel-label"><span>Selected Work</span><span>03</span></div>
+        <div class="panel-inner">
+          <div class="work-intro">
+            <div>
+              <h2>Work</h2>
+              <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.5;color:var(--tk-ink-2);margin-top:32px;max-width:380px">Our motivation is to be an agency that companies turn to when they need hands-on, high impact partners at the most important moments in their growth.</p>
+            </div>
+            <span class="mono">Showing 6 of 150+ engagements</span>
+          </div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/narvar.png" alt="Narvar">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 01</span><span>Customer Experience</span></div>
+            </div>
+          </div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/arcjet.png" alt="Arcjet">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 02</span><span>Developer Security</span></div>
+            </div>
+          </div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/moab.png" alt="Moab">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 03</span><span>Equipment Rental</span></div>
+            </div>
+          </div>
+          <div class="work-card">
+            <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" style="object-fit:contain;background:linear-gradient(135deg,#F0B8D8 0%,#C47ECC 45%,#7B5CB8 100%);">
+            <div class="work-card-overlay"></div>
+            <div class="work-card-content">
+              <div class="work-card-meta"><span>Case · 04</span><span>Digital Fashion</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM -->
+      <section class="panel" id="panel-founders-intro">
+        <div class="panel-label"><span>Team</span><span>04</span></div>
+        <div class="panel-inner">
+          <div>
+            <div class="eyebrow">Senior operators · No layers · No theater</div>
+            <h2>Team</h2>
+            <p style="font-family:var(--tk-sans);font-size:18px;line-height:1.6;color:var(--tk-ink-2);max-width:560px;margin-top:24px">We're a small team with a passion for great stories and the people behind them. Every Title TK engagement program runs through our founders who bring decades of leadership and hands-on experience running programs for some of the world's most exciting upstarts and household name brands.</p>
+          </div>
+          <div class="founder-cards">
+
+            <!-- Cristina -->
+            <div class="badge-wrap">
+              <div class="badge">
+                <div class="badge-front">
+                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+                  <img class="founder-photo" src="/images/Cristina.png" alt="Cristina Pena">
+                  <div class="badge-front-info">
+                    <h3>Cristina Pena</h3>
+                    <span>Co-Founder · Partner</span>
+                  </div>
+                </div>
+                <div class="badge-back">
+                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+                  <hr class="badge-back-divider">
+                  <a href="mailto:cristina@titletk.com" class="badge-back-email">cristina@titletk.com</a>
+                  <hr class="badge-back-divider">
+                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Jason -->
+            <div class="badge-wrap">
+              <div class="badge">
+                <div class="badge-front">
+                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+                  <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton">
+                  <div class="badge-front-info">
+                    <h3>Jason Throckmorton</h3>
+                    <span>Co-Founder · Partner</span>
+                  </div>
+                </div>
+                <div class="badge-back">
+                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+                  <hr class="badge-back-divider">
+                  <a href="mailto:jason@titletk.com" class="badge-back-email">jason@titletk.com</a>
+                  <hr class="badge-back-divider">
+                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mike -->
+            <div class="badge-wrap">
+              <div class="badge">
+                <div class="badge-front">
+                  <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+                  <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash">
+                  <div class="badge-front-info">
+                    <h3>Mike Barash</h3>
+                    <span>Co-Founder · Partner</span>
+                  </div>
+                </div>
+                <div class="badge-back">
+                  <div class="badge-back-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
+                  <hr class="badge-back-divider">
+                  <a href="mailto:mike@titletk.com" class="badge-back-email">mike@titletk.com</a>
+                  <hr class="badge-back-divider">
+                  <a href="#" class="badge-back-linkedin">LinkedIn →</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div style="display:flex;gap:48px;padding-top:8px">
+            <div style="width:275px;display:flex;flex-direction:column;gap:6px">
+              <a href="mailto:cristina@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">cristina@titletk.co</a>
+              <a href="https://linkedin.com/in/cristinapena" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
+            </div>
+            <div style="width:275px;display:flex;flex-direction:column;gap:6px">
+              <a href="mailto:jason@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">jason@titletk.co</a>
+              <a href="https://linkedin.com/in/jasonthrockmorton" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
+            </div>
+            <div style="width:275px;display:flex;flex-direction:column;gap:6px">
+              <a href="mailto:mike@titletk.co" style="font-family:var(--tk-sans);font-size:13px;color:var(--tk-ink-2);text-decoration:none;">mike@titletk.co</a>
+              <a href="https://linkedin.com/in/mikebarash" target="_blank" style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3);text-decoration:none;">LinkedIn →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="panel" id="panel-services">
+        <div class="panel-label"><span>Services</span><span>05</span></div>
+        <div class="panel-inner">
+          <div class="svc-left">
+            <div class="eyebrow">What we do</div>
+            <h2>Approach</h2>
+            <p style="font-family:var(--tk-display);font-size:20px;font-weight:600;line-height:1.3;color:var(--tk-ink);margin-top:20px;letter-spacing:-.012em">Story. Strategy. Engagement.</p>
+            <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.5;color:var(--tk-ink-2);margin-top:10px">Every Title TK program is led by a company co-founder.</p>
+          </div>
+          <div class="svc-cols">
+            <div class="svc-col">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 01</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <h3>Clarity that drives scale</h3>
+              <p>Most growth companies try to scale a story they haven't finished writing. We nail that first. Before a single pitch goes out, we build the foundational narrative — positioning, messaging, architecture.</p>
+              <ul class="svc-list">
+                <li>Brand &amp; narrative strategy</li>
+                <li>Messaging architecture</li>
+                <li>Executive positioning</li>
+                <li>Corporate communications</li>
+              </ul>
+            </div>
+            <div class="svc-col">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 02</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <h3>Deep partnering</h3>
+              <p>We embed with your team, think like operators, and work like founders. Senior people doing the work, from day one — no junior layers, no account-management theater.</p>
+              <ul class="svc-list">
+                <li>Earned media &amp; storytelling</li>
+                <li>Integrated marketing</li>
+                <li>Stakeholder engagement</li>
+                <li>Crisis &amp; inflection moments</li>
+              </ul>
+            </div>
+            <div class="svc-col">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 03</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <h3>Momentum that compounds</h3>
+              <p>The work. Putting the story in front of the people who need to hear it — and making sure it shows up everywhere it matters next.</p>
+              <ul class="svc-list">
+                <li>Content &amp; coverage amplification</li>
+                <li>Social &amp; influencer programs</li>
+                <li>Awards &amp; speakers bureaus</li>
+                <li>Measurement &amp; analytics</li>
+              </ul>
+            </div>
+            <div class="svc-col">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:var(--tk-mono);font-size:13px;color:var(--tk-coral-deep);font-weight:500">§ 04</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <h3>Ruthless efficiency, human creativity</h3>
+              <p>NorthTK puts AI-assisted intelligence underneath every engagement — so our team moves faster, sees further, and never loses the thread.</p>
+              <ul class="svc-list">
+                <li>AI-assisted story discovery</li>
+                <li>Narrative intelligence</li>
+                <li>Signal monitoring &amp; alerts</li>
+                <li>Coverage &amp; share of voice tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCT -->
+      <section class="panel" id="panel-product">
+        <div class="panel-label"><span>Product · NorthTK</span><span>06</span></div>
+        <div class="panel-inner">
+          <div class="product-left">
+            <div>
+              <div class="eyebrow" style="color:var(--tk-coral)">Introducing North TK</div>
+              <h2>NorthTK</h2>
+              <p style="font-family:var(--tk-sans);font-size:22px;line-height:1.4;color:rgba(255,255,255,.85);margin-top:28px">North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.</p>
+              <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:rgba(255,255,255,.6);margin-top:20px">NorthTK connects raw organizational intelligence to published story — from signal capture through brief, narrative, and campaign — so nothing falls through the cracks and every piece of content traces back to a real strategic insight.</p>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:32px">
+              <a href="mailto:partners@titletk.co" class="tk-btn" style="background:var(--nk-lapis);color:#fff">Request access <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+            </div>
+          </div>
+          <div class="module-grid">
+
+            <!-- Capture — featured full-width -->
+            <div class="module-card module-featured">
+              <div class="module-card-text">
+                <div class="module-card-num">01 · Capture</div>
+                <h3>Every signal, in one place.</h3>
+                <p>Calls, meetings, documents, and observations flow into a single intake layer — nothing slips, nothing gets missed.</p>
+              </div>
+              <svg class="module-illus" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="8" width="104" height="16" rx="4" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+                <rect x="8" y="32" width="76" height="12" rx="3" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2" opacity=".7"/>
+                <rect x="8" y="52" width="56" height="12" rx="3" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2" opacity=".45"/>
+                <path d="M98 38 L112 50 L98 62" stroke="#2D46B9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- Briefs -->
+            <div class="module-card">
+              <div class="module-card-text">
+                <div class="module-card-num">02 · Briefs</div>
+                <h3>Raw intel, structured.</h3>
+                <p>AI turns signals into concise briefs. You advance what matters.</p>
+              </div>
+              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="50" height="60" rx="5" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+                <line x1="20" y1="26" x2="50" y2="26" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+                <line x1="20" y1="36" x2="50" y2="36" stroke="#2D46B9" stroke-width="1.2" opacity=".4"/>
+                <line x1="20" y1="46" x2="40" y2="46" stroke="#2D46B9" stroke-width="1.2" opacity=".3"/>
+                <circle cx="62" cy="62" r="12" fill="#2D46B9" opacity=".15" stroke="#2D46B9" stroke-width="1.2"/>
+                <path d="M57 62h10M62 57v10" stroke="#2D46B9" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Storylines -->
+            <div class="module-card">
+              <div class="module-card-text">
+                <div class="module-card-num">03 · Storylines</div>
+                <h3>Briefs become narrative.</h3>
+                <p>Multiple briefs synthesize into a single arc with a clear through-line.</p>
+              </div>
+              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="40" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+                <circle cx="40" cy="22" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+                <circle cx="40" cy="58" r="7" fill="#E4E8F7" stroke="#2D46B9" stroke-width="1.2"/>
+                <circle cx="66" cy="40" r="9" fill="#2D46B9" opacity=".18" stroke="#2D46B9" stroke-width="1.4"/>
+                <path d="M23 37 L33 26" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+                <path d="M23 43 L33 54" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+                <path d="M47 26 L57 36" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+                <path d="M47 54 L57 44" stroke="#2D46B9" stroke-width="1.2" opacity=".6"/>
+              </svg>
+            </div>
+
+            <!-- Campaigns -->
+            <div class="module-card">
+              <div class="module-card-text">
+                <div class="module-card-num">04 · Campaigns</div>
+                <h3>Content at the moment of need.</h3>
+                <p>Anchor content, coordinated across earned and owned channels.</p>
+              </div>
+              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 44 L14 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".2"/>
+                <path d="M30 34 L30 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+                <path d="M46 20 L46 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+                <path d="M62 10 L62 66" stroke="#2D46B9" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+                <line x1="8" y1="66" x2="72" y2="66" stroke="#2D46B9" stroke-width="1.2" opacity=".4"/>
+              </svg>
+            </div>
+
+            <!-- Brand Voice -->
+            <div class="module-card">
+              <div class="module-card-text">
+                <div class="module-card-num">05 · Brand Voice</div>
+                <h3>Consistency at every touchpoint.</h3>
+                <p>Positioning, messaging, and terminology that stays consistent across every output.</p>
+              </div>
+              <svg class="module-illus" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 40 Q20 24 32 40 Q44 56 56 40 Q68 24 80 40" stroke="#2D46B9" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".7"/>
+                <path d="M8 52 Q20 40 32 52 Q44 64 56 52 Q68 40 80 52" stroke="#2D46B9" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".35"/>
+                <path d="M8 28 Q20 18 32 28 Q44 38 56 28 Q68 18 80 28" stroke="#2D46B9" stroke-width="1" stroke-linecap="round" fill="none" opacity=".2"/>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      </section>
+
+      <!-- LOGOS -->
+
+      <section class="panel" id="panel-logos">
+        <div class="panel-label"><span>Experience</span><span>01</span></div>
+        <div class="panel-inner" style="inset:160px 96px 96px;display:grid;grid-template-rows:auto 1fr auto;gap:48px">
+          <div>
+            <div class="mono">Our History</div>
+            <h2>150+ companies, from pre-seed to Fortune 50.</h2>
+            <p style="font-family:var(--tk-sans);font-size:16px;line-height:1.55;color:var(--tk-ink-2);margin-top:16px;max-width:640px">As co-founders and executives from LaunchSquad, Codeword and Sparkpr, our team has led programs for some of the world's most respected brands.</p>
+          </div>
+          <div class="logo-grid">
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/ASAN_BIG.png" alt="Asana"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/CSCO.png" alt="Cisco"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/github_BIG.png" alt="GitHub"></div>
+            </div>
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/headspace%20(1).jpeg" alt="Headspace" style="height:64px"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NFLX_BIG.png" alt="Netflix"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NEWR_BIG.png" alt="New Relic"></div>
+            </div>
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/OKTA_BIG.png" alt="Okta"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/QCOM_BIG.png" alt="Qualcomm"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/SNAP_BIG.png" alt="Snap"></div>
+            </div>
+            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/Scope3-logo-dark-green-1.jpg" alt="Scope3"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/soundcloud.png" alt="SoundCloud"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/UBER.png" alt="Uber" style="height:60px"></div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
+            <span>Representative past client experience</span>
+            <span>Scroll for case studies →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROVEN -->
+      <section class="panel" id="panel-proven">
+        <div class="panel-label" style="color:rgba(255,255,255,.55)"><span>By the numbers</span><span>07</span></div>
+        <div class="panel-inner">
+          <div style="max-width:880px">
+            <div class="eyebrow" style="color:var(--tk-coral)">By the numbers</div>
+            <h2>Track record</h2>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-cell">
+              <div class="stat-tag">Proven founders</div>
+              <div class="stat-k">3</div>
+              <p class="stat-label">Our team are co-founders and former executive leaders at LaunchSquad, Codeword and Sparkpr.</p>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-tag">Proven scale</div>
+              <div class="stat-k">150+</div>
+              <p class="stat-label">Companies served, pre-seed to Fortune 50.</p>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-tag">Proven outcomes</div>
+              <div class="stat-k">20+</div>
+              <p class="stat-label">IPOs and M&amp;A exits supported.</p>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-tag">Proven under pressure</div>
+              <div class="stat-k">50+</div>
+              <p class="stat-label">Companies, products and major initiatives launched.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORIES -->
+      <section class="panel" id="panel-stories">
+        <div class="panel-label"><span>Journal</span><span>08</span></div>
+        <div class="panel-inner">
+          <div class="stories-head">
+            <div>
+              <div class="eyebrow">Journal</div>
+              <h2>Stories &amp; field notes</h2>
+              <div class="story-filters">
+                <a href="#" class="story-filter active">All</a>
+                <a href="#" class="story-filter">Strategy</a>
+                <a href="#" class="story-filter">Field Notes</a>
+                <a href="#" class="story-filter">Press</a>
+                <a href="#" class="story-filter">Studio</a>
+              </div>
+            </div>
+            <a href="#" class="tk-btn" style="background:transparent;color:var(--tk-ink);border:1px solid var(--tk-ink)">Read the journal <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+          <div class="story-cards">
+            <a href="#" class="story-card">
+              <!-- Cover 01 · Editorial Typeset -->
+              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:var(--tk-parchment);display:flex;flex-direction:column;justify-content:space-between;padding:24px 24px 20px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
+                    <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
+                    title tk
+                  </span>
+                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk-ink-3)">Issue · 014 / 2026</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <span style="font-family:var(--tk-mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-orange-deep)">§ Field notes</span>
+                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(22px,3vw,44px);line-height:.92;letter-spacing:-.025em;color:var(--tk-ink)">
+                    What we mean when we say narrative <span style="display:inline-flex;align-items:baseline;gap:4px">intelligence <span style="font-family:var(--tk-mono);font-weight:500;font-size:10px;background:var(--tk-yellow);color:var(--tk-ink);padding:1px 5px;border-radius:2px;letter-spacing:.04em;vertical-align:.2em">tk</span></span>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Mara Quintero &nbsp;/&nbsp; May 5, 2026 &nbsp;/&nbsp; 8 min</span>
+                  <div style="height:2px;width:28px;background:var(--tk-ink)"></div>
+                </div>
+              </div>
+              <div>
+                <div class="story-meta"><span class="tag">Strategy</span><span>April 18, 2026</span></div>
+                <h3>The narrative isn't a deck. It's a discipline.</h3>
+                <p>Why most growth companies lose the room before the pitch even starts — and the three questions every founder should answer before going to market.</p>
+                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              </div>
+            </a>
+            <a href="#" class="story-card">
+              <!-- Cover 02 · Ticker Strip (Ink) -->
+              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:var(--tk-ink);display:flex;flex-direction:column">
+                <div style="background:var(--tk-orange);color:var(--tk-ink);height:34px;display:flex;align-items:center;font-family:var(--tk-mono);font-size:10px;font-weight:500;letter-spacing:.12em;white-space:nowrap;overflow:hidden;border-bottom:2px solid var(--tk-ink);flex-shrink:0">
+                  <div style="padding:0 16px">SIG-0217 ▸ FED MINUTES ▸ SIG-0218 ▸ CHIP REGS ▸ SIG-0219 ▸ EU AI ACT ▸ SIG-0220 ▸ Q1 EARNINGS ▸ SIG-0221 ▸ LABOR DATA ▸ SIG-0222 ▸</div>
+                </div>
+                <div style="flex:1;padding:18px 24px 18px;display:flex;flex-direction:column;justify-content:space-between;min-height:0">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-paper);letter-spacing:-.015em;line-height:1">
+                      <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="var(--tk-paper)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
+                      title tk
+                    </span>
+                    <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4)">§ Signals · 05.05.26</span>
+                  </div>
+                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(24px,3.2vw,48px);line-height:.9;letter-spacing:-.03em;color:var(--tk-paper)">The week,<br>distilled.</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4)">The Dispatch · Issue 014</span>
+                    <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--tk-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">End of feed <span style="width:6px;height:6px;border-radius:999px;background:var(--tk-orange);display:inline-block;flex-shrink:0"></span></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="story-meta"><span class="tag">Field Notes</span><span>March 27, 2026</span></div>
+                <h3>What twenty years of pitches actually taught us.</h3>
+                <p>Reporter relationships compound. Categories get rewritten. The good stories get faster, not louder. A senior operator's playbook.</p>
+                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              </div>
+            </a>
+            <a href="#" class="story-card">
+              <!-- Cover 03 · Index Card -->
+              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:#FAF7F2;display:flex;flex-direction:column">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:50px;border-bottom:2px solid var(--tk-ink);flex-shrink:0">
+                  <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
+                    <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
+                    title tk
+                  </span>
+                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--tk-ink-2)">FN—042 · § Essay · May 2026</span>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:14px;padding:12px 24px;min-height:0;overflow:hidden">
+                  <svg viewBox="0 0 56 56" width="24" height="24" fill="none" stroke="var(--tk-orange)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
+                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(22px,3vw,44px);line-height:.92;letter-spacing:-.028em;color:var(--tk-ink)">
+                    Slow signals, fast <span style="position:relative;display:inline-block">stories.<span style="position:absolute;left:0;right:0;bottom:2px;height:9px;background:var(--tk-yellow);z-index:-1"></span></span>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:42px;border-top:1px solid rgba(26,24,21,.18);flex-shrink:0">
+                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Filed under / Essay / by Mara Quintero</span>
+                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Continued overleaf</span>
+                </div>
+              </div>
+              <div>
+                <div class="story-meta"><span class="tag">Strategy</span><span>Coming soon</span></div>
+                <h3>Placeholder — story coming soon</h3>
+                <p>This entry is reserved for an upcoming piece. Check back shortly.</p>
+                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              </div>
+            </a>
+            <a href="#" class="story-card">
+              <!-- Cover 04 · Staggered Columns -->
+              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;position:relative">
+                <div style="position:absolute;inset:0;display:flex">
+                  <div style="width:18%;background:var(--tk-coral)"></div>
+                  <div style="width:7%;background:var(--tk-parchment)"></div>
+                  <div style="width:26%;background:var(--tk-yellow)"></div>
+                  <div style="flex:1;background:var(--tk-parchment)"></div>
+                  <div style="width:15%;background:var(--tk-orange)"></div>
+                </div>
+                <div style="position:absolute;inset:0;padding:20px 24px;display:flex;flex-direction:column;justify-content:space-between">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
+                      <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
+                      title tk
+                    </span>
+                    <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk-ink-3)">§ Long read · May 2026</span>
+                  </div>
+                  <div style="font-family:var(--tk-display);font-weight:800;font-size:clamp(44px,6vw,92px);line-height:.85;letter-spacing:-.04em;color:var(--tk-ink)">
+                    Story<br><span style="display:inline-flex;align-items:baseline;gap:5px">lines. <span style="font-family:var(--tk-mono);font-weight:500;font-size:clamp(10px,1.2vw,18px);background:var(--tk-yellow);color:var(--tk-ink);padding:1px 5px;border-radius:2px;letter-spacing:.04em">tk</span></span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+                    <p style="margin:0;font-family:var(--tk-sans);font-size:11px;line-height:1.4;color:var(--tk-ink-2);max-width:180px">Five disciplines, one operating system for narrative.</p>
+                    <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Mara Quintero / 8 min</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="story-meta"><span class="tag">Field Notes</span><span>Coming soon</span></div>
+                <h3>Placeholder — story coming soon</h3>
+                <p>This entry is reserved for an upcoming piece. Check back shortly.</p>
+                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="panel" id="panel-contact">
+        <div class="panel-label"><span>Contact</span><span>09</span></div>
+        <div class="panel-inner">
+          <div class="contact-left">
+            <div>
+              <div class="eyebrow" style="color:rgba(255,255,255,.5)">If it matters, we want to hear about it</div>
+              <h2>Connect</h2>
+              <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:28px;max-width:600px">Companies turn to Title TK for big moments that call for a partner that is experienced, nimble, creative and senior. A partner will write back within one business day.</p>
+            </div>
+            <p style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:0">A few examples</p>
+            <div class="contact-moments">
+              <div class="contact-moment">
+                <div class="contact-moment-k">A launch</div>
+                <div class="contact-moment-d">Product, company, category, expansion or big idea.</div>
+              </div>
+              <div class="contact-moment">
+                <div class="contact-moment-k">A campaign</div>
+                <div class="contact-moment-d">A fresh story to tell, new audiences to reach, or a seasonal activation to drive.</div>
+              </div>
+              <div class="contact-moment">
+                <div class="contact-moment-k">An evolution</div>
+                <div class="contact-moment-d">When the story you've been telling has stopped doing the work it needs to do.</div>
+              </div>
+              <div class="contact-moment">
+                <div class="contact-moment-k">A realignment</div>
+                <div class="contact-moment-d">Crisis, leadership change, the moment that needs the right voice in the right room.</div>
+              </div>
+            </div>
+            <div class="contact-reach">
+              <span>partners@titletk.co</span>
+              <span>+1 (415) 305-9476</span>
+              <span>San Francisco · Marin</span>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px">
+              <span class="eyebrow">Tell us what you're working on</span>
+              <span style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-ink-3)">~30 sec</span>
+            </div>
+            <form onsubmit="return false">
+              <div class="form-row">
+                <div><label class="form-label">Name</label><input class="form-input" placeholder="Riley Park"></div>
+                <div><label class="form-label">Company</label><input class="form-input" placeholder="Acme, Inc."></div>
+              </div>
+              <div><label class="form-label">Email</label><input type="email" class="form-input" placeholder="riley@acme.com"></div>
+              <div><label class="form-label">How can we help?</label><textarea rows="4" class="form-input" placeholder="Tell us what you're working on…"></textarea></div>
+              <button type="submit" class="tk-btn tk-btn-ink" style="width:100%;margin-top:4px">Send <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+            </form>
+            <p class="contact-fine">We respond within one business day. Conversations stay confidential — even when we don't end up working together.</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /scroll-track -->
+  </div><!-- /scroll-sticky -->
+</div><!-- /scroll-section -->
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo logo-light">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/>
+            <path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/>
+          </svg>
+          title tk
+        </a>
+        <p style="font-family:var(--tk-sans);font-size:17px;color:rgba(255,255,255,.75);margin-top:24px;max-width:380px;line-height:1.5">PR, content, and strategy for companies building what's next. Powered by NorthTK, our narrative intelligence platform for category-defining stories.</p>
+        <div style="margin-top:32px;display:flex;gap:12px">
+          <span class="tk-pill tk-pill-orange">San Francisco</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">NorthTK</div>
+        <ul class="footer-col-links"><li><a href="https://northtk.com">Platform</a></li></ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Reach</div>
+        <ul class="footer-col-links"><li>partners@titletk.co</li><li>+1 (415) 305-9476</li><li>1 Ferry Building</li><li>San Francisco · Suite 201</li></ul>
+      </div>
+    </div>
+    <hr class="footer-hr">
+    <div class="footer-bottom">
+      <span>© Title TK 2026 · All Rights Reserved</span>
+      <span>NorthTK™ is a Title TK product</span>
+      <span>Privacy</span>
+      <span>v.2.0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // ── Horizontal scroll ──────────────────────────────────────────
+  var section = document.getElementById('scroll-section');
+  var track   = document.getElementById('scroll-track');
+  var progEl  = document.getElementById('nav-progress');
+
+  function setHeight() {
+    section.style.height = track.scrollWidth + 'px';
+  }
+
+  function onScroll() {
+    var rect    = section.getBoundingClientRect();
+    var total   = section.offsetHeight - window.innerHeight;
+    var scrolled = Math.max(0, -rect.top);
+    var p       = total > 0 ? Math.min(1, scrolled / total) : 0;
+    var moveable = track.scrollWidth - window.innerWidth;
+    track.style.transform = 'translate3d(' + (-p * moveable) + 'px, 0, 0)';
+    progEl.textContent = Math.round(p * 100);
+  }
+
+  setHeight();
+  window.addEventListener('load', setHeight); // re-measure after fonts load
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(setHeight).observe(track);
+  }
+  window.addEventListener('resize', setHeight);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ── Menu ──────────────────────────────────────────────────────
+  var menuBtn     = document.getElementById('menu-btn');
+  var menuOverlay = document.getElementById('menu-overlay');
+  var menuLabel   = document.getElementById('menu-label');
+  var bar1 = menuBtn.querySelector('.bar-1');
+  var bar2 = menuBtn.querySelector('.bar-2');
+  var bar3 = menuBtn.querySelector('.bar-3');
+  var open = false;
+
+  function setMenu(state) {
+    open = state;
+    menuOverlay.classList.toggle('open', open);
+    menuOverlay.setAttribute('aria-hidden', String(!open));
+    menuLabel.textContent = open ? 'Close' : 'Menu';
+    if (open) {
+      bar1.style.top = '6px';  bar1.style.transform = 'rotate(22.5deg)';
+      bar2.style.opacity = '0';
+      bar3.style.top = '6px';  bar3.style.transform = 'rotate(-22.5deg)';
+    } else {
+      bar1.style.top = '2px';  bar1.style.transform = 'none';
+      bar2.style.opacity = '1';
+      bar3.style.top = '12px'; bar3.style.transform = 'none';
+    }
+  }
+
+  menuBtn.addEventListener('click', function () { setMenu(!open); });
+  menuOverlay.querySelectorAll('.menu-link').forEach(function (l) {
+    l.addEventListener('click', function () { setMenu(false); });
+  });
+})();
+</script>
+</body>
+</html>

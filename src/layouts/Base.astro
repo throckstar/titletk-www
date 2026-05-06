@@ -1,0 +1,71 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'PR, content, and strategy for companies building what\'s next. Powered by NorthTK, our narrative intelligence platform for category-defining stories.',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  /* ── Title TK Brand Tokens ─────────────────────────────────── */
+  :root {
+    --tk-orange:        #FF8534;
+    --tk-orange-deep:   #E5651A;
+    --tk-orange-soft:   #FFB17A;
+    --tk-yellow:        #FFE259;
+    --tk-yellow-deep:   #E0BD2A;
+    --tk-coral:         #FFADAD;
+    --tk-coral-deep:    #F58C8C;
+    --tk-charcoal:      #2C2A28;
+    --tk-charcoal-2:    #3A3835;
+    --tk-ink:           #1A1815;
+    --tk-ink-2:         #3A3835;
+    --tk-ink-3:         #6E6A65;
+    --tk-paper:         #FFFFFF;
+    --tk-paper-2:       #FAF7F2;
+    --tk-parchment:     #F2EBDD;
+    --tk-rule:          #E5E0D6;
+    --tk-rule-strong:   #C8C2B5;
+    --nk-lapis:         #2D46B9;
+    --nk-lapis-deep:    #1E2F8A;
+    --nk-lapis-tint:    #F0F2FA;
+
+    --tk-display:        'Archivo', 'Helvetica Neue', system-ui, sans-serif;
+    --tk-display-narrow: 'Archivo Narrow', 'Archivo', sans-serif;
+    --tk-sans:           'IBM Plex Sans', system-ui, sans-serif;
+    --tk-mono:           'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--tk-parchment);
+    color: var(--tk-ink);
+    font-family: var(--tk-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  em, i { font-style: normal; }
+</style>

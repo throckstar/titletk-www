@@ -1,0 +1,224 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  author?: string;
+  category?: string;
+  cover?: string;
+}
+
+const { title, description, date, author, category, cover = 'editorial' } = Astro.props;
+
+const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// Cover style map — matches the blog header design concepts
+const covers: Record<string, { bg: string; textColor: string; style: string }> = {
+  editorial: {
+    bg: 'var(--tk-parchment)',
+    textColor: 'var(--tk-ink)',
+    style: 'editorial',
+  },
+  ticker: {
+    bg: 'var(--tk-ink)',
+    textColor: 'var(--tk-paper)',
+    style: 'ticker',
+  },
+  index: {
+    bg: '#FAF7F2',
+    textColor: 'var(--tk-ink)',
+    style: 'index',
+  },
+  staggered: {
+    bg: 'var(--tk-parchment)',
+    textColor: 'var(--tk-ink)',
+    style: 'staggered',
+  },
+};
+
+const c = covers[cover] ?? covers.editorial;
+---
+
+<Base title={`${title} — Title TK`} description={description}>
+  <!-- Nav -->
+  <header class="post-nav">
+    <a href="/" class="post-nav-logo">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+        <path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/>
+        <path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/>
+      </svg>
+      title tk
+    </a>
+    <a href="/journal" class="post-nav-back">← Journal</a>
+  </header>
+
+  <!-- Cover -->
+  <div class={`post-cover post-cover--${c.style}`} style={`background:${c.bg};color:${c.textColor}`}>
+    {cover === 'ticker' && (
+      <div class="cover-ticker-bar">
+        SIG-0217 ▸ FED MINUTES ▸ SIG-0218 ▸ CHIP REGS ▸ SIG-0219 ▸ EU AI ACT ▸ SIG-0220 ▸ Q1 EARNINGS ▸ SIG-0221 ▸
+      </div>
+    )}
+    {cover === 'staggered' && (
+      <div class="cover-stripes" aria-hidden="true">
+        <div style="background:var(--tk-coral)"></div>
+        <div style="background:var(--tk-parchment)"></div>
+        <div style="background:var(--tk-yellow)"></div>
+        <div style="flex:1;background:var(--tk-parchment)"></div>
+        <div style="background:var(--tk-orange)"></div>
+      </div>
+    )}
+    <div class="cover-inner">
+      <div class="cover-top">
+        <span class="cover-eyebrow">{category ?? 'Field Notes'}</span>
+        <span class="cover-meta">{dateStr}</span>
+      </div>
+      <h1 class="cover-title">{title}</h1>
+      <p class="cover-desc">{description}</p>
+      {author && <div class="cover-author">{author}</div>}
+    </div>
+  </div>
+
+  <!-- Post body -->
+  <article class="post-body">
+    <slot />
+  </article>
+
+  <!-- Footer -->
+  <footer class="post-footer">
+    <a href="/journal" class="post-footer-back">← Back to Journal</a>
+    <a href="mailto:partners@titletk.co" class="post-footer-cta">Get in touch</a>
+  </footer>
+</Base>
+
+<style>
+  /* Nav */
+  .post-nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 56px; height: 64px;
+    background: var(--tk-parchment);
+    border-bottom: 1px solid var(--tk-rule);
+  }
+  .post-nav-logo {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--tk-display); font-weight: 700; font-size: 16px;
+    color: var(--tk-ink); text-decoration: none; letter-spacing: -0.015em;
+  }
+  .post-nav-back {
+    font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none;
+  }
+  .post-nav-back:hover { color: var(--tk-ink); }
+
+  /* Cover */
+  .post-cover {
+    position: relative; overflow: hidden;
+    min-height: 480px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .post-cover--ticker { min-height: 520px; }
+  .cover-ticker-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    background: var(--tk-orange); color: var(--tk-ink);
+    height: 40px; display: flex; align-items: center;
+    font-family: var(--tk-mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; white-space: nowrap; overflow: hidden;
+    border-bottom: 2px solid var(--tk-ink); padding: 0 24px;
+  }
+  .cover-stripes {
+    position: absolute; inset: 0; display: flex;
+  }
+  .cover-stripes > div:first-child  { width: 18%; }
+  .cover-stripes > div:nth-child(2) { width:  7%; }
+  .cover-stripes > div:nth-child(3) { width: 26%; }
+  .cover-stripes > div:last-child   { width: 15%; }
+  .cover-inner {
+    position: relative; z-index: 1;
+    max-width: 960px; padding: 72px 56px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .cover-top {
+    display: flex; gap: 24px; align-items: center;
+    font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; opacity: 0.6;
+  }
+  .cover-title {
+    margin: 0;
+    font-family: var(--tk-display); font-weight: 700;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 0.95; letter-spacing: -0.025em;
+  }
+  .post-cover--ticker .cover-title { padding-top: 40px; }
+  .cover-desc {
+    margin: 0; font-size: 20px; line-height: 1.45; max-width: 640px; opacity: 0.75;
+  }
+  .cover-author {
+    font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; opacity: 0.55;
+  }
+
+  /* Post body */
+  .post-body {
+    max-width: 720px; margin: 0 auto;
+    padding: 80px 56px 120px;
+    font-family: var(--tk-sans); font-size: 18px; line-height: 1.7;
+    color: var(--tk-ink-2);
+  }
+  .post-body :global(h2) {
+    font-family: var(--tk-display); font-weight: 700;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.1; letter-spacing: -0.02em;
+    color: var(--tk-ink); margin: 56px 0 20px;
+  }
+  .post-body :global(h3) {
+    font-family: var(--tk-display); font-weight: 600; font-size: 22px;
+    color: var(--tk-ink); margin: 40px 0 14px;
+  }
+  .post-body :global(p) { margin: 0 0 24px; }
+  .post-body :global(ul), .post-body :global(ol) {
+    padding-left: 24px; margin: 0 0 24px;
+  }
+  .post-body :global(li) { margin-bottom: 10px; }
+  .post-body :global(hr) {
+    border: 0; border-top: 1px solid var(--tk-rule); margin: 48px 0;
+  }
+  .post-body :global(blockquote) {
+    margin: 32px 0; padding: 0 0 0 24px;
+    border-left: 3px solid var(--tk-orange);
+    color: var(--tk-ink); font-size: 20px; line-height: 1.5;
+  }
+  .post-body :global(code) {
+    font-family: var(--tk-mono); font-size: 14px;
+    background: var(--tk-parchment); padding: 2px 6px; border-radius: 3px;
+  }
+
+  /* Footer */
+  .post-footer {
+    border-top: 1px solid var(--tk-rule);
+    padding: 32px 56px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--tk-paper);
+  }
+  .post-footer-back {
+    font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none;
+  }
+  .post-footer-back:hover { color: var(--tk-ink); }
+  .post-footer-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--tk-ink); color: var(--tk-paper);
+    font-family: var(--tk-sans); font-weight: 500; font-size: 14px;
+    padding: 10px 22px; border-radius: 999px; text-decoration: none;
+    transition: background 160ms ease;
+  }
+  .post-footer-cta:hover { background: var(--tk-orange); color: var(--tk-ink); }
+
+  @media (max-width: 768px) {
+    .post-nav { padding: 0 24px; }
+    .cover-inner { padding: 48px 24px; }
+    .post-body { padding: 48px 24px 80px; font-size: 16px; }
+    .post-footer { padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+</style>
