@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Title TK — For CodeSignal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nk-bg:          #FFFFFF;
+  --nk-bg-2:        #F7F7F5;
+  --nk-ink:         #111111;
+  --nk-ink-2:       #333333;
+  --nk-ink-3:       #888888;
+  --nk-rule:        rgba(0,0,0,0.10);
+  --nk-rule-2:      rgba(0,0,0,0.06);
+  --nk-text:        #444444;
+  --nk-text-3:      #888888;
+  --nk-lapis:       #2D46B9;
+  --nk-lapis-soft:  #4A63CC;
+  --nk-lapis-tint:  #EEF0FA;
+  --nk-paper:       #FFFFFF;
+  --tk-coral:       #F58C8C;
+  --tk-coral-deep:  #E06060;
+  --tk-coral-dim:   rgba(245,140,140,0.10);
+  --tk-orange:      #E5651A;
+  --tk-mono:        'IBM Plex Mono', ui-monospace, monospace;
+  --tk-sans:        'IBM Plex Sans', system-ui, sans-serif;
+  --tk-display:     'Archivo', 'Helvetica Neue', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; color-scheme: light only; }
+body {
+  background: var(--nk-bg); color: var(--nk-ink);
+  font-family: var(--tk-sans); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; font-style: normal !important; color-scheme: light only;
+}
+em, i { font-style: normal; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { margin: 0; }
+.wrap { max-width: 1380px; margin: 0 auto; padding: 0 64px; }
+@media (max-width: 900px) { .wrap { padding: 0 28px; } }
+
+/* EYEBROW */
+.eyebrow {
+  font-family: var(--tk-mono); font-size: 10.5px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--nk-text-3); display: flex; gap: 12px; align-items: center; margin-bottom: 20px;
+}
+.eyebrow .accent { color: var(--tk-coral); }
+
+/* NAV */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 64px; position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--nk-rule); box-shadow: inset 0 2px 0 0 var(--tk-coral);
+}
+.nav-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: 17px; letter-spacing: -0.015em; color: var(--nk-ink); line-height: 1;
+}
+.nav-links {
+  display: flex; gap: 32px; font-family: var(--tk-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-ink-3);
+}
+.nav-links a { transition: color 180ms; }
+.nav-links a:hover { color: var(--nk-ink); }
+.nav-right {
+  font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--nk-text-3); display: flex; align-items: center; gap: 8px;
+}
+.nav-right .badge {
+  background: var(--tk-coral); color: #fff;
+  padding: 5px 12px; border-radius: 999px; font-size: 9.5px; letter-spacing: 0.12em;
+}
+@media (max-width: 900px) { .nav { padding: 18px 28px; } .nav-links { display: none; } }
+
+/* HERO */
+.hero { min-height: 100vh; background: #FFADAD; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none;
+}
+.hero-inner { display: flex; flex-direction: column; flex: 1; max-width: 1380px; margin: 0 auto; padding: 0 64px; width: 100%; }
+.hero-meta { display: flex; gap: 10px; align-items: center; font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,0,0,0.45); padding-top: 48px; }
+.hero-dot { opacity: 0.5; }
+.hero-title { font-family: var(--tk-display); font-weight: 800; font-size: clamp(64px, 9vw, 148px); line-height: 0.93; letter-spacing: -0.03em; color: var(--nk-ink); margin-top: auto; padding-bottom: 48px; }
+.hero-footer { border-top: 1px solid rgba(0,0,0,0.18); padding: 28px 0 40px; }
+.hero-footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 40px; align-items: center; }
+.hf-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.38); margin-bottom: 5px; }
+.hf-name { font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: var(--nk-ink); }
+.hf-sub { font-family: var(--tk-sans); font-size: 13px; color: rgba(0,0,0,0.45); margin-top: 2px; }
+.hf-cta { text-align: right; }
+.hero-read-link { font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-ink); border-bottom: 1px solid rgba(0,0,0,0.3); padding-bottom: 2px; transition: border-color 180ms; white-space: nowrap; }
+.hero-read-link:hover { border-color: var(--nk-ink); }
+@media (max-width: 900px) { .hero-inner { padding: 0 28px; } .hero-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; } .hf-cta { text-align: left; grid-column: 1 / -1; } }
+
+/* SITUATION */
+.situation { padding: 100px 0 80px; border-bottom: 1px solid var(--nk-rule); background: var(--nk-bg); }
+.situation-inner { max-width: 1380px; margin: 0 auto; padding: 0 64px; }
+.situation-meta { display: flex; gap: 32px; align-items: center; font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-text-3); margin-bottom: 48px; }
+.situation-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--tk-coral); flex-shrink: 0; }
+.situation-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+.situation-left h1 { font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: var(--nk-ink); margin-bottom: 32px; }
+.situation-left .lede { font-family: var(--tk-sans); font-size: 17px; color: var(--nk-text); line-height: 1.6; max-width: 760px; }
+.situation-points { display: flex; flex-direction: column; border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; }
+.sp-row { padding: 20px 24px; border-bottom: 1px solid var(--nk-rule); display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
+.sp-row:last-child { border-bottom: none; }
+.sp-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--tk-coral); padding-top: 3px; }
+.sp-text { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.5; }
+.sp-text strong { color: var(--nk-ink); font-weight: 600; }
+.situation-divider { display: flex; gap: 40px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--nk-rule); }
+.sit-stat .k { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 6px; }
+.sit-stat .v { font-family: var(--tk-display); font-weight: 600; font-size: 15px; color: var(--nk-ink); }
+@media (max-width: 900px) { .situation-inner { padding: 0 28px; } .situation { padding: 64px 0; } }
+
+/* SECTION BASE */
+.section { padding: 100px 0; border-bottom: 1px solid var(--nk-rule); }
+.section-alt { background: var(--nk-bg-2); }
+.section-header { margin-bottom: 56px; }
+.section-header h2 { font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: var(--nk-ink); max-width: 900px; }
+.section-lede { font-family: var(--tk-sans); font-size: 17px; color: var(--nk-text); line-height: 1.55; max-width: 680px; margin-top: 20px; }
+.section-lede strong { color: var(--nk-ink); font-weight: 600; }
+
+/* STORY CARDS */
+.story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.story-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px; transition: border-color 200ms; }
+.story-card:hover { border-color: rgba(245,140,140,0.5); }
+.story-card.lead { background: var(--tk-coral-dim); border-color: rgba(245,140,140,0.35); }
+.sc-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.story-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--nk-ink); line-height: 1.1; }
+.story-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.55; }
+.sc-why { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--nk-rule-2); font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--nk-text-3); text-transform: uppercase; }
+.story-card.lead .sc-why { border-color: rgba(245,140,140,0.2); color: var(--tk-coral-deep); }
+@media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; } }
+
+/* TIER ROWS */
+.tier-rows { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
+.tier-row { display: grid; grid-template-columns: 220px 1fr auto; align-items: center; gap: 32px; border: 1px solid var(--nk-rule); border-radius: 10px; padding: 24px 28px; background: #FFFFFF; transition: border-color 200ms; }
+.tier-row:hover { border-color: rgba(45,70,185,0.4); }
+.tier-row .tr-left .tr-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; color: var(--nk-lapis-soft); margin-bottom: 4px; }
+.tier-row .tr-left h3 { font-family: var(--tk-display); font-weight: 700; font-size: 19px; letter-spacing: -0.012em; color: var(--nk-ink); line-height: 1.15; }
+.tier-row .tr-mid .tr-headline { font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: var(--nk-ink); margin-bottom: 4px; }
+.tier-row .tr-mid .tr-body { font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); line-height: 1.5; }
+.tier-row .tr-tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.tier-tag { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-text-3); white-space: nowrap; }
+.tier-tag.active { background: var(--nk-lapis-tint); border-color: rgba(45,70,185,0.3); color: var(--nk-lapis-soft); }
+.bench-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.bench-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 28px 32px; background: #FFFFFF; }
+.bench-card h4 { font-family: var(--tk-display); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; color: var(--nk-ink); margin-bottom: 20px; }
+.bench-card .bc-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-ink-3); float: right; padding-top: 2px; }
+.bench-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.bench-rows .br { display: flex; flex-direction: column; gap: 2px; }
+.bench-rows .br .brt { font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: var(--nk-ink); }
+.bench-rows .br .brb { font-family: var(--tk-sans); font-size: 12.5px; color: var(--nk-ink-3); }
+@media (max-width: 900px) { .tier-row { grid-template-columns: 1fr; } .bench-grid { grid-template-columns: 1fr; } }
+
+/* PHASE GRID */
+.phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.phase-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 32px; background: #FFFFFF; }
+.phase-card .pf-label { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 16px; }
+.phase-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 26px; letter-spacing: -0.018em; color: var(--nk-ink); margin-bottom: 14px; }
+.phase-card p { font-family: var(--tk-sans); font-size: 14px; line-height: 1.55; color: var(--nk-ink-2); margin-bottom: 20px; }
+.phase-card ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.phase-card ul li { font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 18px; position: relative; line-height: 1.4; }
+.phase-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--nk-lapis-soft); }
+.phase-card .artifact { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--nk-rule-2); font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--nk-lapis-soft); text-transform: uppercase; }
+.phase-card .artifact span { color: var(--nk-text-3); }
+@media (max-width: 900px) { .phase-grid { grid-template-columns: 1fr; } }
+
+/* MEDIA LAYOUT */
+.media-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 48px; }
+.media-outlets-col h4, .coverage-col h4 { font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--nk-ink); margin-bottom: 6px; }
+.col-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-text-3); margin-bottom: 20px; display: block; }
+.outlets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.outlet-tile { border: 1px solid var(--nk-rule); border-radius: 6px; padding: 14px 10px; text-align: center; font-family: var(--tk-display); font-weight: 700; font-size: 11.5px; color: var(--nk-ink-3); background: #FFFFFF; line-height: 1.3; transition: border-color 200ms, color 200ms; }
+.outlet-tile:hover { border-color: var(--nk-lapis); color: var(--nk-ink); }
+.outlet-tile.featured { background: var(--nk-lapis-tint); border-color: rgba(45,70,185,0.3); color: var(--nk-lapis); }
+.outlet-tile .ot-sub { display: block; font-family: var(--tk-mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nk-ink-3); margin-top: 3px; }
+.outlet-tile.featured .ot-sub { color: var(--nk-lapis-soft); }
+.coverage-cards { display: flex; flex-direction: column; gap: 10px; }
+.coverage-card { border-left: 2px solid var(--tk-coral); padding: 14px 18px; background: var(--tk-coral-dim); border-radius: 0 6px 6px 0; }
+.coverage-card .cc-q { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink); line-height: 1.45; margin-bottom: 8px; }
+.coverage-card .cc-attr { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nk-text-3); }
+.coverage-card .cc-attr .pub { color: var(--tk-coral-deep); }
+@media (max-width: 900px) { .media-layout { grid-template-columns: 1fr; } .outlets-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* SPEAKING */
+.speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.speaking-col h4 { font-family: var(--tk-display); font-weight: 700; font-size: 18px; color: var(--nk-ink); margin-bottom: 6px; }
+.event-rows { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+.event-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; border: 1px solid var(--nk-rule); border-radius: 6px; padding: 14px 18px; background: #FFFFFF; }
+.event-row .er-name { font-family: var(--tk-sans); font-weight: 600; font-size: 13.5px; color: var(--nk-ink); }
+.event-row .er-detail { font-family: var(--tk-sans); font-size: 12.5px; color: var(--nk-text-3); margin-top: 2px; }
+.event-row .er-tag { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 999px; padding: 4px 10px; color: var(--nk-text-3); white-space: nowrap; }
+.event-row .er-tag.hot { border-color: var(--tk-coral); color: var(--tk-coral-deep); background: var(--tk-coral-dim); }
+@media (max-width: 900px) { .speaking-grid { grid-template-columns: 1fr; } }
+
+/* EXPERIENCE */
+.experience-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 48px; }
+.exp-tile { border: 1px solid var(--nk-rule); border-radius: 8px; padding: 20px 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px; }
+.exp-tile .et-client { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); }
+.exp-tile .et-name { font-family: var(--tk-display); font-weight: 700; font-size: 18px; color: var(--nk-ink); }
+.exp-tile .et-cat { font-family: var(--tk-sans); font-size: 12.5px; color: var(--nk-text-3); }
+@media (max-width: 900px) { .experience-grid { grid-template-columns: 1fr 1fr; } }
+
+/* TEAM */
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.team-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 36px; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px; }
+.team-card .tc-role { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.team-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 28px; letter-spacing: -0.018em; color: var(--nk-ink); }
+.team-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.6; }
+.team-card .tc-link { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-top: 4px; display: inline-block; }
+@media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } }
+
+/* INVESTMENT */
+.investment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.inv-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 16px; background: #FFFFFF; }
+.inv-card.featured { background: var(--nk-lapis-tint); border-color: rgba(45,70,185,0.3); }
+.inv-card .ic-tier { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-text-3); }
+.inv-card.featured .ic-tier { color: var(--nk-lapis-soft); }
+.inv-card h3 { font-family: var(--tk-display); font-weight: 800; font-size: 48px; letter-spacing: -0.025em; color: var(--nk-ink); line-height: 1; }
+.inv-card.featured h3 { color: var(--nk-lapis); }
+.inv-card .ic-freq { font-family: var(--tk-mono); font-size: 11px; color: var(--nk-text-3); margin-top: -8px; }
+.inv-card.featured .ic-freq { color: var(--nk-lapis-soft); }
+.inv-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.inv-card ul li { font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 18px; position: relative; }
+.inv-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--tk-coral); }
+.inv-note { margin-top: 16px; padding: 16px 20px; border: 1px solid var(--nk-rule); border-radius: 6px; font-family: var(--tk-sans); font-size: 13px; color: var(--nk-text-3); line-height: 1.5; }
+@media (max-width: 900px) { .investment-grid { grid-template-columns: 1fr; } }
+
+/* NEXT STEPS */
+.next-steps-single { margin-top: 48px; border: 1px solid var(--nk-rule); border-radius: 10px; padding: 36px 40px; background: var(--nk-bg-2); }
+.next-steps-single p { font-family: var(--tk-sans); font-size: 16px; color: var(--nk-ink-2); line-height: 1.65; }
+
+/* FOOTER */
+.footer { padding: 40px 64px; display: flex; align-items: center; justify-content: space-between; position: relative; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--tk-coral) 0%, var(--tk-orange) 40%, transparent 100%); }
+.footer-logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--tk-display); font-weight: 700; font-size: 16px; letter-spacing: -0.015em; color: var(--nk-ink); }
+.footer-note { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nk-text-3); }
+
+/* EDIT TOOLBAR */
+[contenteditable="true"] { outline: none; border-radius: 3px; transition: background 150ms; }
+[contenteditable="true"]:hover { background: rgba(45,70,185,0.08); }
+[contenteditable="true"]:focus { background: rgba(45,70,185,0.14); box-shadow: 0 0 0 2px rgba(45,70,185,0.4); }
+.edit-toolbar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 200; background: var(--nk-paper); color: var(--nk-ink); border-radius: 999px; padding: 10px 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); }
+.edit-toolbar button { background: none; border: none; cursor: pointer; font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nk-ink-2); padding: 4px 10px; border-radius: 999px; transition: background 150ms; }
+.edit-toolbar button:hover { background: var(--nk-lapis-tint); }
+.edit-toolbar button.active { background: var(--nk-ink); color: #fff; }
+.edit-toolbar .sep { width: 1px; height: 16px; background: var(--nk-rule); }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="pw-gate" style="position:fixed;inset:0;z-index:9999;background:#FAF7F2;display:flex;align-items:center;justify-content:center;">
+  <div style="width:100%;max-width:420px;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center;">
+    <div style="display:flex;align-items:center;gap:8px;font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.015em;color:#111;">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+        <path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/>
+        <path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/>
+      </svg>
+      title tk
+    </div>
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:12px;">Confidential · Enter passcode to continue</div>
+      <input id="pw-input" type="password" placeholder="Passcode" autocomplete="current-password"
+        style="width:100%;border:1.5px solid rgba(0,0,0,0.15);border-radius:8px;padding:14px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:16px;color:#111;background:#fff;outline:none;text-align:center;letter-spacing:0.05em;"
+        onkeydown="if(event.key==='Enter')checkPw()"
+      />
+      <div id="pw-err" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E5651A;margin-top:10px;min-height:16px;letter-spacing:0.06em;"></div>
+    </div>
+    <button onclick="checkPw()"
+      style="background:#111;color:#fff;border:none;border-radius:999px;padding:12px 36px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.01em;">
+      Continue →
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('titletk_auth')==='1'){
+    document.getElementById('pw-gate').style.display='none';
+    document.getElementById('pw-input') && document.getElementById('pw-input').removeEventListener;
+  }
+  async function sha256(str){
+    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  window.checkPw=async function(){
+    const val=document.getElementById('pw-input').value;
+    const hash=await sha256(val);
+    if(hash==='1447d48eb0b694930810d7638602663d2f29bbc7d1f2510d7625838e7838ae0a'){
+      sessionStorage.setItem('titletk_auth','1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-err').textContent='Incorrect passcode.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  };
+  // Focus input on load if gate is visible
+  window.addEventListener('load',function(){
+    var gate=document.getElementById('pw-gate');
+    if(gate&&gate.style.display!=='none'){
+      document.getElementById('pw-input').focus();
+    }
+  });
+})();
+</script>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#hero" class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" fill="none" style="height:1.1em;width:auto;">
+      <g stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/>
+        <path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/>
+      </g>
+      <text x="68" y="38" font-family="Archivo, system-ui, sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="currentColor">title tk</text>
+    </svg>
+  </a>
+    <div class="nav-links">
+    <a href="#situation">Overview</a>
+    <a href="#stories">Themes</a>
+    <a href="#architecture">Program</a>
+    <a href="#program">Phase 1</a>
+    <a href="#editorial">Editorial</a>
+    <a href="#speaking">Speaking</a>
+    <a href="#ideas">Ideas</a>
+    <a href="#team">Team</a>
+  </div>
+  <div class="nav-right">
+    <span>For CodeSignal</span>
+    <span class="badge">Confidential</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span>May 2026</span>
+      <span class="hero-dot">•</span>
+      <span>Proposal</span>
+    </div>
+    <h1 class="hero-title">Title TK &amp; CodeSignal.</h1>
+    <div class="hero-footer">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div class="hf-label">Prepared By</div>
+          <div class="hf-name">Title TK</div>
+        </div>
+        <a href="#situation" class="hero-read-link">Read the Proposal →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="situation" id="situation">
+  <div class="situation-inner">
+    <div class="situation-meta">
+      <span>Title TK</span>
+      <div class="dot"></div>
+      <span>For CodeSignal</span>
+      <div class="dot"></div>
+      <span>May 2026</span>
+      <div class="dot"></div>
+      <span>Engagement Brief</span>
+    </div>
+    <div class="situation-grid">
+      <div class="situation-left" style="max-width: 760px;">
+        <h1 contenteditable="false">Overview</h1>
+        <p class="lede" contenteditable="false">CodeSignal has built a decade of credibility, a proprietary data set, and a founder with a clear worldview on the future of work.</p>
+      </div>
+      <div>
+        <div class="situation-points">
+          <div class="sp-row">
+            <div class="sp-num">01</div>
+            <div class="sp-text"><strong>CodeSignal's product has evolved well beyond its origins in technical hiring.</strong> With 75% of graduating engineers having taken a CodeSignal assessment, the brand has significant market presence. The next step is ensuring the broader platform story (Learn, Cosmo, agentic assessments, business roles) travels as consistently as the technical hiring reputation already does.</div>
+          </div>
+          <div class="sp-row">
+            <div class="sp-num">02</div>
+            <div class="sp-text"><strong>Recent inbound from The Verge, Business Insider, and Bloomberg reflects genuine market interest in what CodeSignal is building.</strong> Those conversations have been handled well. The opportunity now is to build a proactive program alongside that inbound so CodeSignal is also setting the frame, not just responding to it.</div>
+          </div>
+          <div class="sp-row">
+            <div class="sp-num">03</div>
+            <div class="sp-text"><strong>The momentum heading into Series D is real.</strong> The goal is to ensure the market (investors, enterprise buyers, and press) understands CodeSignal as the AI-native category leader before the raise, building on the product and customer proof already in place.</div>
+          </div>
+          <div class="sp-row">
+            <div class="sp-num">04</div>
+            <div class="sp-text"><strong>Tigran has already started building a public worldview on AI and the future of work</strong> through Deep View, the University of Michigan, and a consistent LinkedIn presence. The logical next step is a structured program that extends that thinking into tier-one technology and business media.</div>
+          </div>
+          <div class="sp-row">
+            <div class="sp-num">05</div>
+            <div class="sp-text"><strong>CodeSignal's owned research has already generated meaningful coverage.</strong> The cheating data, the agentic coding findings, and the university rankings have all landed well. With earlier reporter outreach and more deliberate release planning, each report can work harder and reach a wider audience.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THEMES AND STORYLINES -->
+<section class="section" id="stories">
+  <div class="wrap">
+    <div class="eyebrow"><span>STORY STRATEGY</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Themes and<br>Storylines.</h2>
+      <p class="section-lede" contenteditable="false">CodeSignal has a credible POV, proprietary data and insights, and a moment in the market that makes it timely.</p>
+    </div>
+    <div class="story-grid">
+      <div class="story-card lead">
+        <div class="sc-num">Story 01 · Tigran's POV</div>
+        <h3 contenteditable="false">AI is reshaping the talent pipeline, and skills development is the response.</h3>
+        <p contenteditable="false">As AI automates entry-level tasks, companies are reducing junior hiring. The downstream effect is a thinning senior pipeline, since most experienced practitioners developed foundational skills earlier in their careers. Entry-level expectations have jumped to competency levels that previously took five to seven years to develop, and the skills to meet those expectations don't yet exist at scale. Tigran has been building this argument publicly through Deep View, the University of Michigan, and a consistent LinkedIn presence. The next step is sharpening it into a pitchable narrative with a clear angle and two or three supporting data points, so it travels beyond the audiences already following him.</p>
+      </div>
+      <div class="story-card">
+        <div class="sc-num">Story 02 · Owned Data</div>
+        <h3 contenteditable="false">CodeSignal's annual ranking identifies engineering talent that traditional rankings consistently overlook.</h3>
+        <p contenteditable="false">14 of the top 50 schools in the 2026 report don't appear in the US News ranking, a finding with real implications for how hiring teams and universities think about talent pipelines. Forbes and NBC Bay Area covered the report well. Amy Shackelford and Mary Papazian give it genuine depth beyond a single spokesperson. Building reporter relationships earlier in the cycle (ahead of next year's release rather than at launch) is the natural next step for a story this strong.</p>
+      </div>
+      <div class="story-card">
+        <div class="sc-num">Story 03 · AI Interviewing</div>
+        <h3 contenteditable="false">CodeSignal's agentic assessment data defines what AI-era hiring looks like in practice.</h3>
+        <p contenteditable="false">91% of engineers use agentic AI tools. 75% shipped production code with AI assistance in the past six months. 56% of hiring managers are now hesitant to hire engineers who don't. Organizations using Claude Code and Cursor in their assessments are evaluating candidates under real working conditions, and CodeSignal has the longitudinal data to contextualize what that means for hiring standards. The team has handled recent inbound from The Verge, Business Insider, and Bloomberg well. Building a proactive pitch strategy alongside that inbound is the logical extension of what is already working.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--nk-rule);">
+      <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 26px; letter-spacing: -0.018em; color: var(--nk-ink); margin-bottom: 8px;">Additional themes.</h3>
+      <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-text); margin-bottom: 32px;">These connect to FY27 themes and the product roadmap. Each strengthens as data and product capabilities develop over the next six to twelve months.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        <div style="border: 1px solid var(--nk-rule); border-radius: 8px; padding: 22px; background: #fff;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: var(--nk-ink); margin-bottom: 6px;">Cheating attempts in assessments doubled in 2025, with entry-level roles hit hardest.</div>
+          <div style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-ink-2); line-height: 1.5;">Industry-wide, cheating attempts moved from 16% to 35%. Entry-level went from 15% to 40%. FastCo covered the 2025 findings. Building reporter relationships ahead of the next release (rather than distributing after) will extend its reach considerably.</div>
+        </div>
+        <div style="border: 1px solid var(--nk-rule); border-radius: 8px; padding: 22px; background: #fff;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: var(--nk-ink); margin-bottom: 6px;">CodeSignal has been building toward skills-based hiring since before it became a consensus view.</div>
+          <div style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-ink-2); line-height: 1.5;">McKinsey and Deloitte are writing about it now. Federal workforce policy is moving in that direction. CodeSignal's decade of actual outcome data (not survey research) gives it a credibility position that is difficult for newer entrants to match. That is a meaningful frame for a Series D raise.</div>
+        </div>
+        <div style="border: 1px solid var(--nk-rule); border-radius: 8px; padding: 22px; background: #fff;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: var(--nk-ink); margin-bottom: 6px;">Self-serve Hire, launched March 2026, makes skills-based assessment accessible beyond the enterprise.</div>
+          <div style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-ink-2); line-height: 1.5;">Assessment science that previously required enterprise procurement is now available to smaller organizations. Adam Vassar and Brian Genisio are the natural voices for this lane. Cosmo connects the individual learning track to the same story.</div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+<section class="section section-alt" id="architecture">
+  <div class="wrap">
+    <div class="eyebrow"><span>NARRATIVE ARCHITECTURE</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Program.</h2>
+      <p class="section-lede" contenteditable="false">CodeSignal's FY27 themes are clear: assess and teach every career-relevant skill, for every adult, business, and university in the world, as an agentic AI-native platform. The work is building a consistent system for expressing that across six spokespeople, multiple product lines, and a monthly announcement cadence.</p>
+    </div>
+    <div class="tier-rows">
+      <div class="tier-row">
+        <div class="tr-left">
+          <div class="tr-num">TIER 01 · CATEGORY</div>
+          <h3>The agentic, AI-native skills platform.</h3>
+        </div>
+        <div class="tr-mid">
+          <div class="tr-headline">Establishing CodeSignal as the category standard ahead of Series D.</div>
+          <div class="tr-body">By aligning Tigran's existing media relationships with a structured worldview on the future of work, we can position him as the central voice in technology media on AI and skills. That presence builds the context investors and enterprise buyers need before the raise.</div>
+        </div>
+        <div class="tr-tags">
+          <span class="tier-tag active">Tigran</span>
+          <span class="tier-tag active">Tier-One Press</span>
+          <span class="tier-tag">Op-Eds</span>
+        </div>
+      </div>
+      <div class="tier-row">
+        <div class="tr-left">
+          <div class="tr-num">TIER 02 · PROOF</div>
+          <h3>The data and the product cadence.</h3>
+        </div>
+        <div class="tr-mid">
+          <div class="tr-headline">18 months of monthly announcements have built background credibility. Selective amplification builds reporter relationships.</div>
+          <div class="tr-body">Identifying the two or three releases per quarter with genuine story potential and working those properly produces more durable coverage than distributing every announcement. Amy, Adam, and Brian each carry lanes here independently, which reduces dependence on Tigran for every story.</div>
+        </div>
+        <div class="tr-tags">
+          <span class="tier-tag active">Launches</span>
+          <span class="tier-tag">Research Reports</span>
+          <span class="tier-tag active">Customer Proof</span>
+        </div>
+      </div>
+      <div class="tier-row">
+        <div class="tr-left">
+          <div class="tr-num">TIER 03 · COMMUNITY</div>
+          <h3>Practitioners, universities, learners.</h3>
+        </div>
+        <div class="tr-mid">
+          <div class="tr-headline">Named customers on record are the most direct path to tier-one feature coverage.</div>
+          <div class="tr-body">Northeastern, WGU, Stanford Medicine, and relationships with frontier AI labs are significant. Bringing journalists into the November 2026 user conference as moderators and speakers (rather than press attendees) builds the kind of relationships that produce sustained coverage. That planning starts now.</div>
+        </div>
+        <div class="tr-tags">
+          <span class="tier-tag active">User Conference</span>
+          <span class="tier-tag">University Partners</span>
+          <span class="tier-tag active">Customer Voices</span>
+        </div>
+      </div>
+    </div>
+    <div class="bench-grid">
+      <div class="bench-card">
+        <h4>Spokesperson bench <span class="bc-label">Who carries each tier</span></h4>
+        <div class="bench-rows">
+          <div class="br"><span class="brt">Tigran Sloyan</span><span class="brb">CEO · category + founder story</span></div>
+          <div class="br"><span class="brt">Sophia Baik</span><span class="brb">Co-founder · culture, Inc Female Founders</span></div>
+          <div class="br"><span class="brt">Amy Shackelford</span><span class="brb">Head of Education · university gap</span></div>
+          <div class="br"><span class="brt">Adam Vassar</span><span class="brb">Head of Talent Science · I-O psychology</span></div>
+          <div class="br"><span class="brt">Brian Genisio</span><span class="brb">VP Content Engineering · tech skills</span></div>
+          <div class="br"><span class="brt">Mary Papazian, PhD</span><span class="brb">Senior Education Advisor · university partner</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GETTING STARTED -->
+<section class="section" id="program">
+  <div class="wrap">
+    <div class="eyebrow"><span>THE PROGRAM</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Phase 1.</h2>
+    </div>
+    <div class="phase-grid">
+      <div class="phase-card">
+      <div class="pf-label">Foundation</div>
+        <h3 contenteditable="false">Foundation.</h3>
+        <p contenteditable="false">Get into the company before touching the market.</p>
+        <ul>
+          <li contenteditable="false">Kickoff with Tigran, Lila, Brenna, Amy, Adam, and Brian</li>
+          <li contenteditable="false">Audit existing coverage, Rolling Thunder cadence, and prior agency work</li>
+          <li contenteditable="false">Messaging architecture across all three tiers</li>
+          <li contenteditable="false">Media target map at reporter level, not outlet level</li>
+          <li contenteditable="false">Rolling Thunder triage: which upcoming announcements are pitch-worthy</li>
+          <li contenteditable="false">AI Interviewer strategy: proactive vs. reactive recommendation in writing</li>
+        </ul>
+        <div class="artifact"><span>Deliverable: </span>Messaging architecture + media map</div>
+      </div>
+      <div class="phase-card">
+      <div class="pf-label">Activation</div>
+        <h3 contenteditable="false">Activation.</h3>
+        <p contenteditable="false">Architecture into market. Relationship building begins. First stories in motion.</p>
+        <ul>
+          <li contenteditable="false">Tier-one outreach to Bloomberg, WIRED, Fortune, The Deep View, and others</li>
+          <li contenteditable="false">HR trade cadence established (HR Dive, Fast Company Work Life)</li>
+          <li contenteditable="false">Speaking submissions filed for HumanX, SaaStr, The AI Conference</li>
+          <li contenteditable="false">First Tigran podcast submissions filed</li>
+          <li contenteditable="false">Awards program review: priority list and submission calendar</li>
+          <li contenteditable="false">Spokesperson coaching: Tigran and Amy, session one</li>
+        </ul>
+        <div class="artifact"><span>Deliverable: </span>Active pipeline + first placement</div>
+      </div>
+      <div class="phase-card">
+      <div class="pf-label">Momentum</div>
+        <h3 contenteditable="false">Momentum.</h3>
+        <p contenteditable="false">First results in. Cadence locked. Shift from setup to velocity.</p>
+        <ul>
+          <li contenteditable="false">First Tigran feature in progress at a tier-one outlet</li>
+          <li contenteditable="false">AI Interviewer coverage: proactive frame, anchored on the agentic data</li>
+          <li contenteditable="false">Podcast appearance confirmed or recorded</li>
+          <li contenteditable="false">November user conference media strategy underway</li>
+          <li contenteditable="false">Monthly narrative review cadence in place</li>
+          <li contenteditable="false">Next annual research report: launch plan built six weeks out</li>
+        </ul>
+        <div class="artifact"><span>Deliverable: </span>Coverage report + 90-day review</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; background: var(--nk-bg-2); border: 1px solid var(--nk-rule); border-radius: 10px; padding: 32px 40px; display: grid; grid-template-columns: auto 1fr 1fr; gap: 40px; align-items: start;">
+      <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); padding-top: 2px;">What success<br>looks like at 90 days</div>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+        <li style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 20px; position: relative;"><span style="position:absolute;left:0;color:var(--tk-coral)">→</span>Tigran in active conversations with at least two tier-one reporters</li>
+        <li style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 20px; position: relative;"><span style="position:absolute;left:0;color:var(--tk-coral)">→</span>AI Interviewer strategy defined and in progress</li>
+        <li style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 20px; position: relative;"><span style="position:absolute;left:0;color:var(--tk-coral)">→</span>Speaking submissions filed for at least two major events</li>
+      </ul>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+        <li style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 20px; position: relative;"><span style="position:absolute;left:0;color:var(--tk-coral)">→</span>Messaging architecture approved and in use across all six spokespeople</li>
+        <li style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 20px; position: relative;"><span style="position:absolute;left:0;color:var(--tk-coral)">→</span>HR trade placements in progress or published</li>
+        <li style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 20px; position: relative;"><span style="position:absolute;left:0;color:var(--tk-coral)">→</span>Awards pipeline has a prioritized list and one new submission in progress</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL FOOTPRINT -->
+<section class="section section-alt" id="editorial">
+  <div class="wrap">
+    <div class="eyebrow"><span>EDITORIAL FOOTPRINT</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Expanding the<br>editorial footprint.</h2>
+      <p class="section-lede" contenteditable="false">The goal is to build reporter relationships ahead of the story so CodeSignal is framing the conversation, not responding once it is already written.</p>
+    </div>
+    <div class="media-layout">
+      <div class="media-outlets-col">
+        <h4>Tier-one and trade targets</h4>
+        <span class="col-label">Where the story needs to live</span>
+        <div class="outlets-grid">
+          <div class="outlet-tile featured">Bloomberg <span class="ot-sub">Rachel Metz</span></div>
+          <div class="outlet-tile featured">WIRED <span class="ot-sub">Will Knight</span></div>
+          <div class="outlet-tile featured">Fortune <span class="ot-sub">Sharon Goldman</span></div>
+          <div class="outlet-tile featured">The Deep View <span class="ot-sub">Sabrina Ortiz</span></div>
+          <div class="outlet-tile">The Information <span class="ot-sub">Martin Peers</span></div>
+          <div class="outlet-tile">Fast Company <span class="ot-sub">Mark Sullivan</span></div>
+          <div class="outlet-tile">VentureBeat <span class="ot-sub">Sean Michael Kerner</span></div>
+          <div class="outlet-tile">Axios <span class="ot-sub">Chris Metinko</span></div>
+          <div class="outlet-tile">HR Dive</div>
+          <div class="outlet-tile">SHRM</div>
+          <div class="outlet-tile">Harvard Business Review</div>
+          <div class="outlet-tile">EdSurge</div>
+        </div>
+        <div style="margin-top: 28px;">
+          <h4 style="font-size: 16px; margin-bottom: 6px;">What six months realistically produces</h4>
+          <span class="col-label">Honest assessment</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="border: 1px solid var(--nk-rule); border-radius: 6px; padding: 14px 16px; background: #fff; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;">
+              <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--tk-coral); text-transform: uppercase; padding-top: 2px;">Achievable</div>
+              <div style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); line-height: 1.45;">Consistent tier-two and trade placement. Two to three Tigran features in major outlets. One to two podcast appearances. A speaking slot at HumanX, SaaStr, or The AI Conference.</div>
+            </div>
+            <div style="border: 1px solid var(--nk-rule); border-radius: 6px; padding: 14px 16px; background: #fff; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;">
+              <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--nk-lapis-soft); text-transform: uppercase; padding-top: 2px;">The variable</div>
+              <div style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); line-height: 1.45;">A New York Times or Bloomberg feature typically requires a named customer on record. The frontier AI lab relationships are significant, but unnamed. Identifying one customer willing to go on record and building the pitch around that is the most direct path to that tier of coverage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="coverage-col">
+        <h4>Sample Storylines</h4>
+        <span class="col-label">Pitched angles</span>
+        <div class="coverage-cards">
+          <div class="coverage-card">
+            <div class="cc-q">Companies using Claude Code and Cursor in their assessments are evaluating candidates in actual working conditions, and one platform has the data on how those candidates perform.</div>
+            <div class="cc-attr"><span class="pub">WIRED</span> · AGENTIC AI · FUTURE OF WORK</div>
+          </div>
+          <div class="coverage-card">
+            <div class="cc-q">As AI reduces entry-level hiring, one CEO is making the case that developing junior talent remains essential, and has workforce data to support it.</div>
+            <div class="cc-attr"><span class="pub">BLOOMBERG</span> · LABOR · TIGRAN PROFILE</div>
+          </div>
+          <div class="coverage-card">
+            <div class="cc-q">Assessment cheating attempts doubled in 2025. CodeSignal has tracked the trend for a decade and has a clear picture of where the pressure points are.</div>
+            <div class="cc-attr"><span class="pub">FAST COMPANY</span> · AI HIRING · DATA</div>
+          </div>
+          <div class="coverage-card">
+            <div class="cc-q">14 of the top 50 schools for producing job-ready engineers don't appear in the US News ranking. CodeSignal's data is surfacing talent the traditional gatekeepers miss.</div>
+            <div class="cc-attr"><span class="pub">FORTUNE</span> · EDUCATION · ANNUAL REPORT</div>
+          </div>
+          <div class="coverage-card">
+            <div class="cc-q">CodeSignal has built the case for skills-based hiring over a decade of assessment data and now works with most of the major frontier AI labs to evaluate technical talent.</div>
+            <div class="cc-attr"><span class="pub">THE INFORMATION</span> · ENTERPRISE · SERIES D</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING PIPELINE -->
+<section class="section" id="speaking">
+  <div class="wrap">
+    <div class="eyebrow"><span>SPEAKING PIPELINE</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Representative Events<br>and Podcasts.</h2>
+      <p class="section-lede" contenteditable="false">Focusing on the events and conversations where the AI and future-of-work conversation happens at the executive level.</p>
+    </div>
+    <div class="speaking-grid">
+      <div class="speaking-col">
+        <h4>Target events</h4>
+        <span class="col-label" style="margin-top: 6px; display: block;">CodeSignal's list, plus two additions</span>
+        <div class="event-rows">
+          <div class="event-row">
+            <div>
+              <div class="er-name">HumanX</div>
+              <div class="er-detail">Marquee AI conference for enterprise executives. Where C-suite buyers, investors, and top-tier journalists converge.</div>
+            </div>
+            <span class="er-tag hot">Priority</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">SaaStr Annual</div>
+              <div class="er-detail">On CodeSignal's own target list. Founder-facing. The audience is making hiring decisions.</div>
+            </div>
+            <span class="er-tag hot">Priority</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">The AI Conference</div>
+              <div class="er-detail">On CodeSignal's own target list. Directly relevant. Apply now, submissions close early.</div>
+            </div>
+            <span class="er-tag hot">Priority</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">SXSW · AI + Work track</div>
+              <div class="er-detail">On CodeSignal's own target list. Where the AI hiring narrative gets shaped for mainstream press.</div>
+            </div>
+            <span class="er-tag">Target</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">HR Tech Conference · Las Vegas</div>
+              <div class="er-detail">Title TK addition. Core enterprise buyer audience. Tigran as category voice, not product demo.</div>
+            </div>
+            <span class="er-tag">Target</span>
+          </div>
+        </div>
+      </div>
+      <div class="speaking-col">
+        <h4>Podcast targets</h4>
+        <span class="col-label" style="margin-top: 6px; display: block;">Founders, investors, enterprise buyers</span>
+        <div class="event-rows">
+          <div class="event-row">
+            <div>
+              <div class="er-name">Invest Like the Best</div>
+              <div class="er-detail">Patrick O'Shaughnessy. Investor and founder audience. Long-form. Tigran has the depth for it.</div>
+            </div>
+            <span class="er-tag hot">Priority</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">Lenny's Podcast</div>
+              <div class="er-detail">Product leaders and enterprise buyers. 1M+ downloads. Clean fit for the agentic skills story.</div>
+            </div>
+            <span class="er-tag hot">Priority</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">WorkLife with Adam Grant</div>
+              <div class="er-detail">Mainstream business audience. The talent pipeline POV and I-O psychology angle both work here.</div>
+            </div>
+            <span class="er-tag">Target</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">The Twenty Minute VC</div>
+              <div class="er-detail">Harry Stebbings. Global investor and founder reach. Useful pre-Series D.</div>
+            </div>
+            <span class="er-tag">Target</span>
+          </div>
+          <div class="event-row">
+            <div>
+              <div class="er-name">How I Built This</div>
+              <div class="er-detail">Tigran's founder story is underused. This is the format for it, and the audience is wide.</div>
+            </div>
+            <span class="er-tag">Target</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOLD IDEAS -->
+<section class="section section-alt" id="ideas">
+  <div class="wrap">
+    <div class="eyebrow"><span>BOLD IDEAS</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Ideas and<br>Activations.</h2>
+      <p class="section-lede" contenteditable="false">Activations designed to create a moment, build a relationship, or own a storyline that media follows for quarters, not weeks.</p>
+    </div>
+    <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px;">
+
+      <!-- The Signal -->
+      <div style="border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; background: var(--nk-ink); display: grid; grid-template-columns: 1fr 1fr;">
+        <div style="padding: 48px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 16px;">Marquee Activation · 01</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(28px, 3.5vw, 48px); letter-spacing: -0.022em; color: #fff; line-height: 1; margin-bottom: 10px;">The Signal.</h3>
+          <p style="font-family: var(--tk-mono); font-size: 12px; color: var(--tk-coral); letter-spacing: 0.04em; margin-bottom: 24px;">Like the Bat-Signal, but for the future of work.</p>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 16px;">Ahead of CodeSignal's next major product launch, the CodeSignal mark gets projected across San Francisco: on the Bay Bridge, the Salesforce Tower, buildings in SoMa. No context. No hints. Just the symbol.</p>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 16px;">AI Twitter notices first. Then the press. Reporters already under embargo know exactly what is coming. Everyone else starts asking.</p>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 28px;">Using the upcoming Skills Transfer Index as an example: on launch day, the signal gets its answer. A new way to see what skills are worth and where they can take you. The stunt becomes the visual shorthand for the launch, timed to other events in San Francisco for additional exposure and brand lift.</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; color: rgba(255,255,255,0.45);">San Francisco</span>
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; color: rgba(255,255,255,0.45);">Projection Stunt</span>
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 4px 10px; color: rgba(255,255,255,0.45);">Pre-Launch Embargo</span>
+          </div>
+        </div>
+        <!-- Building mockup -->
+        <div style="position:relative; min-height: 400px; background: #1a1a2e; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+          <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%; position:absolute; inset:0;">
+            <!-- Night sky -->
+            <rect width="500" height="420" fill="#0d0d1a"/>
+            <!-- Stars -->
+            <circle cx="40" cy="30" r="1" fill="white" opacity="0.6"/>
+            <circle cx="120" cy="15" r="1.2" fill="white" opacity="0.5"/>
+            <circle cx="200" cy="40" r="0.8" fill="white" opacity="0.7"/>
+            <circle cx="320" cy="20" r="1" fill="white" opacity="0.4"/>
+            <circle cx="420" cy="35" r="1.2" fill="white" opacity="0.6"/>
+            <circle cx="460" cy="10" r="0.8" fill="white" opacity="0.5"/>
+            <circle cx="80" cy="55" r="0.8" fill="white" opacity="0.4"/>
+            <circle cx="370" cy="50" r="1" fill="white" opacity="0.5"/>
+            <!-- Background city glow -->
+            <ellipse cx="250" cy="420" rx="300" ry="80" fill="#2D46B9" opacity="0.08"/>
+            <!-- Building far left -->
+            <rect x="0" y="160" width="60" height="260" fill="#111120"/>
+            <rect x="5" y="170" width="8" height="8" fill="#1a1a35" opacity="0.8"/>
+            <rect x="18" y="170" width="8" height="8" fill="#2a2a45" opacity="0.6"/>
+            <rect x="31" y="170" width="8" height="8" fill="#1a1a35" opacity="0.8"/>
+            <rect x="44" y="170" width="8" height="8" fill="#2a2a45" opacity="0.5"/>
+            <rect x="5" y="188" width="8" height="8" fill="#2a2a45" opacity="0.5"/>
+            <rect x="18" y="188" width="8" height="8" fill="#1a1a35" opacity="0.7"/>
+            <rect x="31" y="188" width="8" height="8" fill="#2a2a45" opacity="0.6"/>
+            <rect x="44" y="188" width="8" height="8" fill="#1a1a35" opacity="0.8"/>
+            <!-- Main building (center-left) -->
+            <rect x="70" y="100" width="130" height="320" fill="#0f0f22"/>
+            <rect x="75" y="108" width="14" height="10" fill="#1e2040" opacity="0.7"/>
+            <rect x="95" y="108" width="14" height="10" fill="#252545" opacity="0.9"/>
+            <rect x="115" y="108" width="14" height="10" fill="#1e2040" opacity="0.6"/>
+            <rect x="135" y="108" width="14" height="10" fill="#252545" opacity="0.8"/>
+            <rect x="155" y="108" width="14" height="10" fill="#1e2040" opacity="0.7"/>
+            <rect x="75" y="126" width="14" height="10" fill="#252545" opacity="0.8"/>
+            <rect x="95" y="126" width="14" height="10" fill="#1e2040" opacity="0.6"/>
+            <rect x="115" y="126" width="14" height="10" fill="#252545" opacity="0.9"/>
+            <rect x="135" y="126" width="14" height="10" fill="#1e2040" opacity="0.7"/>
+            <rect x="155" y="126" width="14" height="10" fill="#252545" opacity="0.5"/>
+            <rect x="75" y="144" width="14" height="10" fill="#1e2040" opacity="0.6"/>
+            <rect x="95" y="144" width="14" height="10" fill="#252545" opacity="0.8"/>
+            <rect x="115" y="144" width="14" height="10" fill="#1e2040" opacity="0.7"/>
+            <rect x="135" y="144" width="14" height="10" fill="#252545" opacity="0.9"/>
+            <rect x="155" y="144" width="14" height="10" fill="#1e2040" opacity="0.5"/>
+            <!-- Right building (tall) -->
+            <rect x="280" y="60" width="100" height="360" fill="#0e0e20"/>
+            <rect x="286" y="70" width="12" height="9" fill="#1e2040" opacity="0.7"/>
+            <rect x="304" y="70" width="12" height="9" fill="#252545" opacity="0.5"/>
+            <rect x="322" y="70" width="12" height="9" fill="#1e2040" opacity="0.8"/>
+            <rect x="340" y="70" width="12" height="9" fill="#252545" opacity="0.6"/>
+            <rect x="358" y="70" width="12" height="9" fill="#1e2040" opacity="0.4"/>
+            <rect x="286" y="85" width="12" height="9" fill="#252545" opacity="0.6"/>
+            <rect x="304" y="85" width="12" height="9" fill="#1e2040" opacity="0.8"/>
+            <rect x="322" y="85" width="12" height="9" fill="#252545" opacity="0.5"/>
+            <rect x="340" y="85" width="12" height="9" fill="#1e2040" opacity="0.7"/>
+            <rect x="358" y="85" width="12" height="9" fill="#252545" opacity="0.9"/>
+            <rect x="286" y="100" width="12" height="9" fill="#1e2040" opacity="0.5"/>
+            <rect x="304" y="100" width="12" height="9" fill="#252545" opacity="0.7"/>
+            <rect x="322" y="100" width="12" height="9" fill="#1e2040" opacity="0.6"/>
+            <rect x="340" y="100" width="12" height="9" fill="#252545" opacity="0.8"/>
+            <rect x="358" y="100" width="12" height="9" fill="#1e2040" opacity="0.5"/>
+            <!-- Far right building -->
+            <rect x="390" y="140" width="110" height="280" fill="#111120"/>
+            <rect x="396" y="150" width="10" height="8" fill="#1e2040" opacity="0.7"/>
+            <rect x="412" y="150" width="10" height="8" fill="#252545" opacity="0.5"/>
+            <rect x="428" y="150" width="10" height="8" fill="#1e2040" opacity="0.8"/>
+            <rect x="444" y="150" width="10" height="8" fill="#252545" opacity="0.6"/>
+            <rect x="460" y="150" width="10" height="8" fill="#1e2040" opacity="0.4"/>
+            <!-- Projection beam from upper left -->
+            <defs>
+              <radialGradient id="projGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#6EE7F7" stop-opacity="0.95"/>
+                <stop offset="60%" stop-color="#4A9FE8" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#2D46B9" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="blur1">
+                <feGaussianBlur stdDeviation="3"/>
+              </filter>
+              <filter id="blur2">
+                <feGaussianBlur stdDeviation="8"/>
+              </filter>
+            </defs>
+            <!-- Beam cone -->
+            <polygon points="30,0 30,0 220,210 160,210" fill="#2D46B9" opacity="0.12"/>
+            <!-- Logo projection glow halo -->
+            <ellipse cx="183" cy="212" rx="58" ry="28" fill="#4A9FE8" filter="url(#blur2)" opacity="0.35"/>
+            <!-- Projected logo onto building face - two curly braces -->
+            <g transform="translate(155, 185)" opacity="0.92">
+              <g stroke="#7ee8fa" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#blur1)" opacity="0.5">
+                <path d="M 12 4 C 8 4, 6 7, 6 11 L 6 16 C 6 18, 5 19, 3 19 C 5 19, 6 20, 6 22 L 6 27 C 6 31, 8 34, 12 34"/>
+                <path d="M 26 4 C 30 4, 32 7, 32 11 L 32 16 C 32 18, 33 19, 35 19 C 33 19, 32 20, 32 22 L 32 27 C 32 31, 30 34, 26 34"/>
+              </g>
+              <g stroke="#bef0ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path d="M 12 4 C 8 4, 6 7, 6 11 L 6 16 C 6 18, 5 19, 3 19 C 5 19, 6 20, 6 22 L 6 27 C 6 31, 8 34, 12 34"/>
+                <path d="M 26 4 C 30 4, 32 7, 32 11 L 32 16 C 32 18, 33 19, 35 19 C 33 19, 32 20, 32 22 L 32 27 C 32 31, 30 34, 26 34"/>
+              </g>
+            </g>
+            <!-- Street/ground -->
+            <rect x="0" y="390" width="500" height="30" fill="#08080f"/>
+            <rect x="0" y="388" width="500" height="4" fill="#111128"/>
+            <!-- Street lights glow -->
+            <ellipse cx="100" cy="392" rx="30" ry="6" fill="#2D46B9" opacity="0.15"/>
+            <ellipse cx="350" cy="392" rx="25" ry="5" fill="#2D46B9" opacity="0.12"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Skills That Got Me Here -->
+      <div style="border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; background: #fff; display: grid; grid-template-columns: 1fr 1fr;">
+        <div style="padding: 48px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 16px;">Content Activation · 02</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em; color: var(--nk-ink); line-height: 1.05; margin-bottom: 24px;">"The Skills That<br>Got Me Here."</h3>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.65; margin-bottom: 14px;">Partner with campus creators (Voodies and similar) to visit CodeSignal's dark-horse universities — Stony Brook, San Jose State, Santa Clara — and film a two-part question series that celebrates preparedness rather than exposes gaps.</p>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.65; margin-bottom: 14px;"><strong>Part 1:</strong> Soft questions that establish the university's identity. Students relax. The school gets positive airtime. <strong>Part 2:</strong> Real workplace scenario questions. The students answer well because CodeSignal prepared them. You film their competent responses. You capture the moment they realize they actually know this.</p>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.65; margin-bottom: 14px;">Each video ends with a reveal: "This university ranks #2 in the country for job-ready skills, even though you've probably never heard of it." Flash the CodeSignal ranking data. Link to the full report.</p>
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.65; margin-bottom: 24px;">Release one university per week. Each school's marketing team amplifies their own episode. Build bracket-style tournament energy around which underrated program has the most job-ready students. End every video with "See how your skills stack up" linking to a free CodeSignal assessment.</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 4px 10px; color: var(--nk-text-3);">TikTok / Reels</span>
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 4px 10px; color: var(--nk-text-3);">University Partners</span>
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 4px 10px; color: var(--nk-text-3);">Top-of-Funnel</span>
+            <span style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 4px 10px; color: var(--nk-text-3);">Product Trial CTA</span>
+          </div>
+        </div>
+        <!-- Video mockup panel -->
+        <div style="background: #0d0d0d; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; gap: 20px; min-height: 460px;">
+          <!-- Phone frame with video UI -->
+          <div style="width: 200px; height: 360px; background: #1a1a1a; border-radius: 24px; border: 2px solid #333; position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6);">
+            <!-- Video background -->
+            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, #1a2a1a 0%, #0d1a0d 100%);"></div>
+            <!-- Campus scene suggestion -->
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(180deg, transparent 0%, rgba(0,50,0,0.3) 100%);"></div>
+            <!-- Person silhouette -->
+            <svg viewBox="0 0 200 360" style="position:absolute; inset:0; width:100%; height:100%;">
+              <ellipse cx="100" cy="155" rx="28" ry="32" fill="#2a3a2a" opacity="0.7"/>
+              <rect x="72" y="182" width="56" height="80" rx="8" fill="#2a3a2a" opacity="0.6"/>
+              <!-- Backpack hint -->
+              <ellipse cx="125" cy="200" rx="12" ry="20" fill="#222" opacity="0.5"/>
+            </svg>
+            <!-- TikTok-style UI overlay -->
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.85));">
+              <div style="font-family: var(--tk-display); font-weight: 800; font-size: 11px; color: #FFD700; letter-spacing: 0.02em; line-height: 1.2; margin-bottom: 4px;">COMPUTER<br>ENGINEERING<br>TRIVIA</div>
+              <div style="font-family: var(--tk-mono); font-size: 8px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em;">@codesignal · #SanJoseState</div>
+            </div>
+            <!-- Right-side TikTok action buttons -->
+            <div style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; align-items: center;">
+              <div style="width: 28px; height: 28px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+              <div style="font-family: var(--tk-mono); font-size: 8px; color: white; text-align: center;">14.2k</div>
+              <div style="width: 28px; height: 28px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="white"><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/></svg>
+              </div>
+              <div style="font-family: var(--tk-mono); font-size: 8px; color: white; text-align: center;">892</div>
+            </div>
+            <!-- Play indicator -->
+            <div style="position: absolute; top: 12px; left: 12px; font-family: var(--tk-mono); font-size: 8px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em;">▶ 1:24</div>
+            <!-- CodeSignal watermark -->
+            <div style="position: absolute; top: 12px; right: 10px; font-family: var(--tk-display); font-weight: 700; font-size: 8px; color: var(--tk-coral); letter-spacing: 0.05em;">{ } CS</div>
+          </div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center;">One university per week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NORTH TK -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: #0f0f1a;">
+  <div class="wrap">
+    <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
+      <span>Powered by Title TK</span>
+    </div>
+    <div style="margin-bottom: 56px;">
+      <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: #fff; max-width: 900px; margin-bottom: 20px;">North TK: Narrative<br>Intelligence.</h2>
+      <p style="font-family: var(--tk-sans); font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 680px;">North TK is our proprietary software built for one specific use case: capturing and discovering signals that, when managed in a pipeline or workflow, become storytelling assets and the foundation for campaigns. Every brief, every storyline, every campaign in the CodeSignal engagement runs through it.</p>
+    </div>
+
+    <!-- Feature description row -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px;">
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;">
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 10px;">Signals</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 8px;">Capture what matters</div>
+        <div style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;">Meeting notes, Slack threads, press mentions, product updates — every relevant signal captured and stored against the client account.</div>
+      </div>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;">
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 10px;">Briefs</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 8px;">From signal to story</div>
+        <div style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;">Signals are synthesized into approved briefs with full traceability back to the source — so every pitch angle has a paper trail.</div>
+      </div>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;">
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 10px;">Storylines</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 8px;">Campaigns with coherence</div>
+        <div style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;">Briefs roll up into storylines. Storylines become campaigns. The whole program stays strategically aligned, not just tactically busy.</div>
+      </div>
+    </div>
+
+    <!-- Screenshot stack -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+
+      <!-- Screenshot 1: Signals list view -->
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div></div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">North TK · Signals · CodeSignal</div>
+        </div>
+        <div style="background: #fff; display: grid; grid-template-columns: 185px 1fr; min-height: 420px;">
+          <!-- Sidebar -->
+          <div style="background: #111827; padding: 20px 0;">
+            <div style="padding: 0 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"/></svg></div>
+                <span style="font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: white;">North TK</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; font-family: var(--tk-sans); font-size: 11px; color: rgba(255,255,255,0.6);">CodeSignal ▾</div>
+            </div>
+            <div style="padding: 0 8px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.4);">Home</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Pipeline</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: white; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: 600;">Signals</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Briefs</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Storylines</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Campaigns</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Foundation</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Brand Voice</div>
+            </div>
+          </div>
+          <!-- Main content -->
+          <div style="padding: 28px 36px; background: #fafafa; overflow: hidden;">
+            <h3 style="font-family: var(--tk-sans); font-weight: 600; font-size: 18px; color: #111; margin-bottom: 3px;">Signals</h3>
+            <p style="font-family: var(--tk-sans); font-size: 12px; color: #999; margin-bottom: 16px;">Catch what matters — from calls, docs, feeds, and the field</p>
+            <div style="display: flex; gap: 10px; margin-bottom: 10px; font-family: var(--tk-sans); font-size: 12px;">
+              <span style="background: var(--nk-lapis); color: white; padding: 4px 12px; border-radius: 999px;">All</span>
+              <span style="color: #888; padding: 4px 8px;">Inbox</span>
+              <span style="color: #888; padding: 4px 8px;">In Review</span>
+              <span style="color: #888; padding: 4px 8px;">Promoted</span>
+              <span style="color: #888; padding: 4px 8px;">Parked</span>
+            </div>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+              <span style="background: var(--nk-lapis); color: white; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">All types</span>
+              <span style="border: 1px solid #e5e5e5; color: #666; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">Revenue</span>
+              <span style="border: 1px solid #e5e5e5; color: #666; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">Product & Innovation</span>
+              <span style="border: 1px solid #e5e5e5; color: #666; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">Competitive Insight</span>
+            </div>
+            <div style="font-family: var(--tk-mono); font-size: 10px; color: #bbb; letter-spacing: 0.08em; margin-bottom: 10px;">13 captured · 0 Parked · 0 In Review</div>
+            <!-- Table -->
+            <div style="border: 1px solid #efefef; border-radius: 8px; overflow: hidden; font-size: 11.5px;">
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; background: #f5f5f5; border-bottom: 1px solid #efefef; padding: 8px 12px; font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; gap: 8px;">
+                <span>ID</span><span>Status</span><span>Title</span><span>Category</span><span>Source</span><span>Age</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">20c43ede</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">All-hands transcript: Tigran announces Learn product ready — Beyond 2024 launch...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Call transcript</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">de01532b</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Slack #product: Cosmo AI tutor character finalized — practice-first model confirmed...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Meeting notes</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">cfbc4372</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Internal email: Beyond 2024 press strategy — TechCrunch and Fast Company co...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Document</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">23a34a6b</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Zoom transcript: Tigran shares engineer survey data — 91% using agentic AI tools...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Call transcript</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8fabc1d4</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Slack #research: Agentic assessment beta results — AI co-pilot candidates outp...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Meeting notes</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">a1601246</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Internal email: Deep View podcast secured with Jason Hiner — agentic hiring an...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Document</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">308baa6b</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Zoom transcript: Mobile app strategy session — Cosmo consumer launch rational...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Call transcript</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">5177c735</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Slack #mobile: iOS beta feedback — retention strong, GenAI track highest engag...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">—</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Meeting notes</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8d</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot 1: Storylines view -->
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div></div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">North TK · Storylines · CodeSignal</div>
+        </div>
+        <div style="background: #fff; display: grid; grid-template-columns: 200px 1fr; min-height: 320px;">
+          <!-- Sidebar -->
+          <div style="background: #111827; padding: 20px 0;">
+            <div style="padding: 0 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"/></svg></div>
+                <span style="font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: white;">North TK</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; font-family: var(--tk-sans); font-size: 11px; color: rgba(255,255,255,0.6);">CodeSignal ▾</div>
+            </div>
+            <div style="padding: 0 8px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.4);">Home</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Pipeline</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Signals</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Briefs</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: white; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: 600;">Storylines</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Campaigns</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Foundation</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Brand Voice</div>
+            </div>
+          </div>
+          <!-- Main content -->
+          <div style="padding: 32px 40px; background: #fafafa;">
+            <h3 style="font-family: var(--tk-sans); font-weight: 600; font-size: 22px; color: #111; margin-bottom: 4px;">Storylines</h3>
+            <p style="font-family: var(--tk-sans); font-size: 13px; color: #888; margin-bottom: 20px;">Synthesis layer. Themes stitched from briefs — anthems, rallying cries, pitch angles.</p>
+            <div style="display: flex; gap: 20px; border-bottom: 1px solid #e5e5e5; margin-bottom: 20px; padding-bottom: 0;">
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-lapis); border-bottom: 2px solid var(--nk-lapis); padding-bottom: 10px; font-weight: 500;">All <span style="background: #eee; border-radius: 999px; padding: 1px 7px; font-size: 11px; color: #555;">3</span></span>
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #888; padding-bottom: 10px;">Developing <span style="background: #eee; border-radius: 999px; padding: 1px 7px; font-size: 11px; color: #555;">3</span></span>
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #888; padding-bottom: 10px;">Active <span style="background: #eee; border-radius: 999px; padding: 1px 7px; font-size: 11px; color: #555;">0</span></span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div style="border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px; background: white;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                  <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">5c6bae2f</span>
+                  <span style="background: #fff3e0; color: #e65100; font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em;">Developing</span>
+                </div>
+                <p style="font-family: var(--tk-sans); font-size: 13px; font-weight: 600; color: #111; line-height: 1.4; margin-bottom: 14px;">CodeSignal completes its founding mission — from assess to assess and develop</p>
+                <div style="height: 3px; background: #eee; border-radius: 2px; margin-bottom: 12px; position: relative;"><div style="width: 28%; height: 100%; background: var(--nk-lapis); border-radius: 2px;"></div></div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Briefs</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">0</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Campaigns</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">1</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Updated</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">8d</div></div>
+                </div>
+              </div>
+              <div style="border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px; background: white;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                  <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">05683987</span>
+                  <span style="background: #fff3e0; color: #e65100; font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em;">Developing</span>
+                </div>
+                <p style="font-family: var(--tk-sans); font-size: 13px; font-weight: 600; color: #111; line-height: 1.4; margin-bottom: 14px;">The engineer's job changed — CodeSignal built the assessment to match it</p>
+                <div style="height: 3px; background: #eee; border-radius: 2px; margin-bottom: 12px; position: relative;"><div style="width: 28%; height: 100%; background: var(--nk-lapis); border-radius: 2px;"></div></div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Briefs</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">0</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Campaigns</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">1</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Updated</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">8d</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot 3: Brief detail -->
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div></div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">North TK · Brief · 508916cf</div>
+        </div>
+        <div style="background: white; padding: 40px 48px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-lapis);">← Briefs</span>
+              <span style="font-family: var(--tk-mono); font-size: 11px; color: #bbb;">508916cf</span>
+              <span style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-family: var(--tk-mono); font-size: 10px; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.05em;">Approved</span>
+            </div>
+            <div style="display: flex; gap: 16px;">
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #555;">Edit</span>
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #555;">Add to Storyline</span>
+            </div>
+          </div>
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 12px;">Brief · 508916cf · Signal Intelligence</div>
+          <h3 style="font-family: var(--tk-sans); font-weight: 700; font-size: 22px; color: #111; line-height: 1.3; margin-bottom: 8px;">Cosmo mobile launch — the GenAI skills gap is universal, the solution is in your pocket</h3>
+          <div style="font-family: var(--tk-sans); font-size: 12px; color: #aaa; margin-bottom: 24px;">· Updated 8d ago</div>
+          <div style="border-top: 1px solid #f0f0f0; padding-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <p style="font-family: var(--tk-sans); font-size: 14px; color: #333; line-height: 1.65;"><strong>The moment:</strong> CodeSignal launched the Cosmo mobile app on iOS on August 20, 2025, Android August 27. VentureBeat ran the exclusive. 300+ courses, 60+ learning paths, one-third of content focused on GenAI.</p>
+            <p style="font-family: var(--tk-sans); font-size: 14px; color: #333; line-height: 1.65;"><strong>Why it matters:</strong> The mobile launch is the inflection point where CodeSignal moves from enterprise B2B platform to consumer-plus-enterprise company. The GenAI skills gap argument is the broadest market claim CodeSignal has made.</p>
+          </div>
+          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb; letter-spacing: 0.1em;">Source · 308baa6b</span>
+            <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-lapis);">Open signal →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RELEVANT EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="eyebrow"><span>RELEVANT EXPERIENCE</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">We've been here<br>before.</h2>
+    </div>
+    <div class="experience-grid">
+      <div class="exp-tile"><div class="et-client">Stability AI</div><div class="et-name">Stability AI</div><div class="et-cat">AI / Funding + Launch</div></div>
+      <div class="exp-tile"><div class="et-client">Lightning AI</div><div class="et-name">Lightning AI</div><div class="et-cat">AI / Funding + Launch</div></div>
+      <div class="exp-tile"><div class="et-client">Arcjet</div><div class="et-name">Arcjet</div><div class="et-cat">Dev / Series A</div></div>
+      <div class="exp-tile"><div class="et-client">GitHub</div><div class="et-name">GitHub</div><div class="et-cat">Dev / Events</div></div>
+      <div class="exp-tile"><div class="et-client">New Relic</div><div class="et-name">New Relic</div><div class="et-cat">Dev / Thought Leadership</div></div>
+      <div class="exp-tile"><div class="et-client">Asana</div><div class="et-name">Asana</div><div class="et-cat">Future of Work / Core Program</div></div>
+      <div class="exp-tile"><div class="et-client">Zenefits</div><div class="et-name">Zenefits</div><div class="et-cat">HR Tech / Core Program</div></div>
+      <div class="exp-tile"><div class="et-client">Ellucian</div><div class="et-name">Ellucian</div><div class="et-cat">EdTech / Core Program</div></div>
+      <div class="exp-tile"><div class="et-client">Magic Leap</div><div class="et-name">Magic Leap</div><div class="et-cat">Dev / Product Launch + Awareness</div></div>
+      <div class="exp-tile"><div class="et-client">MakeyMakey</div><div class="et-name">MakeyMakey</div><div class="et-cat">EdTech / Product Launch + Awareness</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section section-alt" id="team">
+  <div class="wrap">
+    <div class="eyebrow"><span>THE TEAM</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Team.</h2>
+      <p class="section-lede" contenteditable="false">Title TK's founders built their careers leading agencies LaunchSquad, Sparkpr, and Codeword. We are active day-to-day leading strategy and execution.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card" style="position:relative;">
+        <div class="tc-role">Co-Founder</div>
+        <h3>Jason Throckmorton</h3>
+        <p>Jason has spent his career helping visionary teams turn bold ideas into market-leading businesses. From co-founding a global PR agency (LaunchSquad) to working as the first head of marketing at Scope3, he has worked at the intersection of communications, content, and strategy, partnering with tech companies to develop marketing strategies, shape stories, and build momentum. He has been an advisor, investor, early team member, and strategic partner to many companies that lead their industries and have created billions in value.</p>
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: auto; padding-top: 20px;">
+          <a href="#" class="tc-link">LinkedIn →</a>
+          <div style="width:52px; height:52px; border-radius:50%; overflow:hidden; border:2px solid var(--nk-rule); flex-shrink:0; background: #e8e0d8; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 52 52" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+              <rect width="52" height="52" fill="#d4c8bc"/>
+              <ellipse cx="26" cy="22" rx="10" ry="11" fill="#b8a898"/>
+              <ellipse cx="26" cy="46" rx="18" ry="14" fill="#b8a898"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="team-card" style="position:relative;">
+        <div class="tc-role">Co-Founder</div>
+        <h3>Cristina Pena</h3>
+        <p>Cristina has worked in AI since 2014, supporting early work with MindMeld through its acquisition by Cisco, and continuing on to recent AI companies including Stability AI and Lightning AI. She focuses on client relations and ensuring programs stay strategically aligned, with clear intent behind every initiative and a direct connection to business goals. She also enjoys the chase of media relations, shaping stories and securing coverage across a variety of top-tier and emerging outlets.</p>
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: auto; padding-top: 20px;">
+          <a href="https://www.linkedin.com/in/movefastbreakthings/" class="tc-link">LinkedIn →</a>
+          <div style="width:52px; height:52px; border-radius:50%; overflow:hidden; border:2px solid var(--nk-rule); flex-shrink:0; background: #e8e0d8; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 52 52" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+              <rect width="52" height="52" fill="#d4c8bc"/>
+              <ellipse cx="26" cy="22" rx="10" ry="11" fill="#b8a898"/>
+              <ellipse cx="26" cy="46" rx="18" ry="14" fill="#b8a898"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TITLE TK -->
+<section style="padding: 80px 0; background: var(--nk-bg-2); border-top: 1px solid var(--nk-rule);">
+  <div class="wrap">
+    <div style="max-width: 760px;">
+      <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-text-3); margin-bottom: 20px;">About Title TK</div>
+      <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-ink-2); line-height: 1.7; margin-bottom: 16px;">Title TK is a strategic communications firm for growth-stage technology companies. Small, senior, and operator-led, we embed with clients rather than service them from a distance. Our work drives three outcomes: Recognition (building awareness in your market), Relevance (owning your category), and Revenue (growing the business through narrative that performs). We help clients succeed in any climate by putting the entrepreneur first and grounding solutions in results.</p>
+      <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-ink-2); line-height: 1.7;">Title TK was founded by Cristina Pena (co-led the emerging tech practice and launched and led the B2B2C practice at Spark), Jason Throckmorton (co-founded the award-winning marketing and communications agency LaunchSquad), and Mike Barash (founded and led Codeword through its acquisition by Waggener Edstrom).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" fill="none" style="height:1.1em;width:auto;">
+      <g stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/>
+        <path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/>
+      </g>
+      <text x="68" y="38" font-family="Archivo, system-ui, sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="currentColor">title tk</text>
+    </svg>
+  </div>
+  <div class="footer-note">Prepared by Title TK</div>
+</footer>
+
+<!-- EDIT TOOLBAR -->
+<div class="edit-toolbar" id="editToolbar">
+  <span style="color: var(--nk-ink-3); font-size:10px; letter-spacing:0.12em;">EDIT MODE</span>
+  <div class="sep"></div>
+  <button id="toggleEdit" onclick="toggleEditMode()">Editing Off</button>
+  <div class="sep"></div>
+  <button onclick="copyHTML()">Export HTML</button>
+</div>
+
+<script>
+let editMode = false;
+function toggleEditMode() {
+  editMode = !editMode;
+  const btn = document.getElementById('toggleEdit');
+  document.querySelectorAll('[contenteditable]').forEach(el => {
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+  btn.textContent = editMode ? 'Editing On' : 'Editing Off';
+  btn.className = editMode ? 'active' : '';
+}
+function copyHTML() {
+  const els = document.querySelectorAll('[contenteditable]');
+  els.forEach(el => el.removeAttribute('contenteditable'));
+  const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+  els.forEach(el => el.setAttribute('contenteditable', 'false'));
+  navigator.clipboard.writeText(html).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Export HTML', 1500);
+  });
+}
+</script>
+</body>
+</html>
