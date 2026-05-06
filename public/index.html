@@ -511,7 +511,7 @@ footer {
 .story-filter { font-family: var(--tk-sans); font-size: 15px; color: var(--tk-ink-3); text-decoration: none; }
 .story-filter.active { color: var(--tk-ink); text-decoration: underline; text-underline-offset: 4px; }
 .story-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.story-card { display: grid; grid-template-rows: 1fr auto; gap: 24px; text-decoration: none; color: inherit; min-height: 0; }
+.story-card { display: block; text-decoration: none; color: inherit; padding: 32px 0; border-top: 1px solid var(--tk-rule); }
 .story-meta { display: flex; gap: 16px; align-items: center; font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--tk-ink-3); }
 .story-meta .tag { color: var(--tk-coral-deep); }
 .story-card h3 { font-family: var(--tk-display); font-weight: 600; font-size: 34px; line-height: 1.15; letter-spacing: -.018em; color: var(--tk-ink); margin: 12px 0 0; }
@@ -1019,116 +1019,28 @@ textarea.form-input { resize: vertical; }
           </div>
           <div class="story-cards">
             <a href="/journal/narrative-isnt-a-deck" class="story-card">
-              <!-- Cover · Editorial Typeset -->
-              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:var(--tk-parchment);display:flex;flex-direction:column;justify-content:space-between;padding:24px 24px 20px">
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
-                    <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
-                    title tk
-                  </span>
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk-ink-3)">Issue · 001 / 2026</span>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px">
-                  <span style="font-family:var(--tk-mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-orange-deep)">§ Strategy</span>
-                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(22px,3vw,44px);line-height:.92;letter-spacing:-.025em;color:var(--tk-ink)">
-                    The narrative isn't a deck. It's a <span style="white-space:nowrap">discipline. <span style="font-family:var(--tk-mono);font-weight:500;font-size:10px;background:var(--tk-yellow);color:var(--tk-ink);padding:1px 5px;border-radius:2px;letter-spacing:.04em;vertical-align:.2em">tk</span></span>
-                  </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Title TK &nbsp;/&nbsp; April 18, 2026</span>
-                  <div style="height:2px;width:28px;background:var(--tk-ink)"></div>
-                </div>
-              </div>
-              <div>
-                <div class="story-meta"><span class="tag">Strategy</span><span>April 18, 2026</span></div>
-                <h3>The narrative isn't a deck. It's a discipline.</h3>
-                <p>Why most growth companies lose the room before the pitch even starts — and the three questions every founder should answer before going to market.</p>
-                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-              </div>
+              <div class="story-meta"><span class="tag">Strategy</span><span>April 18, 2026</span></div>
+              <h3>The narrative isn't a deck. It's a discipline.</h3>
+              <p>Why most growth companies lose the room before the pitch even starts — and the three questions every founder should answer before going to market.</p>
+              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
             </a>
             <a href="/journal" class="story-card">
-              <!-- Cover · Editorial Typeset -->
-              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:var(--tk-parchment);display:flex;flex-direction:column;justify-content:space-between;padding:24px 24px 20px">
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
-                    <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
-                    title tk
-                  </span>
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk-ink-3)">Issue · 002 / 2026</span>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px">
-                  <span style="font-family:var(--tk-mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-orange-deep)">§ Field Notes</span>
-                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(22px,3vw,44px);line-height:.92;letter-spacing:-.025em;color:var(--tk-ink)">
-                    What twenty years of pitches actually taught <span style="white-space:nowrap">us. <span style="font-family:var(--tk-mono);font-weight:500;font-size:10px;background:var(--tk-yellow);color:var(--tk-ink);padding:1px 5px;border-radius:2px;letter-spacing:.04em;vertical-align:.2em">tk</span></span>
-                  </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">March 27, 2026</span>
-                  <div style="height:2px;width:28px;background:var(--tk-ink)"></div>
-                </div>
-              </div>
-              <div>
-                <div class="story-meta"><span class="tag">Field Notes</span><span>March 27, 2026</span></div>
-                <h3>What twenty years of pitches actually taught us.</h3>
-                <p>Reporter relationships compound. Categories get rewritten. The good stories get faster, not louder. A senior operator's playbook.</p>
-                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-              </div>
+              <div class="story-meta"><span class="tag">Field Notes</span><span>March 27, 2026</span></div>
+              <h3>What twenty years of pitches actually taught us.</h3>
+              <p>Reporter relationships compound. Categories get rewritten. The good stories get faster, not louder. A senior operator's playbook.</p>
+              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
             </a>
             <a href="/journal" class="story-card">
-              <!-- Cover · Editorial Typeset -->
-              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:var(--tk-parchment);display:flex;flex-direction:column;justify-content:space-between;padding:24px 24px 20px">
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
-                    <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
-                    title tk
-                  </span>
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk-ink-3)">Coming soon</span>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px">
-                  <span style="font-family:var(--tk-mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-orange-deep)">§ Strategy</span>
-                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(22px,3vw,44px);line-height:.92;letter-spacing:-.025em;color:var(--tk-ink)">
-                    Slow signals, fast <span style="white-space:nowrap">stories. <span style="font-family:var(--tk-mono);font-weight:500;font-size:10px;background:var(--tk-yellow);color:var(--tk-ink);padding:1px 5px;border-radius:2px;letter-spacing:.04em;vertical-align:.2em">tk</span></span>
-                  </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Coming soon</span>
-                  <div style="height:2px;width:28px;background:var(--tk-ink)"></div>
-                </div>
-              </div>
-              <div>
-                <div class="story-meta"><span class="tag">Strategy</span><span>Coming soon</span></div>
-                <h3>Slow signals, fast stories.</h3>
-                <p>The patterns that matter rarely announce themselves. How to build a radar for signals that compound before the market catches up.</p>
-                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-              </div>
+              <div class="story-meta"><span class="tag">Strategy</span><span>Coming soon</span></div>
+              <h3>Slow signals, fast stories.</h3>
+              <p>The patterns that matter rarely announce themselves. How to build a radar for signals that compound before the market catches up.</p>
+              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
             </a>
             <a href="/journal" class="story-card">
-              <!-- Cover · Editorial Typeset -->
-              <div class="ph" style="width:100%;height:100%;min-height:0;border-radius:6px;background:var(--tk-parchment);display:flex;flex-direction:column;justify-content:space-between;padding:24px 24px 20px">
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="display:inline-flex;align-items:center;gap:5px;font-family:var(--tk-display);font-weight:700;font-size:13px;color:var(--tk-ink);letter-spacing:-.015em;line-height:1">
-                    <svg viewBox="0 0 56 56" width="15" height="15" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/><path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/></svg>
-                    title tk
-                  </span>
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tk-ink-3)">Coming soon</span>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:12px">
-                  <span style="font-family:var(--tk-mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--tk-orange-deep)">§ Field Notes</span>
-                  <div style="font-family:var(--tk-display);font-weight:700;font-size:clamp(22px,3vw,44px);line-height:.92;letter-spacing:-.025em;color:var(--tk-ink)">
-                    Five disciplines. One operating <span style="white-space:nowrap">system. <span style="font-family:var(--tk-mono);font-weight:500;font-size:10px;background:var(--tk-yellow);color:var(--tk-ink);padding:1px 5px;border-radius:2px;letter-spacing:.04em;vertical-align:.2em">tk</span></span>
-                  </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                  <span style="font-family:var(--tk-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tk-ink-3)">Coming soon</span>
-                  <div style="height:2px;width:28px;background:var(--tk-ink)"></div>
-                </div>
-              </div>
-              <div>
-                <div class="story-meta"><span class="tag">Field Notes</span><span>Coming soon</span></div>
-                <h3>Five disciplines. One operating system.</h3>
-                <p>How the best communications teams think about capture, synthesis, and execution — and why most companies only get one of the three right.</p>
-                <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
-              </div>
+              <div class="story-meta"><span class="tag">Field Notes</span><span>Coming soon</span></div>
+              <h3>Five disciplines. One operating system.</h3>
+              <p>How the best communications teams think about capture, synthesis, and execution — and why most companies only get one of the three right.</p>
+              <span class="story-read">Read story <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
             </a>
           </div>
         </div>
