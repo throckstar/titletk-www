@@ -519,19 +519,20 @@ footer {
 .story-read { font-family: var(--tk-sans); font-size: 14px; font-weight: 500; color: var(--tk-ink); display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--tk-ink); padding-bottom: 2px; }
 
 /* ─── PANEL: CONTACT ─────────────────────────────────────────── */
-#panel-contact { width: 140vw; background: var(--tk-coral); }
+#panel-contact { width: 140vw; background: #2C2A28; }
+#panel-contact .panel-label { color: rgba(255,255,255,.55); }
 #panel-contact .panel-inner { inset: 140px 96px 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: stretch; }
 #panel-contact h2 {
   font-family: var(--tk-display); font-weight: 700;
   font-size: clamp(80px, 10vw, 200px);
-  line-height: .9; letter-spacing: -.03em; color: var(--tk-ink); margin: 20px 0 0;
+  line-height: .9; letter-spacing: -.03em; color: #FFFFFF; margin: 20px 0 0;
 }
 .contact-left { display: flex; flex-direction: column; justify-content: space-between; }
 .contact-moments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
-.contact-moment { padding-top: 16px; border-top: 1px solid rgba(26,24,21,.3); }
-.contact-moment-k { font-family: var(--tk-display); font-weight: 600; font-size: 22px; letter-spacing: -.014em; color: var(--tk-ink); }
-.contact-moment-d { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: var(--tk-charcoal); margin-top: 6px; }
-.contact-reach { display: flex; gap: 32px; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(26,24,21,.3); font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(26,24,21,.7); }
+.contact-moment { padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); }
+.contact-moment-k { font-family: var(--tk-display); font-weight: 600; font-size: 22px; letter-spacing: -.014em; color: rgba(255,255,255,.9); }
+.contact-moment-d { font-family: var(--tk-sans); font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.55); margin-top: 6px; }
+.contact-reach { display: flex; gap: 32px; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.18); font-family: var(--tk-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.55); }
 .contact-form-wrap { background: var(--tk-paper); padding: 32px; border-radius: 6px; border: 1px solid rgba(26,24,21,.1); display: flex; flex-direction: column; }
 .contact-form-wrap form { display: grid; gap: 14px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -970,11 +971,6 @@ textarea.form-input { resize: vertical; }
               <div class="logo-cell"><img class="client-logo-img" src="/images/logos/soundcloud.png" alt="SoundCloud"></div>
               <div class="logo-cell"><img class="client-logo-img" src="/images/logos/UBER.png" alt="Uber" style="height:60px"></div>
             </div>
-            <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/8.png" alt="Eero"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NPSNY_BIG.png" alt="Naspers"></div>
-              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/Header-ATG.png" alt="ATG" style="height:60px"></div>
-            </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
             <span>Representative past client experience</span>
@@ -1081,11 +1077,11 @@ textarea.form-input { resize: vertical; }
         <div class="panel-inner">
           <div class="contact-left">
             <div>
-              <div class="eyebrow" style="color:rgba(26,24,21,.65)">If it matters, we want to hear about it</div>
+              <div class="eyebrow" style="color:rgba(255,255,255,.5)">If it matters, we want to hear about it</div>
               <h2>Connect</h2>
-              <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:var(--tk-ink);margin-top:28px;max-width:600px">Companies turn to Title TK for big moments that call for a partner that is experienced, nimble, creative and senior. A partner will write back within one business day.</p>
+              <p style="font-family:var(--tk-sans);font-size:20px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:28px;max-width:600px">Companies turn to Title TK for big moments that call for a partner that is experienced, nimble, creative and senior. A partner will write back within one business day.</p>
             </div>
-            <p style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.55);margin-bottom:0">A few examples</p>
+            <p style="font-family:var(--tk-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:0">A few examples</p>
             <div class="contact-moments">
               <div class="contact-moment">
                 <div class="contact-moment-k">A launch</div>
