@@ -180,15 +180,15 @@ input, select, textarea, button { font-family: var(--tk-sans); }
 
 /* ─── HORIZONTAL SCROLL ──────────────────────────────────────── */
 #scroll-track {
-  display: flex; height: 100dvh; will-change: transform;
+  display: flex; height: 100vh; will-change: transform;
 }
 #scroll-sticky {
-  position: sticky; top: 0; height: 100dvh; overflow-y: auto;
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
 }
 
 /* ─── PANEL ──────────────────────────────────────────────────── */
 .panel {
-  flex: 0 0 auto; min-height: 100dvh; position: relative; overflow: hidden;
+  flex: 0 0 auto; height: 100vh; position: relative; overflow: hidden;
 }
 .panel-label {
   position: absolute; top: 96px; left: 64px; right: 64px; z-index: 5;
@@ -262,7 +262,6 @@ footer {
 .client-logo-img {
   height: 44px; width: auto;
   max-width: 180px;
-  aspect-ratio: 3/2;
   object-fit: contain; display: block;
 }
 
@@ -302,7 +301,6 @@ footer {
 .work-card-img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  aspect-ratio: 16/9;
   object-fit: cover; object-position: center;
   display: block;
 }
@@ -598,15 +596,15 @@ textarea.form-input { resize: vertical; }
   #panel-product h2 { font-size: clamp(40px, 4.5vw, 80px); }
 }
 
-/* ─── MOBILE: vertical stacking (≤1024px) ───────────────────── */
-@media (max-width: 1024px) {
+/* ─── MOBILE: vertical stacking (<768px) ────────────────────── */
+@media (max-width: 768px) {
   /* Disable horizontal scroll */
   #scroll-section { height: auto !important; }
   #scroll-sticky { position: relative !important; height: auto !important; overflow: visible !important; }
-  #scroll-track { display: block !important; flex-direction: column !important; transform: none !important; will-change: auto !important; }
+  #scroll-track { flex-direction: column !important; transform: none !important; will-change: auto !important; }
 
   /* Panels become normal block flow */
-  .panel { display: block !important; width: 100% !important; height: auto !important; min-height: auto !important; position: relative !important; overflow: visible !important; }
+  .panel { width: 100% !important; height: auto !important; min-height: auto !important; position: relative !important; overflow: visible !important; }
   .panel-inner { position: relative !important; inset: auto !important; padding: 72px 24px 56px !important; }
   .panel-label { position: relative !important; top: auto !important; left: auto !important; right: auto !important; padding: 24px 24px 0 !important; opacity: 0.7; }
 
@@ -618,7 +616,7 @@ textarea.form-input { resize: vertical; }
   .menu-link { font-size: clamp(40px, 11vw, 72px); }
 
   /* Hero */
-  #panel-hero { height: 100dvh !important; min-height: 100dvh !important; overflow: hidden !important; }
+  #panel-hero { height: 100svh !important; min-height: 100svh !important; overflow: hidden !important; }
   #panel-hero .content { position: absolute !important; inset: 72px 24px 24px !important; }
   #panel-hero h1 { font-size: clamp(52px, 13vw, 96px) !important; }
   .hero-bar .mono { display: none; }
@@ -764,28 +762,28 @@ textarea.form-input { resize: vertical; }
             <span class="mono">Showing 6 of 150+ engagements</span>
           </div>
           <div class="work-card">
-            <img class="work-card-img" src="/images/work/narvar.png" alt="Narvar" loading="lazy">
+            <img class="work-card-img" src="/images/work/narvar.png" alt="Narvar">
             <div class="work-card-overlay"></div>
             <div class="work-card-content">
               <div class="work-card-meta"><span>Case · 01</span><span>Customer Experience</span></div>
             </div>
           </div>
           <div class="work-card">
-            <img class="work-card-img" src="/images/work/arcjet.png" alt="Arcjet" loading="lazy">
+            <img class="work-card-img" src="/images/work/arcjet.png" alt="Arcjet">
             <div class="work-card-overlay"></div>
             <div class="work-card-content">
               <div class="work-card-meta"><span>Case · 02</span><span>Developer Security</span></div>
             </div>
           </div>
           <div class="work-card">
-            <img class="work-card-img" src="/images/work/moab.png" alt="Moab" loading="lazy">
+            <img class="work-card-img" src="/images/work/moab.png" alt="Moab">
             <div class="work-card-overlay"></div>
             <div class="work-card-content">
               <div class="work-card-meta"><span>Case · 03</span><span>Equipment Rental</span></div>
             </div>
           </div>
           <div class="work-card">
-            <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" loading="lazy" style="object-fit:contain;background:linear-gradient(135deg,#F0B8D8 0%,#C47ECC 45%,#7B5CB8 100%);">
+            <img class="work-card-img" src="/images/work/dressx.png" alt="DRESSX" style="object-fit:contain;background:linear-gradient(135deg,#F0B8D8 0%,#C47ECC 45%,#7B5CB8 100%);">
             <div class="work-card-overlay"></div>
             <div class="work-card-content">
               <div class="work-card-meta"><span>Case · 04</span><span>Digital Fashion</span></div>
@@ -810,7 +808,7 @@ textarea.form-input { resize: vertical; }
               <div class="badge">
                 <div class="badge-front">
                   <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <img class="founder-photo" src="/images/Cristina.png" alt="Cristina Pena" loading="lazy">
+                  <img class="founder-photo" src="/images/Cristina.png" alt="Cristina Pena">
                   <div class="badge-front-info">
                     <h3>Cristina Pena</h3>
                     <span>Co-Founder · Partner</span>
@@ -831,7 +829,7 @@ textarea.form-input { resize: vertical; }
               <div class="badge">
                 <div class="badge-front">
                   <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton" loading="lazy">
+                  <img class="founder-photo" src="/images/jason.png" alt="Jason Throckmorton">
                   <div class="badge-front-info">
                     <h3>Jason Throckmorton</h3>
                     <span>Co-Founder · Partner</span>
@@ -852,7 +850,7 @@ textarea.form-input { resize: vertical; }
               <div class="badge">
                 <div class="badge-front">
                   <div class="badge-front-logo"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/><path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/></svg></div>
-                  <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash" loading="lazy">
+                  <img class="founder-photo" src="/images/mike.jpg" alt="Mike Barash">
                   <div class="badge-front-info">
                     <h3>Mike Barash</h3>
                     <span>Co-Founder · Partner</span>
@@ -1061,24 +1059,24 @@ textarea.form-input { resize: vertical; }
           </div>
           <div class="logo-grid">
             <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/ASAN_BIG.png" alt="Asana"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/CSCO.png" alt="Cisco"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/github_BIG.png" alt="GitHub"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/ASAN_BIG.png" alt="Asana"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/CSCO.png" alt="Cisco"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/github_BIG.png" alt="GitHub"></div>
             </div>
             <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/headspace%20(1).jpeg" alt="Headspace" style="height:64px"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/NFLX_BIG.png" alt="Netflix"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/NEWR_BIG.png" alt="New Relic"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/headspace%20(1).jpeg" alt="Headspace" style="height:64px"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NFLX_BIG.png" alt="Netflix"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/NEWR_BIG.png" alt="New Relic"></div>
             </div>
             <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/OKTA_BIG.png" alt="Okta"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/QCOM_BIG.png" alt="Qualcomm"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/SNAP_BIG.png" alt="Snap"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/OKTA_BIG.png" alt="Okta"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/QCOM_BIG.png" alt="Qualcomm"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/SNAP_BIG.png" alt="Snap"></div>
             </div>
             <div class="logo-row" style="grid-template-columns:repeat(3,1fr)">
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/Scope3-logo-dark-green-1.jpg" alt="Scope3"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/soundcloud.png" alt="SoundCloud"></div>
-              <div class="logo-cell"><img class="client-logo-img" loading="lazy" src="/images/logos/UBER.png" alt="Uber" style="height:60px"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/Scope3-logo-dark-green-1.jpg" alt="Scope3"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/soundcloud.png" alt="SoundCloud"></div>
+              <div class="logo-cell"><img class="client-logo-img" src="/images/logos/UBER.png" alt="Uber" style="height:60px"></div>
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:var(--tk-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,24,21,.65)">
@@ -1262,14 +1260,14 @@ textarea.form-input { resize: vertical; }
   </div>
 </footer>
 
-<script data-cfasync="false">
+<script>
 (function () {
   // ── Horizontal scroll ──────────────────────────────────────────
   var section = document.getElementById('scroll-section');
   var track   = document.getElementById('scroll-track');
   var progEl  = document.getElementById('nav-progress');
 
-  function isMobile() { return window.innerWidth <= 1024; }
+  function isMobile() { return window.innerWidth <= 768; }
 
   function setHeight() {
     if (isMobile()) {
