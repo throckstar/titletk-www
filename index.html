@@ -250,7 +250,7 @@ footer {
   font-size: clamp(56px, 7vw, 120px);
   line-height: .96; letter-spacing: -.024em; color: var(--tk-ink); margin: 20px 0 0; max-width: 70%;
 }
-.logo-grid { display: grid; grid-template-rows: repeat(3, 1fr); align-content: center; }
+.logo-grid { display: grid; grid-template-rows: repeat(4, 1fr); align-content: center; }
 .logo-row { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; border-top: 1px solid var(--tk-rule); }
 .logo-row:last-child { border-bottom: 1px solid var(--tk-rule); }
 .logo-cell {
@@ -548,6 +548,93 @@ textarea.form-input { resize: vertical; }
 
 /* ─── ARROW SVG ──────────────────────────────────────────────── */
 .arrow { display: inline-block; vertical-align: middle; }
+
+/* ─── MEDIUM SCREENS: tighten panel padding ─────────────────── */
+@media (max-width: 1440px) {
+  .panel-inner { inset: 120px 56px 72px; }
+  .panel-label { top: 72px; left: 40px; right: 40px; }
+  #panel-manifesto .panel-inner { gap: 64px; }
+  .manifesto-right { padding-left: 40px; }
+  #panel-services .panel-inner { gap: 48px; }
+  #panel-product .panel-inner { gap: 56px; }
+  #panel-product h2 { font-size: clamp(48px, 5.5vw, 96px); }
+  .module-card { min-height: 160px; }
+  .module-card.module-featured { min-height: 120px; }
+  #menu-overlay { padding: 100px 48px 40px; }
+}
+
+/* ─── MOBILE: vertical stacking (<768px) ────────────────────── */
+@media (max-width: 768px) {
+  /* Disable horizontal scroll */
+  #scroll-section { height: auto !important; }
+  #scroll-sticky { position: relative !important; height: auto !important; overflow: visible !important; }
+  #scroll-track { flex-direction: column !important; transform: none !important; will-change: auto !important; }
+
+  /* Panels become normal block flow */
+  .panel { width: 100% !important; height: auto !important; min-height: auto !important; position: relative !important; overflow: visible !important; }
+  .panel-inner { position: relative !important; inset: auto !important; padding: 72px 24px 56px !important; }
+  .panel-label { position: relative !important; top: auto !important; left: auto !important; right: auto !important; padding: 24px 24px 0 !important; opacity: 0.7; }
+
+  /* Nav */
+  #nav-bar { grid-template-columns: 1fr 1fr; padding: 16px 24px; }
+  #nav-pill { display: none; }
+  #menu-btn { justify-self: end; }
+  #menu-overlay { padding: 80px 24px 40px; }
+  .menu-link { font-size: clamp(40px, 11vw, 72px); }
+
+  /* Hero */
+  #panel-hero { min-height: 100svh; }
+  #panel-hero .content { position: absolute !important; inset: 72px 24px 24px !important; }
+  #panel-hero h1 { font-size: clamp(52px, 13vw, 96px) !important; }
+  .hero-bar .mono { display: none; }
+
+  /* Manifesto */
+  #panel-manifesto .panel-inner { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .manifesto-right { border-left: none !important; border-top: 1px solid rgba(255,255,255,.2); padding-left: 0 !important; padding-top: 28px; }
+
+  /* Work */
+  #panel-work .panel-inner { flex-direction: column !important; gap: 24px !important; }
+  .work-intro { flex: none !important; width: 100% !important; padding-right: 0 !important; }
+  .work-card { flex: 0 0 240px !important; width: 100% !important; height: 240px !important; border-radius: 10px; }
+
+  /* Team */
+  .founder-cards { flex-direction: column !important; align-items: center !important; gap: 24px !important; }
+  .badge { width: 240px !important; height: 320px !important; }
+
+  /* Services */
+  #panel-services .panel-inner { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .svc-cols { grid-template-columns: 1fr !important; }
+  .svc-col h3 { font-size: 24px; }
+
+  /* Product */
+  #panel-product .panel-inner { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .module-grid { grid-template-columns: 1fr !important; }
+  .module-card.module-featured { flex-direction: column !important; align-items: flex-start !important; }
+  .module-featured .module-illus { margin-left: 0 !important; align-self: flex-end; }
+
+  /* Logos */
+  .logo-row { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Proven */
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-k { font-size: clamp(64px, 18vw, 120px) !important; }
+
+  /* Stories */
+  .stories-head { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .story-cards { grid-template-columns: 1fr !important; gap: 48px !important; }
+
+  /* Contact */
+  #panel-contact .panel-inner { grid-template-columns: 1fr !important; gap: 40px !important; inset: auto !important; }
+  .contact-moments { grid-template-columns: 1fr !important; }
+  .contact-form-wrap { padding: 24px !important; }
+  .contact-reach { flex-direction: column; gap: 8px; }
+
+  /* Footer */
+  .wrap { padding: 0 24px; }
+  footer { padding: 56px 0 32px; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 40px; }
+  .footer-bottom { grid-template-columns: 1fr !important; gap: 6px; }
+}
 </style>
 </head>
 <body>
@@ -1241,11 +1328,19 @@ textarea.form-input { resize: vertical; }
   var track   = document.getElementById('scroll-track');
   var progEl  = document.getElementById('nav-progress');
 
+  function isMobile() { return window.innerWidth <= 768; }
+
   function setHeight() {
+    if (isMobile()) {
+      section.style.height = '';
+      track.style.transform = '';
+      return;
+    }
     section.style.height = track.scrollWidth + 'px';
   }
 
   function onScroll() {
+    if (isMobile()) return;
     var rect    = section.getBoundingClientRect();
     var total   = section.offsetHeight - window.innerHeight;
     var scrolled = Math.max(0, -rect.top);
@@ -1256,11 +1351,11 @@ textarea.form-input { resize: vertical; }
   }
 
   setHeight();
-  window.addEventListener('load', setHeight); // re-measure after fonts load
+  window.addEventListener('load', setHeight);
   if (typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(setHeight).observe(track);
   }
-  window.addEventListener('resize', setHeight);
+  window.addEventListener('resize', function() { setHeight(); onScroll(); });
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
