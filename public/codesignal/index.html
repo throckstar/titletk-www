@@ -295,7 +295,7 @@ h1, h2, h3, h4 { margin: 0; }
   window.checkPw=async function(){
     const val=document.getElementById('pw-input').value;
     const hash=await sha256(val);
-    if(hash==='1447d48eb0b694930810d7638602663d2f29bbc7d1f2510d7625838e7838ae0a'){
+    if(hash==='f1d47b4a00c6eec52be4cccde1432aac07cfcaf56546ced041a769474e64980a'){
       sessionStorage.setItem('titletk_auth','1');
       document.getElementById('pw-gate').style.display='none';
     } else {
