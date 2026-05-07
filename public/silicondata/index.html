@@ -164,6 +164,42 @@ h1, h2, h3, h4 { margin: 0; }
 .tc-link { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nk-ink-3); border-bottom: 1px solid var(--nk-rule); padding-bottom: 2px; transition: color 180ms, border-color 180ms; }
 .tc-link:hover { color: var(--nk-ink); border-color: var(--nk-ink); }
 
+/* NORTH TK PLATFORM */
+.ntk-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 56px; padding: 28px 32px; background: var(--nk-bg-2); border: 1px solid var(--nk-rule); border-radius: 12px; border-left: 3px solid var(--tk-coral); }
+.ntk-badge { font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; background: var(--tk-coral); padding: 5px 13px; border-radius: 999px; white-space: nowrap; margin-top: 3px; flex-shrink: 0; }
+.ntk-desc { font-family: var(--tk-sans); font-size: 15px; color: var(--nk-ink-2); line-height: 1.7; }
+
+/* PIPELINE */
+.pipeline-flow { display: flex; align-items: stretch; margin-bottom: 56px; border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; }
+.pipeline-step { display: flex; flex-direction: column; gap: 6px; padding: 20px 18px; flex: 1; border-right: 1px solid var(--nk-rule); }
+.pipeline-step:last-child { border-right: none; background: var(--tk-coral); }
+.pipeline-step-num { font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.pipeline-step:last-child .pipeline-step-num { color: rgba(255,255,255,0.65); }
+.pipeline-step-label { font-family: var(--tk-display); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; color: var(--nk-ink); }
+.pipeline-step:last-child .pipeline-step-label { color: #fff; }
+.pipeline-step-sub { font-family: var(--tk-sans); font-size: 12px; color: var(--nk-text-3); line-height: 1.4; }
+.pipeline-step:last-child .pipeline-step-sub { color: rgba(255,255,255,0.7); }
+@media (max-width: 900px) { .pipeline-flow { flex-direction: column; } .pipeline-step { border-right: none; border-bottom: 1px solid var(--nk-rule); } .pipeline-step:last-child { border-bottom: none; } }
+
+/* SIGNAL SOURCES */
+.signal-sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 56px; }
+.signal-source { display: flex; align-items: flex-start; gap: 14px; padding: 20px; background: var(--nk-paper); border: 1px solid var(--nk-rule); border-radius: 10px; }
+.signal-icon { width: 34px; height: 34px; border-radius: 6px; background: var(--tk-coral-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--tk-mono); font-size: 9.5px; color: var(--tk-coral); font-weight: 600; letter-spacing: 0.04em; }
+.signal-label { font-family: var(--tk-sans); font-weight: 600; font-size: 14px; color: var(--nk-ink); margin-bottom: 4px; }
+.signal-desc { font-family: var(--tk-sans); font-size: 13px; color: var(--nk-text-3); line-height: 1.45; }
+
+/* VOID TABLE */
+.void-table { border: 1px solid var(--nk-rule); border-radius: 12px; overflow: hidden; }
+.void-header { display: grid; grid-template-columns: 1fr 32px 1fr; background: var(--nk-bg-2); padding: 14px 24px; gap: 16px; border-bottom: 1px solid var(--nk-rule); }
+.void-col-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-text-3); }
+.void-col-label.elevated { color: var(--tk-coral); }
+.void-row { display: grid; grid-template-columns: 1fr 32px 1fr; padding: 18px 24px; gap: 16px; border-bottom: 1px solid var(--nk-rule-2); align-items: center; }
+.void-row:last-child { border-bottom: none; }
+.void-current { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.5; font-style: italic; }
+.void-elevated { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink); font-weight: 500; line-height: 1.5; font-style: italic; }
+.void-arrow { font-family: var(--tk-mono); font-size: 14px; color: var(--tk-coral); text-align: center; }
+@media (max-width: 700px) { .void-header, .void-row { grid-template-columns: 1fr; } .void-arrow { display: none; } }
+
 /* FOOTER */
 .footer { padding: 60px 64px; background: var(--nk-bg-2); border-top: 1px solid var(--nk-rule); text-align: center; }
 .footer-logo { margin-bottom: 20px; }
@@ -242,6 +278,7 @@ h1, h2, h3, h4 { margin: 0; }
     <a href="#overview">Overview</a>
     <a href="#themes">Themes</a>
     <a href="#program">Program</a>
+    <a href="#activation">Platform</a>
     <a href="#footprint">Footprint</a>
     <a href="#team">Team</a>
   </div>
@@ -392,12 +429,143 @@ h1, h2, h3, h4 { margin: 0; }
       <h2>Story activation<br>framework.</h2>
       <p class="section-lede">Quick-turn data storytelling that moves from market signal to tier-one pitch in hours.</p>
     </div>
-    <div style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-text); line-height: 1.7; max-width: 800px; margin-top: 32px;">
-      <p style="margin-bottom: 20px;"><strong>Quick-turn data storytelling approach:</strong></p>
-      <p style="margin-bottom: 20px;">[CONTENT TK — Add workflow description here]</p>
+    <!-- North TK platform intro -->
+    <div class="ntk-header">
+      <div class="ntk-badge">North TK Platform</div>
+      <p class="ntk-desc">North TK is our proprietary signal-to-story system — an AI-assisted pipeline that monitors a continuous stream of market inputs and converts raw signals into pitch-ready briefs, storylines, and campaign assets in hours. For SiliconData, every movement in the GPU Index becomes a potential tier-one placement before a competitor can react.</p>
+    </div>
 
-      <p style="margin-bottom: 20px; margin-top: 40px;"><strong>Example pitch scenarios:</strong></p>
-      <p style="margin-bottom: 20px;">[CONTENT TK — Add 2-3 concrete pitch scenarios based on market data SiliconData captures]</p>
+    <!-- Pipeline -->
+    <div style="font-family:var(--tk-mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--nk-text-3);margin-bottom:16px;">The Signal-to-Story Pipeline</div>
+    <div class="pipeline-flow">
+      <div class="pipeline-step">
+        <div class="pipeline-step-num">01</div>
+        <div class="pipeline-step-label">Signal Capture</div>
+        <div class="pipeline-step-sub">Index moves, market events, news triggers</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-step-num">02</div>
+        <div class="pipeline-step-label">AI Analysis</div>
+        <div class="pipeline-step-sub">Context, magnitude, newsworthiness scoring</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-step-num">03</div>
+        <div class="pipeline-step-label">Story Brief</div>
+        <div class="pipeline-step-sub">Angle, hook, target outlets, suggested quotes</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-step-num">04</div>
+        <div class="pipeline-step-label">Assets Built</div>
+        <div class="pipeline-step-sub">Pitch, press note, social, exec statement</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-step-num">05</div>
+        <div class="pipeline-step-label">Placement</div>
+        <div class="pipeline-step-sub">Tier-one coverage, analyst citations</div>
+      </div>
+    </div>
+
+    <!-- Signal sources -->
+    <div style="font-family:var(--tk-mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--nk-text-3);margin-bottom:16px;">Signal Sources for SiliconData</div>
+    <div class="signal-sources">
+      <div class="signal-source">
+        <div class="signal-icon">IDX</div>
+        <div>
+          <div class="signal-label">GPU Index Movements</div>
+          <div class="signal-desc">Spikes or drops in H100, B200, A100 pricing create immediate pitch windows for executive comment</div>
+        </div>
+      </div>
+      <div class="signal-source">
+        <div class="signal-icon">ERN</div>
+        <div>
+          <div class="signal-label">Earnings Season</div>
+          <div class="signal-desc">Hyperscaler CapEx announcements trigger Efficiency Scorecard commentary tied to real index data</div>
+        </div>
+      </div>
+      <div class="signal-source">
+        <div class="signal-icon">MKT</div>
+        <div>
+          <div class="signal-label">Market Events</div>
+          <div class="signal-desc">Chip announcements, supply disruptions, data center buildouts — 2-hour Index Impact Statements</div>
+        </div>
+      </div>
+      <div class="signal-source">
+        <div class="signal-icon">GEO</div>
+        <div>
+          <div class="signal-label">Geopolitical Compute</div>
+          <div class="signal-desc">Regional pricing divergence and sovereign AI spend tracked globally via the Sovereign Map</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Strategic initiatives -->
+    <div style="font-family:var(--tk-mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--nk-text-3);margin-bottom:16px;">Program Initiatives</div>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">INITIATIVE 01</div>
+        <h3 class="phase-title">Compute Inflation Report</h3>
+        <p class="phase-desc">A recurring exclusive with CNBC or the WSJ — the "Token CPI" — that analyzes GPU rental pricing as a macro-economic indicator on a monthly cadence.</p>
+        <ul class="phase-list">
+          <li>North TK generates draft narrative from overnight index movements</li>
+          <li>Story angle: "The cost of intelligence fell 4% in June, but power constraints in Virginia led to a 10% premium for East Coast startups."</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">INITIATIVE 02</div>
+        <h3 class="phase-title">Earnings Efficiency Scorecard</h3>
+        <p class="phase-desc">Turn hyperscaler CapEx announcements into SiliconData commentary — converting abstract spending figures into a story of management competency.</p>
+        <ul class="phase-list">
+          <li>North TK monitors earnings calendar; context brief auto-generated 48 hours in advance</li>
+          <li>Story angle: "Microsoft announced $14B in CapEx, but the B200 Index shows they paid a 15% scarcity premium."</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">INITIATIVE 03</div>
+        <h3 class="phase-title">Breaking News Response Desk</h3>
+        <p class="phase-desc">Position SiliconData as the market referee — the first authoritative voice when Nvidia announces, a data center comes online, or a supply chain disruption hits.</p>
+        <ul class="phase-list">
+          <li>North TK monitors news feeds; triggers alert when index-relevant events break</li>
+          <li>Story angle: "We expect the H100 rental floor to rise $0.40/hr as the forward curve adjusts to the supply delay."</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">INITIATIVE 04</div>
+        <h3 class="phase-title">Silicon Data Sovereign Map</h3>
+        <p class="phase-desc">The "Geopolitical Compute" narrative — tracking the global flow of AI infrastructure spend as nations race to build sovereign compute capacity.</p>
+        <ul class="phase-list">
+          <li>North TK aggregates regional pricing into geographic story angles; quarterly deep-dive pitched to financial and policy press</li>
+          <li>Story angle: "Rental prices in Marseille are now 20% lower than Santa Clara, triggering a migration of LLM training labs."</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Storytelling Void -->
+    <div style="margin-top:64px;">
+      <div style="font-family:var(--tk-mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--nk-text-3);margin-bottom:16px;">Bridging the Storytelling Void</div>
+      <p style="font-family:var(--tk-sans);font-size:15px;color:var(--nk-text);line-height:1.6;max-width:720px;margin-bottom:32px;">SiliconData owns the financial infrastructure — the "what." Title TK's role is supplying the macro-narrative — the "why." Every data point is a story waiting for context.</p>
+      <div class="void-table">
+        <div class="void-header">
+          <div class="void-col-label">Current SiliconData Focus</div>
+          <div></div>
+          <div class="void-col-label elevated">Title TK Elevation</div>
+        </div>
+        <div class="void-row">
+          <div class="void-current">"Our H100 Index is at $3.25."</div>
+          <div class="void-arrow">→</div>
+          <div class="void-elevated">"Why $3.25 is the new psychological barrier for AI startups making infrastructure decisions."</div>
+        </div>
+        <div class="void-row">
+          <div class="void-current">"The Forward Curve is in backwardation."</div>
+          <div class="void-arrow">→</div>
+          <div class="void-elevated">"Why the market thinks the AI compute bubble will soft-land in 2027."</div>
+        </div>
+        <div class="void-row">
+          <div class="void-current">"We track 150k data points."</div>
+          <div class="void-arrow">→</div>
+          <div class="void-elevated">"How regional 'compute deserts' are creating a new digital divide in AI development."</div>
+        </div>
+      </div>
+      <p style="font-family:var(--tk-mono);font-size:11px;color:var(--nk-text-3);margin-top:20px;letter-spacing:0.05em;font-style:italic;">Goal: Make it so that no journalist can write a story about AI costs without quoting a SiliconData Senior Market Analyst.</p>
     </div>
   </div>
 </section>
