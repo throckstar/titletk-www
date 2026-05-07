@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Title TK — For SiliconData</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nk-bg:          #FFFFFF;
+  --nk-bg-2:        #F7F7F5;
+  --nk-ink:         #111111;
+  --nk-ink-2:       #333333;
+  --nk-ink-3:       #888888;
+  --nk-rule:        rgba(0,0,0,0.10);
+  --nk-rule-2:      rgba(0,0,0,0.06);
+  --nk-text:        #444444;
+  --nk-text-3:      #888888;
+  --nk-lapis:       #2D46B9;
+  --nk-lapis-soft:  #4A63CC;
+  --nk-lapis-tint:  #EEF0FA;
+  --nk-paper:       #FFFFFF;
+  --tk-coral:       #F58C8C;
+  --tk-coral-deep:  #E06060;
+  --tk-coral-dim:   rgba(245,140,140,0.10);
+  --tk-orange:      #E5651A;
+  --tk-mono:        'IBM Plex Mono', ui-monospace, monospace;
+  --tk-sans:        'IBM Plex Sans', system-ui, sans-serif;
+  --tk-display:     'Archivo', 'Helvetica Neue', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; color-scheme: light only; }
+body {
+  background: var(--nk-bg); color: var(--nk-ink);
+  font-family: var(--tk-sans); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; font-style: normal !important; color-scheme: light only;
+}
+em, i { font-style: normal; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { margin: 0; }
+.wrap { max-width: 1380px; margin: 0 auto; padding: 0 64px; }
+@media (max-width: 900px) { .wrap { padding: 0 28px; } }
+
+/* EYEBROW */
+.eyebrow {
+  font-family: var(--tk-mono); font-size: 10.5px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--nk-text-3); display: flex; gap: 12px; align-items: center; margin-bottom: 20px;
+}
+.eyebrow .accent { color: var(--tk-coral); }
+
+/* NAV */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 64px; position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--nk-rule); box-shadow: inset 0 2px 0 0 var(--tk-coral);
+}
+.nav-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: 17px; letter-spacing: -0.015em; color: var(--nk-ink); line-height: 1;
+}
+.nav-links {
+  display: flex; gap: 32px; font-family: var(--tk-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-ink-3);
+}
+.nav-links a { transition: color 180ms; }
+.nav-links a:hover { color: var(--nk-ink); }
+.nav-right {
+  font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--nk-text-3); display: flex; align-items: center; gap: 8px;
+}
+.nav-right .badge {
+  background: var(--tk-coral); color: #fff;
+  padding: 5px 12px; border-radius: 999px; font-size: 9.5px; letter-spacing: 0.12em;
+}
+@media (max-width: 900px) { .nav { padding: 18px 28px; } .nav-links { display: none; } }
+
+/* HERO */
+.hero { min-height: 100vh; background: #FFADAD; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none;
+}
+.hero-inner { display: flex; flex-direction: column; flex: 1; max-width: 1380px; margin: 0 auto; padding: 0 64px; width: 100%; }
+.hero-meta { display: flex; gap: 10px; align-items: center; font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,0,0,0.45); padding-top: 48px; }
+.hero-dot { opacity: 0.5; }
+.hero-title { font-family: var(--tk-display); font-weight: 800; font-size: clamp(64px, 9vw, 148px); line-height: 0.93; letter-spacing: -0.03em; color: var(--nk-ink); margin-top: auto; padding-bottom: 48px; }
+.hero-footer { border-top: 1px solid rgba(0,0,0,0.18); padding: 28px 0 40px; }
+.hero-footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 40px; align-items: center; }
+.hf-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.38); margin-bottom: 5px; }
+.hf-name { font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: var(--nk-ink); }
+.hf-sub { font-family: var(--tk-sans); font-size: 13px; color: rgba(0,0,0,0.45); margin-top: 2px; }
+.hf-cta { text-align: right; }
+.hero-read-link { font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-ink); border-bottom: 1px solid rgba(0,0,0,0.3); padding-bottom: 2px; transition: border-color 180ms; white-space: nowrap; }
+.hero-read-link:hover { border-color: var(--nk-ink); }
+@media (max-width: 900px) { .hero-inner { padding: 0 28px; } .hero-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; } .hf-cta { text-align: left; grid-column: 1 / -1; } }
+
+/* SITUATION */
+.situation { padding: 100px 0 80px; border-bottom: 1px solid var(--nk-rule); background: var(--nk-bg); }
+.situation-inner { max-width: 1380px; margin: 0 auto; padding: 0 64px; }
+.situation-meta { display: flex; gap: 32px; align-items: center; font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-text-3); margin-bottom: 48px; }
+.situation-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--tk-coral); flex-shrink: 0; }
+.situation-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+.situation-left h1 { font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: var(--nk-ink); margin-bottom: 32px; }
+.situation-left .lede { font-family: var(--tk-sans); font-size: 17px; color: var(--nk-text); line-height: 1.6; max-width: 760px; }
+.situation-left .lede p { margin-bottom: 20px; }
+.situation-left .lede p:last-child { margin-bottom: 0; }
+.situation-points { display: flex; flex-direction: column; border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; }
+.sp-row { padding: 20px 24px; border-bottom: 1px solid var(--nk-rule); display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
+.sp-row:last-child { border-bottom: none; }
+.sp-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--tk-coral); padding-top: 3px; }
+.sp-text { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.5; }
+.sp-text strong { color: var(--nk-ink); font-weight: 600; }
+.situation-divider { display: flex; gap: 40px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--nk-rule); }
+.sit-stat .k { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 6px; }
+.sit-stat .v { font-family: var(--tk-display); font-weight: 600; font-size: 15px; color: var(--nk-ink); }
+@media (max-width: 900px) { .situation-inner { padding: 0 28px; } .situation { padding: 64px 0; } }
+
+/* SECTION BASE */
+.section { padding: 100px 0; border-bottom: 1px solid var(--nk-rule); }
+.section-alt { background: var(--nk-bg-2); }
+.section-header { margin-bottom: 48px; }
+.section-header h2 { font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: var(--nk-ink); }
+.section-lede { font-family: var(--tk-sans); font-size: 17px; color: var(--nk-text); line-height: 1.6; max-width: 760px; margin-top: 24px; }
+
+/* PHASE CARDS */
+.phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 48px; }
+.phase-card { background: var(--nk-paper); border: 1px solid var(--nk-rule); border-radius: 12px; padding: 32px; }
+.phase-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 12px; }
+.phase-title { font-family: var(--tk-display); font-weight: 700; font-size: 28px; letter-spacing: -0.018em; color: var(--nk-ink); margin-bottom: 16px; }
+.phase-desc { font-family: var(--tk-sans); font-size: 15px; color: var(--nk-text); line-height: 1.6; margin-bottom: 20px; }
+.phase-list { list-style: none; padding: 0; margin: 0; }
+.phase-list li { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.5; padding-left: 20px; position: relative; margin-bottom: 10px; }
+.phase-list li:before { content: '•'; position: absolute; left: 0; color: var(--tk-coral); font-weight: 600; }
+
+/* MEDIA GRID */
+.media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px; }
+.media-tier { background: var(--nk-paper); border: 1px solid var(--nk-rule); border-radius: 10px; padding: 24px; }
+.media-tier-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 16px; }
+.media-list { list-style: none; padding: 0; margin: 0; }
+.media-list li { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.7; }
+.media-list li strong { color: var(--nk-ink); font-weight: 600; }
+
+/* EXPERIENCE GRID */
+.experience-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
+.exp-tile { background: var(--nk-paper); border: 1px solid var(--nk-rule); border-radius: 8px; padding: 20px; transition: border-color 180ms; }
+.exp-tile:hover { border-color: var(--tk-coral); }
+.et-client { font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nk-text-3); margin-bottom: 8px; }
+.et-name { font-family: var(--tk-display); font-weight: 600; font-size: 16px; color: var(--nk-ink); margin-bottom: 4px; }
+.et-cat { font-family: var(--tk-sans); font-size: 13px; color: var(--nk-text); }
+
+/* TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; margin-top: 48px; }
+.team-card { background: var(--nk-paper); border: 1px solid var(--nk-rule); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; min-height: 320px; }
+.tc-role { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 12px; }
+.team-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 24px; letter-spacing: -0.015em; color: var(--nk-ink); margin-bottom: 16px; }
+.team-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-text); line-height: 1.6; }
+.tc-link { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nk-ink-3); border-bottom: 1px solid var(--nk-rule); padding-bottom: 2px; transition: color 180ms, border-color 180ms; }
+.tc-link:hover { color: var(--nk-ink); border-color: var(--nk-ink); }
+
+/* FOOTER */
+.footer { padding: 60px 64px; background: var(--nk-bg-2); border-top: 1px solid var(--nk-rule); text-align: center; }
+.footer-logo { margin-bottom: 20px; }
+.footer-logo svg { height: 1.1em; width: auto; color: var(--nk-ink); }
+.footer-note { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--nk-text-3); }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="pw-gate" style="position:fixed;inset:0;z-index:9999;background:#FAF7F2;display:flex;align-items:center;justify-content:center;">
+  <div style="width:100%;max-width:420px;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center;">
+    <div style="display:flex;align-items:center;gap:8px;font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.015em;color:#111;">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+        <path d="M 22 8 C 14 8, 11 12, 11 20 L 11 28 C 11 30.5, 9 31.5, 6 32 C 9 32.5, 11 33.5, 11 36 L 11 44 C 11 52, 14 56, 22 56"/>
+        <path d="M 42 8 C 50 8, 53 12, 53 20 L 53 28 C 53 30.5, 55 31.5, 58 32 C 55 32.5, 53 33.5, 53 36 L 53 44 C 53 52, 50 56, 42 56"/>
+      </svg>
+      title tk
+    </div>
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:12px;">Confidential · Enter passcode to continue</div>
+      <input id="pw-input" type="password" placeholder="Passcode" autocomplete="current-password"
+        style="width:100%;border:1.5px solid rgba(0,0,0,0.15);border-radius:8px;padding:14px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:16px;color:#111;background:#fff;outline:none;text-align:center;letter-spacing:0.05em;"
+        onkeydown="if(event.key==='Enter')checkPw()"
+      />
+      <div id="pw-err" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E5651A;margin-top:10px;min-height:16px;letter-spacing:0.06em;"></div>
+    </div>
+    <button onclick="checkPw()"
+      style="background:#111;color:#fff;border:none;border-radius:999px;padding:12px 36px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.01em;">
+      Continue →
+    </button>
+  </div>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('titletk_sd_auth')==='1'){
+    document.getElementById('pw-gate').style.display='none';
+  }
+  async function sha256(str){
+    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  window.checkPw=async function(){
+    const val=document.getElementById('pw-input').value;
+    const hash=await sha256(val);
+    if(hash==='0a808125d2bd3f1746727ae0cb2a877ac6f9c13dfa41536d7d8e513a8637c7e4'){
+      sessionStorage.setItem('titletk_sd_auth','1');
+      document.getElementById('pw-gate').style.display='none';
+    } else {
+      document.getElementById('pw-err').textContent='Incorrect passcode.';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  };
+  window.addEventListener('load',function(){
+    var gate=document.getElementById('pw-gate');
+    if(gate&&gate.style.display!=='none'){
+      document.getElementById('pw-input').focus();
+    }
+  });
+})();
+</script>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" fill="none" style="height:1.1em;width:auto;">
+      <g stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/>
+        <path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/>
+      </g>
+      <text x="68" y="38" font-family="Archivo, system-ui, sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="currentColor">title tk</text>
+    </svg>
+  </div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#themes">Themes</a>
+    <a href="#program">Program</a>
+    <a href="#footprint">Footprint</a>
+    <a href="#team">Team</a>
+  </div>
+  <div class="nav-right">
+    <span class="badge">PROPOSAL</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span>PREPARED FOR</span>
+      <span class="hero-dot">●</span>
+      <span>SILICONDATA</span>
+    </div>
+    <h1 class="hero-title">Title TK &<br>SiliconData</h1>
+    <div class="hero-footer">
+      <div class="hero-footer-grid">
+        <div>
+          <div class="hf-label">Prepared for</div>
+          <div class="hf-name">SiliconData</div>
+        </div>
+        <div>
+          <div class="hf-label">Prepared by</div>
+          <div class="hf-name">Title TK</div>
+        </div>
+        <div>
+          <div class="hf-label">Date</div>
+          <div class="hf-name">May 2026</div>
+        </div>
+        <div class="hf-cta">
+          <a href="#overview" class="hero-read-link">Read Proposal →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="situation" id="overview">
+  <div class="situation-inner">
+    <div class="situation-meta">
+      <span>OVERVIEW</span>
+      <div class="dot"></div>
+      <span>THE SITUATION</span>
+    </div>
+    <div class="situation-grid">
+      <div class="situation-left">
+        <h1>Overview.</h1>
+        <div class="lede">
+          <p>SiliconData has established product-market fit in a sector experiencing sustained demand growth. Carmen Li, formerly a data executive at Bloomberg and trader at DRW, brings domain expertise in financial infrastructure and market transparency. Her Ph.D. in Mathematical Physics from the University of Edinburgh positions her to translate technical performance metrics into actionable market intelligence.</p>
+
+          <p>The company's mission centers on creating the pricing and performance standard for AI compute markets. By tracking GPU rental costs (Nvidia H100, B200) and performance variations, SiliconData provides transparency in a market where pricing remains opaque and fragmented. This model mirrors Bloomberg's role in financial markets: converting proprietary data collection into subscription intelligence products.</p>
+
+          <p>Li's approach to company building reflects operational discipline. Silicon Data scaled revenue 5x between January and April 2026 without formal sales infrastructure or dedicated product management. The company secured backing from DRW and Jump Trading, firms that understand data-as-infrastructure businesses. This investor profile suggests confidence in the underlying data asset rather than speculative technology hype.</p>
+
+          <p>The broader market context supports SiliconData's timing. As AI compute becomes a traded commodity, buyers require benchmarking tools to evaluate vendor claims and arbitrage pricing inefficiencies. Companies making multi-million-dollar GPU commitments need independent verification of performance and cost structures. The absence of an established category leader creates an opening for a player who can build credibility through rigorous methodology and consistent reporting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THEMES AND STORYLINES -->
+<section class="section" id="themes">
+  <div class="wrap">
+    <div class="eyebrow"><span>NARRATIVE ARCHITECTURE</span></div>
+    <div class="section-header">
+      <h2>Themes and<br>storylines.</h2>
+      <p class="section-lede">Four narrative pillars that position SiliconData as the independent measurement standard for GPU compute pricing.</p>
+    </div>
+    <div class="situation-points">
+      <div class="sp-row">
+        <div class="sp-num">01</div>
+        <div class="sp-text"><strong>Trust:</strong> Measurement credibility requires independence. SiliconData operates as a neutral third party with no stake in GPU sales or cloud platform revenue. Funded by compute buyers who need transparency, the company's incentive structure aligns with accurate reporting rather than vendor promotion. This positioning mirrors Bloomberg's independence in financial markets — data integrity over distribution relationships.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">02</div>
+        <div class="sp-text"><strong>Comparability:</strong> Enterprise GPU buyers allocate budgets across hyperscalers, neoclouds, and spot markets without standardized benchmarks. SiliconData's normalized pricing methodology enables apples-to-apples comparison across providers, geographies, and lease structures. When a CFO evaluates a $10M compute commitment, comparable data transforms guesswork into informed capital allocation.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">03</div>
+        <div class="sp-text"><strong>Adaptability:</strong> As compute liquidity grows, markets evolve — new rental structures emerge, pricing mechanisms shift, regional supply dynamics change. SiliconData's infrastructure is built to scale with market complexity. The platform tracks 50+ providers across 50 countries, capturing pricing variations as they happen. When the market invents new trading instruments or pricing models, the measurement layer adapts in real time.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">04</div>
+        <div class="sp-text"><strong>Category Leadership:</strong> Every mature market crowns a measurement standard. GPU compute is reaching that inflection point. The company that establishes methodological rigor and reporter trust first becomes the default citation — the S&P of AI infrastructure. Speed determines who owns the category.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section section-alt" id="program">
+  <div class="wrap">
+    <div class="eyebrow"><span>THE PROGRAM</span></div>
+    <div class="section-header">
+      <h2>Program.</h2>
+      <p class="section-lede">SiliconData has a credible point of view, proprietary data and insights, and a moment in the market that makes it timely and highly relevant. The program operates on the Nielsen model for data storytelling: quick-turn pitching based on market signals captured in real time. When B200 prices spike, when H100 spot rates soften, when hyperscaler CapEx guidance shifts — we move from data to story in hours, not days.</p>
+    </div>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">PHASE 1</div>
+        <h3 class="phase-title">Foundation</h3>
+        <p class="phase-desc">Build the narrative infrastructure and trust positioning.</p>
+        <ul class="phase-list">
+          <li>Data audit: Map SiliconData's existing content corpus (weekly blogs, market reports, pricing indices)</li>
+          <li>Methodology storytelling: Build trust narrative around normalization framework, breadth of coverage, independence positioning</li>
+          <li>Category narrative architecture: Establish "GPU compute's S&P" positioning across founder, company, and category storylines</li>
+          <li>Spokesperson preparation: CEO media training for tier-one financial interviews</li>
+          <li>Proof library assembly: Verified pricing records, coverage breadth stats, methodology transparency materials</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">PHASE 2</div>
+        <h3 class="phase-title">Infrastructure</h3>
+        <p class="phase-desc">Build the signal-to-story machine.</p>
+        <ul class="phase-list">
+          <li>Signal-to-story system: Build the machine that converts dashboard data into pitch-ready narratives</li>
+          <li>Media target map: Tier-one financial reporters, semiconductor analysts, cloud infrastructure beat</li>
+          <li>Press materials foundation: Boilerplate language, exec bios, data visualization standards</li>
+          <li>Reporter relationship mapping: Identify who covers hyperscaler CapEx, GPU allocation, data center economics</li>
+          <li>Embargo protocol: Structure for exclusive data releases to tier-one outlets</li>
+        </ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">PHASE 3</div>
+        <h3 class="phase-title">Velocity</h3>
+        <p class="phase-desc">Activate weekly data storytelling cadence.</p>
+        <ul class="phase-list">
+          <li>Weekly data storytelling cadence: Active pitching tied to market movements</li>
+          <li>Tier-one financial media activation: WSJ, Bloomberg, FT, Reuters, CNBC placements</li>
+          <li>Analyst briefing program: Gartner, IDC, Forrester introductions</li>
+          <li>Thought leadership pipeline: CEO bylines, podcast interviews, conference panel submissions</li>
+          <li>Momentum measurement: Track coverage, analyst citations, client inbound attribution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY ACTIVATION FRAMEWORK -->
+<section class="section" id="activation">
+  <div class="wrap">
+    <div class="eyebrow"><span>STORY ACTIVATION FRAMEWORK</span></div>
+    <div class="section-header">
+      <h2>Story activation<br>framework.</h2>
+      <p class="section-lede">Quick-turn data storytelling that moves from market signal to tier-one pitch in hours.</p>
+    </div>
+    <div style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-text); line-height: 1.7; max-width: 800px; margin-top: 32px;">
+      <p style="margin-bottom: 20px;"><strong>Quick-turn data storytelling approach:</strong></p>
+      <p style="margin-bottom: 20px;">[CONTENT TK — Add workflow description here]</p>
+
+      <p style="margin-bottom: 20px; margin-top: 40px;"><strong>Example pitch scenarios:</strong></p>
+      <p style="margin-bottom: 20px;">[CONTENT TK — Add 2-3 concrete pitch scenarios based on market data SiliconData captures]</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPANDING THE EDITORIAL FOOTPRINT -->
+<section class="section section-alt" id="footprint">
+  <div class="wrap">
+    <div class="eyebrow"><span>MEDIA TARGETING</span></div>
+    <div class="section-header">
+      <h2>Expanding the<br>editorial footprint.</h2>
+      <p class="section-lede">Tier-one financial and business media, semiconductor specialists, and analyst firms that move markets.</p>
+    </div>
+    <div class="media-grid">
+      <div class="media-tier">
+        <div class="media-tier-label">TIER 1 FINANCIAL & BUSINESS</div>
+        <ul class="media-list">
+          <li><strong>Broadcast:</strong> CNBC (Squawk Box, Power Lunch, Closing Bell), Bloomberg Television</li>
+          <li><strong>Print & Digital:</strong> Wall Street Journal, Financial Times, Bloomberg, Reuters, Barron's, Forbes, Fortune</li>
+        </ul>
+      </div>
+      <div class="media-tier">
+        <div class="media-tier-label">TIER 1 TECH & AI-FOCUSED</div>
+        <ul class="media-list">
+          <li>The Information (semiconductor beat, cloud infrastructure)</li>
+          <li>TechCrunch (enterprise, AI coverage)</li>
+        </ul>
+      </div>
+      <div class="media-tier">
+        <div class="media-tier-label">SEMICONDUCTOR & HARDWARE</div>
+        <ul class="media-list">
+          <li>SemiAnalysis (detailed semiconductor analysis newsletter)</li>
+          <li>The Next Platform (HPC, AI infrastructure, data center tech)</li>
+        </ul>
+      </div>
+      <div class="media-tier">
+        <div class="media-tier-label">ANALYST FIRMS</div>
+        <ul class="media-list">
+          <li>Gartner</li>
+          <li>IDC</li>
+          <li>Forrester</li>
+          <li>451 Research (part of S&P Global)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELEVANT EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="eyebrow"><span>RELEVANT EXPERIENCE</span></div>
+    <div class="section-header">
+      <h2>We've been here<br>before.</h2>
+    </div>
+    <div class="experience-grid">
+      <div class="exp-tile"><div class="et-client">Narvar</div><div class="et-name">Narvar</div><div class="et-cat">Enterprise SaaS / Data-Driven Platform</div></div>
+      <div class="exp-tile"><div class="et-client">Sigma Computing</div><div class="et-name">Sigma Computing</div><div class="et-cat">B2B Cloud Analytics & BI</div></div>
+      <div class="exp-tile"><div class="et-client">Scope3</div><div class="et-name">Scope3</div><div class="et-cat">Carbon Footprint Measurement / Ad Ecosystem</div></div>
+      <div class="exp-tile"><div class="et-client">Comscore Networks</div><div class="et-name">Comscore Networks</div><div class="et-cat">Online Market Measurement</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section section-alt" id="team">
+  <div class="wrap">
+    <div class="eyebrow"><span>THE TEAM</span></div>
+    <div class="section-header">
+      <h2>Team.</h2>
+      <p class="section-lede">Title TK's founders built their careers leading agencies LaunchSquad, Sparkpr, and Codeword. We are active day-to-day leading strategy and execution.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card" style="position:relative;">
+        <div class="tc-role">Co-Founder</div>
+        <h3>Jason Throckmorton</h3>
+        <p>Jason has spent his career helping visionary teams turn bold ideas into market-leading businesses. From co-founding a global PR agency (LaunchSquad) to working as the first head of marketing at Scope3, he has worked at the intersection of communications, content, and strategy, partnering with tech companies to develop marketing strategies, shape stories, and build momentum. He has been an advisor, investor, early team member, and strategic partner to many companies that lead their industries and have created billions in value.</p>
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: auto; padding-top: 20px;">
+          <a href="#" class="tc-link">LinkedIn →</a>
+          <div style="width:52px; height:52px; border-radius:50%; overflow:hidden; border:2px solid var(--nk-rule); flex-shrink:0; background: #e8e0d8; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 52 52" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+              <rect width="52" height="52" fill="#d4c8bc"/>
+              <ellipse cx="26" cy="22" rx="10" ry="11" fill="#b8a898"/>
+              <ellipse cx="26" cy="46" rx="18" ry="14" fill="#b8a898"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="team-card" style="position:relative;">
+        <div class="tc-role">Co-Founder</div>
+        <h3>Cristina Pena</h3>
+        <p>Cristina has worked in AI since 2014, supporting early work with MindMeld through its acquisition by Cisco, and continuing on to recent AI companies including Stability AI and Lightning AI. She focuses on client relations and ensuring programs stay strategically aligned, with clear intent behind every initiative and a direct connection to business goals. She also enjoys the chase of media relations, shaping stories and securing coverage across a variety of top-tier and emerging outlets.</p>
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: auto; padding-top: 20px;">
+          <a href="https://www.linkedin.com/in/movefastbreakthings/" class="tc-link">LinkedIn →</a>
+          <div style="width:52px; height:52px; border-radius:50%; overflow:hidden; border:2px solid var(--nk-rule); flex-shrink:0; background: #e8e0d8; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 52 52" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+              <rect width="52" height="52" fill="#d4c8bc"/>
+              <ellipse cx="26" cy="22" rx="10" ry="11" fill="#b8a898"/>
+              <ellipse cx="26" cy="46" rx="18" ry="14" fill="#b8a898"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TITLE TK -->
+<section style="padding: 80px 0; background: var(--nk-bg-2); border-top: 1px solid var(--nk-rule);">
+  <div class="wrap">
+    <div style="max-width: 760px;">
+      <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-text-3); margin-bottom: 20px;">About Title TK</div>
+      <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-ink-2); line-height: 1.7; margin-bottom: 16px;">Title TK is a strategic communications firm for growth-stage technology companies. Small, senior, and operator-led, we embed with clients rather than service them from a distance. Our work drives three outcomes: Recognition (building awareness in your market), Relevance (owning your category), and Revenue (growing the business through narrative that performs). We help clients succeed in any climate by putting the entrepreneur first and grounding solutions in results.</p>
+      <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-ink-2); line-height: 1.7;">Title TK was founded by Cristina Pena (co-led the emerging tech practice and launched and led the B2B2C practice at Spark), Jason Throckmorton (co-founded the award-winning marketing and communications agency LaunchSquad), and Mike Barash (founded and led Codeword through its acquisition by Waggener Edstrom).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" fill="none" style="height:1.1em;width:auto;">
+      <g stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M 18 6 C 12 6, 9 10, 9 16 L 9 24 C 9 27, 7 28, 4 28 C 7 28, 9 29, 9 32 L 9 40 C 9 46, 12 50, 18 50"/>
+        <path d="M 38 6 C 44 6, 47 10, 47 16 L 47 24 C 47 27, 49 28, 52 28 C 49 28, 47 29, 47 32 L 47 40 C 47 46, 44 50, 38 50"/>
+      </g>
+      <text x="68" y="38" font-family="Archivo, system-ui, sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="currentColor">title tk</text>
+    </svg>
+  </div>
+  <div class="footer-note">Prepared by Title TK</div>
+</footer>
+
+</body>
+</html>
