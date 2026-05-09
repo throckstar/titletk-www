@@ -10,6 +10,7 @@ interface Props {
   author?: string;
   category?: string;
   heroImage?: string;
+  heroPortrait?: string;
   accentColor?: AccentColor;
   issueNumber?: number;
 }
@@ -20,7 +21,7 @@ const {
   date,
   author,
   category,
-  heroImage,
+  heroPortrait,
   accentColor = 'coral-50',
   issueNumber,
 } = Astro.props;
@@ -55,7 +56,15 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
 
   <!-- Split Hero -->
   <div class="post-hero">
-    <div class="hero-left" style={`background:${accent}`}>
+    <div
+      class="hero-left"
+      style={heroPortrait
+        ? `background-image:url(${heroPortrait});background-size:cover;background-position:center`
+        : `background:${accent}`}
+    >
+      {heroPortrait && (
+        <div class="hero-portrait-overlay" style={`background:${accent}`}></div>
+      )}
       {issueStr && <div class="hero-ghost">{issueStr}</div>}
       <div class="hero-left-top">
         <span class="hero-eyebrow">{category ?? 'Field Notes'}</span>
@@ -74,11 +83,12 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
   <!-- Post body -->
   <section class="post-body-section">
     <article class="post-body">
-      {heroImage && (
-        <figure class="hero-image">
-          <img src={heroImage} alt="" loading="lazy" />
-        </figure>
-      )}
+      <div class="post-byline">
+        <div class="post-byline-text">
+          <span class="post-byline-name">{author ?? 'Title TK'}</span>
+          <span class="post-byline-meta">{dateStr} · Field Notes</span>
+        </div>
+      </div>
       <slot />
     </article>
   </section>
@@ -91,7 +101,7 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
 
 </Base>
 
-<style define:vars={{ accent }}>
+<style define:vars={{ accent, accentBg: accent }}>
   /* ── Nav ──────────────────────────────────────────────────── */
   .post-nav {
     position: sticky; top: 0; z-index: 100;
@@ -124,6 +134,11 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
     padding: 48px 56px;
     overflow: hidden;
   }
+  .hero-portrait-overlay {
+    position: absolute; inset: 0;
+    opacity: 0.75;
+    z-index: 0;
+  }
   .hero-ghost {
     position: absolute;
     bottom: -0.12em; right: -0.04em;
@@ -132,10 +147,11 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
     line-height: 1; letter-spacing: -0.04em;
     color: rgba(0,0,0,0.07);
     pointer-events: none; user-select: none;
+    z-index: 1;
   }
-  .hero-left-top  { position: relative; z-index: 1; }
+  .hero-left-top  { position: relative; z-index: 2; }
   .hero-left-bottom {
-    position: relative; z-index: 1;
+    position: relative; z-index: 2;
     display: flex; flex-direction: column; gap: 4px;
   }
   .hero-eyebrow {
@@ -179,13 +195,33 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
     color: var(--tk-ink-2);
   }
 
-  /* Hero image at top of body */
-  .hero-image {
-    margin: 0 0 56px;
-    border-radius: 6px; overflow: hidden;
-    border: 1px solid var(--tk-rule);
+  /* Author byline */
+  .post-byline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 0 32px;
+    border-bottom: 1px solid var(--tk-rule);
+    margin-bottom: 48px;
   }
-  .hero-image img { width: 100%; height: auto; display: block; }
+  .post-byline-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .post-byline-name {
+    font-family: var(--tk-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tk-ink);
+  }
+  .post-byline-meta {
+    font-family: var(--tk-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tk-ink-3);
+  }
 
   /* First paragraph — larger and lighter */
   .post-body :global(p:first-of-type) {
@@ -212,29 +248,65 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
     border: 0; border-top: 1px solid var(--tk-rule); margin: 48px 0;
   }
 
-  /* Blockquote with accent left border */
+  /* Pull quote */
   .post-body :global(blockquote) {
-    margin: 32px 0; padding: 4px 0 4px 24px;
-    border-left: 3px solid var(--accent);
-    color: var(--tk-ink); font-size: 20px; line-height: 1.55;
+    margin: 2.5em 0 2.5em 32px;
+    padding: 0 0 0 24px;
+    border-left: 3px solid var(--accentBg);
+    background: none;
+    border-radius: 0;
   }
+  .post-body :global(blockquote p) {
+    font-family: var(--tk-narrow);
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--tk-ink);
+    margin: 0;
+  }
+
+  /* Image placeholder — bumps out past column */
+  .post-body :global(.post-image) {
+    margin: 2.5em -48px;
+    background: var(--tk-parchment);
+    border: 2px dashed var(--tk-rule-strong);
+    border-radius: 2px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .post-body :global(.post-image-label) {
+    font-family: var(--tk-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tk-ink-3);
+  }
+  .post-body :global(.post-image img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+  }
+  .post-body :global(figcaption) {
+    font-family: var(--tk-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--tk-ink-3);
+    padding: 10px 0 0;
+    text-align: left;
+    width: calc(100% + 96px);
+    margin-left: -48px;
+    padding-left: 48px;
+  }
+
   .post-body :global(code) {
     font-family: var(--tk-mono); font-size: 14px;
     background: var(--tk-parchment); padding: 2px 6px; border-radius: 3px;
-  }
-
-  /* Inline post-image figure — full bleed with caption */
-  .post-body :global(figure.post-image) {
-    margin: 48px -40px;
-    width: calc(100% + 80px);
-  }
-  .post-body :global(figure.post-image img) {
-    width: 100%; height: auto; display: block;
-  }
-  .post-body :global(figure.post-image figcaption) {
-    font-family: var(--tk-mono); font-size: 11px;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--tk-ink-3); padding: 10px 16px 0;
   }
 
   /* ── Footer ───────────────────────────────────────────────── */
@@ -274,7 +346,8 @@ const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : nu
     .hero-title { font-size: clamp(28px, 7vw, 48px); }
     .post-body { padding: 48px 24px 80px; font-size: 17px; }
     .post-body :global(p:first-of-type) { font-size: 19px; }
-    .post-body :global(figure.post-image) { margin: 40px -24px; width: calc(100% + 48px); }
+    .post-body :global(blockquote) { margin: 2em -24px; padding: 24px; }
+    .post-body :global(.post-image) { margin: 2em -24px; }
     .post-footer { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
   }
 </style>
