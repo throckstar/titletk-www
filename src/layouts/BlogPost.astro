@@ -1,6 +1,8 @@
 ---
 import Base from './Base.astro';
 
+type AccentColor = 'coral-20' | 'coral-50' | 'coral-100' | 'yellow-20' | 'yellow-50' | 'yellow-100';
+
 interface Props {
   title: string;
   description: string;
@@ -8,15 +10,38 @@ interface Props {
   author?: string;
   category?: string;
   heroImage?: string;
+  accentColor?: AccentColor;
+  issueNumber?: number;
 }
 
-const { title, description, date, author, category, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  author,
+  category,
+  heroImage,
+  accentColor = 'coral-50',
+  issueNumber,
+} = Astro.props;
+
+const accentMap: Record<AccentColor, string> = {
+  'coral-20':  '#FFDEDE',
+  'coral-50':  '#FFADAD',
+  'coral-100': '#FF8A8A',
+  'yellow-20': '#FFF9D6',
+  'yellow-50': '#FFF0A0',
+  'yellow-100':'#FFE259',
+};
+
+const accent = accentMap[accentColor];
 const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const issueStr = issueNumber != null ? String(issueNumber).padStart(2, '0') : null;
 ---
 
 <Base title={`${title} — Title TK`} description={description}>
 
-  <!-- Nav -->
+  <!-- Nav — dark -->
   <header class="post-nav">
     <a href="/" class="post-nav-logo">
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
@@ -28,124 +53,147 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
     <a href="/journal" class="post-nav-back">← Journal</a>
   </header>
 
-  <!-- Cover — Editorial Typeset -->
-  <div class="post-cover">
-    <div class="cover-top-row">
-      <span class="cover-eyebrow">{category ?? 'Field Notes'}</span>
-    </div>
-    <h1 class="cover-title">{title} <span class="tk-badge">tk</span></h1>
-    <div class="cover-bottom-row">
-      <div class="cover-meta">
-        {author && <span>{author}</span>}
-        <span>{dateStr}</span>
+  <!-- Split Hero -->
+  <div class="post-hero">
+    <div class="hero-left" style={`background:${accent}`}>
+      {issueStr && <div class="hero-ghost">{issueStr}</div>}
+      <div class="hero-left-top">
+        <span class="hero-eyebrow">{category ?? 'Field Notes'}</span>
       </div>
-      <div class="cover-rule"></div>
+      <div class="hero-left-bottom">
+        <span class="hero-date">{dateStr}</span>
+        {author && <span class="hero-author">{author}</span>}
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-title">{title}</h1>
+      <p class="hero-lede">{description}</p>
     </div>
   </div>
 
   <!-- Post body -->
-  <article class="post-body">
-    {heroImage && (
-      <div class="post-hero-image">
-        <img src={heroImage} alt="" loading="lazy" />
-      </div>
-    )}
-    <slot />
-  </article>
+  <section class="post-body-section">
+    <article class="post-body">
+      {heroImage && (
+        <figure class="hero-image">
+          <img src={heroImage} alt="" loading="lazy" />
+        </figure>
+      )}
+      <slot />
+    </article>
+  </section>
 
-  <!-- Footer -->
+  <!-- Footer — dark -->
   <footer class="post-footer">
     <a href="/journal" class="post-footer-back">← Back to Journal</a>
-    <a href="mailto:partners@titletk.co" class="post-footer-cta">Get in touch</a>
+    <a href="mailto:partners@titletk.co" class="post-footer-cta" style={`background:${accent};color:var(--tk-ink)`}>Get in touch →</a>
   </footer>
 
 </Base>
 
-<style>
-  /* Nav */
+<style define:vars={{ accent }}>
+  /* ── Nav ──────────────────────────────────────────────────── */
   .post-nav {
     position: sticky; top: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 0 96px; height: 64px;
-    background: var(--tk-parchment);
-    border-bottom: 1px solid var(--tk-rule);
+    padding: 0 64px; height: 64px;
+    background: var(--tk-ink);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .post-nav-logo {
     display: inline-flex; align-items: center; gap: 8px;
     font-family: var(--tk-display); font-weight: 700; font-size: 16px;
-    color: var(--tk-ink); text-decoration: none; letter-spacing: -0.015em;
+    color: var(--tk-paper); text-decoration: none; letter-spacing: -0.015em;
   }
   .post-nav-back {
     font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); text-decoration: none;
+    transition: color 160ms ease;
   }
-  .post-nav-back:hover { color: var(--tk-ink); }
+  .post-nav-back:hover { color: var(--tk-paper); }
 
-  /* Cover */
-  .post-cover {
-    background: var(--tk-parchment);
-    padding: 80px 96px 72px;
-    display: flex; flex-direction: column;
-    justify-content: space-between; gap: 36px;
-    min-height: 420px;
-    border-bottom: 1px solid var(--tk-rule);
+  /* ── Split Hero ───────────────────────────────────────────── */
+  .post-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
   }
-  .cover-top-row {
-    display: flex; justify-content: space-between; align-items: center;
+  .hero-left {
+    position: relative;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 48px 56px;
+    overflow: hidden;
   }
-  .cover-eyebrow {
+  .hero-ghost {
+    position: absolute;
+    bottom: -0.12em; right: -0.04em;
+    font-family: var(--tk-display); font-weight: 900;
+    font-size: clamp(140px, 20vw, 300px);
+    line-height: 1; letter-spacing: -0.04em;
+    color: rgba(0,0,0,0.07);
+    pointer-events: none; user-select: none;
+  }
+  .hero-left-top  { position: relative; z-index: 1; }
+  .hero-left-bottom {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .hero-eyebrow {
     font-family: var(--tk-mono); font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--tk-orange-deep);
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-ink);
   }
-  .cover-title {
-    font-family: var(--tk-display); font-weight: 700;
-    font-size: clamp(40px, 7vw, 116px);
-    line-height: 0.92; letter-spacing: -0.025em;
-    color: var(--tk-ink); margin: 0;
-    display: inline;
-  }
-  .tk-badge {
-    display: inline-flex; align-items: center;
-    font-family: var(--tk-mono); font-weight: 500;
-    font-size: clamp(12px, 1.6vw, 28px);
-    background: var(--tk-yellow); color: var(--tk-ink);
-    padding: 0.1em 0.45em; border-radius: 3px;
-    letter-spacing: 0.04em; vertical-align: 0.2em;
-    margin-left: 0.25em;
-  }
-  .cover-bottom-row {
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .cover-meta {
-    display: flex; gap: 20px; align-items: center;
+  .hero-date {
     font-family: var(--tk-mono); font-size: 11px;
     letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--tk-ink-3);
+    color: rgba(26,24,21,0.55);
   }
-  .cover-meta span + span::before {
-    content: '/'; margin-right: 20px; opacity: 0.4;
+  .hero-author {
+    font-family: var(--tk-mono); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(26,24,21,0.55);
   }
-  .cover-rule {
-    height: 2px; width: 80px; background: var(--tk-ink);
+  .hero-right {
+    background: var(--tk-parchment);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 64px 72px;
+    border-left: 1px solid var(--tk-rule);
+  }
+  .hero-title {
+    font-family: var(--tk-display); font-weight: 700;
+    font-size: clamp(32px, 4vw, 64px);
+    line-height: 1.0; letter-spacing: -0.025em;
+    color: var(--tk-ink); margin: 0 0 24px;
+  }
+  .hero-lede {
+    font-family: var(--tk-sans); font-size: 18px; line-height: 1.6;
+    color: var(--tk-ink-2); margin: 0;
   }
 
-  /* Post body */
+  /* ── Post Body ────────────────────────────────────────────── */
+  .post-body-section { background: var(--tk-paper); }
+
   .post-body {
-    max-width: 720px; margin: 0 auto;
-    padding: 80px 56px 120px;
-    font-family: var(--tk-sans); font-size: 18px; line-height: 1.7;
+    max-width: 700px; margin: 0 auto;
+    padding: 80px 40px 120px;
+    font-family: var(--tk-sans); font-size: 18px; line-height: 1.75;
     color: var(--tk-ink-2);
   }
-  .post-hero-image {
-    margin-bottom: 56px;
-    border-radius: 8px;
-    overflow: hidden;
+
+  /* Hero image at top of body */
+  .hero-image {
+    margin: 0 0 56px;
+    border-radius: 6px; overflow: hidden;
     border: 1px solid var(--tk-rule);
   }
-  .post-hero-image img {
-    width: 100%; height: auto; display: block;
+  .hero-image img { width: 100%; height: auto; display: block; }
+
+  /* First paragraph — larger and lighter */
+  .post-body :global(p:first-of-type) {
+    font-size: 21px; line-height: 1.65;
+    color: var(--tk-ink-3); margin-bottom: 32px;
   }
+  .post-body :global(p) { margin: 0 0 24px; }
+
   .post-body :global(h2) {
     font-family: var(--tk-display); font-weight: 700;
     font-size: clamp(26px, 3vw, 38px);
@@ -156,7 +204,6 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
     font-family: var(--tk-display); font-weight: 600; font-size: 22px;
     color: var(--tk-ink); margin: 40px 0 14px;
   }
-  .post-body :global(p) { margin: 0 0 24px; }
   .post-body :global(ul), .post-body :global(ol) {
     padding-left: 24px; margin: 0 0 24px;
   }
@@ -164,51 +211,70 @@ const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric'
   .post-body :global(hr) {
     border: 0; border-top: 1px solid var(--tk-rule); margin: 48px 0;
   }
+
+  /* Blockquote with accent left border */
   .post-body :global(blockquote) {
-    margin: 32px 0; padding: 0 0 0 24px;
-    border-left: 3px solid var(--tk-orange);
-    color: var(--tk-ink); font-size: 20px; line-height: 1.5;
+    margin: 32px 0; padding: 4px 0 4px 24px;
+    border-left: 3px solid var(--accent);
+    color: var(--tk-ink); font-size: 20px; line-height: 1.55;
   }
   .post-body :global(code) {
     font-family: var(--tk-mono); font-size: 14px;
     background: var(--tk-parchment); padding: 2px 6px; border-radius: 3px;
   }
 
-  /* Footer */
+  /* Inline post-image figure — full bleed with caption */
+  .post-body :global(figure.post-image) {
+    margin: 48px -40px;
+    width: calc(100% + 80px);
+  }
+  .post-body :global(figure.post-image img) {
+    width: 100%; height: auto; display: block;
+  }
+  .post-body :global(figure.post-image figcaption) {
+    font-family: var(--tk-mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--tk-ink-3); padding: 10px 16px 0;
+  }
+
+  /* ── Footer ───────────────────────────────────────────────── */
   .post-footer {
-    border-top: 1px solid var(--tk-rule);
-    padding: 32px 96px;
+    background: var(--tk-ink);
+    padding: 40px 64px;
     display: flex; justify-content: space-between; align-items: center;
-    background: var(--tk-paper);
   }
   .post-footer-back {
     font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--tk-ink-3); text-decoration: none;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;
+    transition: color 160ms ease;
   }
-  .post-footer-back:hover { color: var(--tk-ink); }
+  .post-footer-back:hover { color: rgba(255,255,255,0.9); }
   .post-footer-cta {
     display: inline-flex; align-items: center;
-    background: var(--tk-ink); color: var(--tk-paper);
-    font-family: var(--tk-sans); font-weight: 500; font-size: 14px;
+    font-family: var(--tk-sans); font-weight: 600; font-size: 14px;
     padding: 10px 22px; border-radius: 999px; text-decoration: none;
-    transition: background 160ms ease;
+    transition: opacity 160ms ease;
   }
-  .post-footer-cta:hover { background: var(--tk-orange); color: var(--tk-ink); }
+  .post-footer-cta:hover { opacity: 0.8; }
 
-  /* Tablet — reduce wide horizontal padding */
+  /* ── Responsive ───────────────────────────────────────────── */
   @media (max-width: 1024px) {
-    .post-nav,
-    .post-footer { padding-left: 56px; padding-right: 56px; }
-    .post-cover { padding: 64px 56px 56px; min-height: 360px; }
+    .post-nav  { padding: 0 40px; }
+    .hero-left { padding: 40px 40px; }
+    .hero-right { padding: 48px 48px; }
+    .post-footer { padding: 32px 40px; }
   }
 
   @media (max-width: 768px) {
-    .post-nav,
-    .post-footer { padding-left: 24px; padding-right: 24px; }
-    .post-cover { padding: 48px 24px; min-height: auto; }
-    .post-body { padding: 48px 24px 80px; font-size: 16px; }
-    .post-body .post-hero-image { margin-bottom: 40px; }
-    .post-footer { flex-direction: column; gap: 16px; align-items: flex-start; }
-    .cover-rule { display: none; }
+    .post-nav { padding: 0 24px; }
+    .post-hero { grid-template-columns: 1fr; }
+    .hero-left { min-height: 200px; padding: 32px 24px; }
+    .hero-ghost { font-size: clamp(100px, 32vw, 160px); }
+    .hero-right { padding: 40px 24px; border-left: none; border-top: 1px solid var(--tk-rule); }
+    .hero-title { font-size: clamp(28px, 7vw, 48px); }
+    .post-body { padding: 48px 24px 80px; font-size: 17px; }
+    .post-body :global(p:first-of-type) { font-size: 19px; }
+    .post-body :global(figure.post-image) { margin: 40px -24px; width: calc(100% + 48px); }
+    .post-footer { padding: 28px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
   }
 </style>
