@@ -2,7 +2,7 @@
 title: "Information rich, insights poor."
 date: 2026-05-06
 description: "Every technology company has more signal than it knows what to do with. Most marketing organizations never see it. That gap is where North TK was born."
-author: "Title TK"
+author: "Jason Throckmorton"
 category: "Field Notes"
 accentColor: "coral-50"
 issueNumber: 1
