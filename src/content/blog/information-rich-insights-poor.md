@@ -6,7 +6,6 @@ author: "Title TK"
 category: "Field Notes"
 accentColor: "coral-50"
 issueNumber: 1
-heroPortrait: "/images/posts/information-rich/brian-speaking.webp"
 ---
 
 Brian O'Kelley takes more meetings in a week than most CEOs take in a month. When my friend Jessica Hoffman introduced us in December 2022, I had no idea what I was signing up for.
@@ -16,7 +15,7 @@ Scope3 was brand new. The only people at the company were the founding team. Bri
 Within the first week, I understood why Brian had built one of the biggest platforms in digital advertising. He meets with everyone. Investors, customers, competitors, academics, journalists, random people with interesting ideas. He tests hypotheses. Gets feedback. Sells. Recruits. Evangelizes. The pace is relentless.
 
 <figure class="post-image">
-  <img src="/images/posts/information-rich/panel-discussion.jpeg" alt="Brian O'Kelley speaking at a conference" />
+  <img src="/images/posts/information-rich/brian-speaking.webp" alt="Brian O'Kelley speaking at Global Marketer Week" />
   <figcaption>Brian presenting Scope3's carbon reduction data at Global Marketer Week, Istanbul 2023</figcaption>
 </figure>
 
@@ -25,8 +24,8 @@ The byproduct of all these meetings? Notion pages. Thorough breakdowns of every 
 Brian has this ability to remember things like pieces of a giant puzzle and bit by bit, make them fit together. He calls it his L2 cache. The meeting notes were a treasure trove. For a new company with no customers and no product yet, they were gold.
 
 <figure class="post-image">
-  <img src="/images/posts/information-rich/meeting-notes.webp" alt="Meeting notes in Notion" />
-  <figcaption>The kind of structured meeting intelligence Brian produced — and that North TK was built to systematize</figcaption>
+  <img src="/images/posts/information-rich/panel-discussion.jpeg" alt="Scope3 customer summit London" />
+  <figcaption>Scope3's first ever customer summit in London</figcaption>
 </figure>
 
 My problem? Each day there were 5 to 10 new notes to read, digest, and make sense of.
@@ -48,11 +47,6 @@ Customer insights, competitive intelligence, product developments, strategic inf
 By the time the communications or marketing team needs a proof point, a customer quote, a press release hook, or a campaign idea, the moment is gone. The signal existed. Nobody built a system to catch it.
 
 The result: campaigns built on incomplete intelligence, content that doesn't reflect what sales is actually hearing, and stories that never get told because nobody had time to find them.
-
-<figure class="post-image post-image-wide">
-  <img src="/images/posts/information-rich/scope3-infographic.png" alt="Scope3 emissions data infographic" />
-  <figcaption>Scope3's State of Sustainability Report, 2023 — the kind of data intelligence that becomes a media story</figcaption>
-</figure>
 
 Marketing and communications teams get asked to create campaigns via creative alchemy. Take whatever scraps you can find and make magic happen. We were convinced every company had this problem and that there had to be a better way.
 
