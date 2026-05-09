@@ -36,7 +36,10 @@ I kept thinking about something Brian wrote years ago about building Right Media
 
 That question became North TK.
 
-> North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.
+<figure class="post-image">
+  <img src="/images/posts/information-rich/north-tk-signals.png" alt="North TK Signals view" />
+  <figcaption>North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.</figcaption>
+</figure>
 
 ## The pattern repeats everywhere
 
