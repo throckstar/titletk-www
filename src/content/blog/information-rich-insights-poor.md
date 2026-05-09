@@ -8,9 +8,9 @@ accentColor: "coral-50"
 issueNumber: 1
 ---
 
-Brian O'Kelley takes more meetings in a week than most CEOs take in a month. When my friend Jessica Hoffman introduced us in December 2022, I had no idea what I was signing up for.
+Brian O'Kelley takes more meetings in a week than most CEOs take in a month. When my friend Jessica Hoffman from Craft Ventures introduced us in December 2022, I had no idea what I was signing up for.
 
-Scope3 was brand new. The only people at the company were the founding team. Brian and I would be working elbow to elbow to launch it. I hadn't worked in adtech in years, and we'd never met. But we shared a passion for new ideas and storytelling, so we took a chance.
+Scope3 was brand new. The only people at the company were the founding team. Brian and I would be working elbow to elbow to introduce the company and its visison to the world. I hadn't worked in adtech in years, and we'd never met. But we shared a passion for new ideas and storytelling, so we took a chance.
 
 Within the first week, I understood why Brian had built one of the biggest platforms in digital advertising. He meets with everyone. Investors, customers, competitors, academics, journalists, random people with interesting ideas. He tests hypotheses. Gets feedback. Sells. Recruits. Evangelizes. The pace is relentless.
 
@@ -19,22 +19,27 @@ Within the first week, I understood why Brian had built one of the biggest platf
   <figcaption>Brian presenting Scope3's carbon reduction data at Global Marketer Week, Istanbul 2023</figcaption>
 </figure>
 
-The byproduct of all these meetings? Notion pages. Thorough breakdowns of every conversation. His reflections on the discussion. New ideas. New business opportunities. Follow-up items. Story angles. Marketing hooks. For every single person he met with.
+The byproduct of all these meetings was Notion meeting notes. Thorough breakdowns of every conversation. His reflections on the discussion. New ideas. New business opportunities. Follow-up items. Story angles. Marketing hooks. For every single person he met with.
 
-Brian has this ability to remember things like pieces of a giant puzzle and bit by bit, make them fit together. He calls it his L2 cache. The meeting notes were a treasure trove. For a new company with no customers and no product yet, they were gold.
+Brian has this ability to remember things like pieces of a giant puzzle and bit by bit, make them fit together. He calls it his L2 cache. For a new company that was just getting started and they were gold.
 
 <figure class="post-image">
   <img src="/images/posts/information-rich/panel-discussion.jpeg" alt="Scope3 customer summit London" />
   <figcaption>Scope3's first ever customer summit in London</figcaption>
 </figure>
 
-My problem? Each day there were 5 to 10 new notes to read, digest, and make sense of.
+Each day there were 5 to 10 new notes to read, digest, and make sense of.
 
 I kept thinking about something Brian wrote years ago about building Right Media. He realized the real goal was to build his sales director Mike's natural intelligence into software that could figure out which ad to run on which site in real-time. He was going to build a software version of Mike's brain. That simple idea led to the $100B programmatic advertising industry.
 
 > What if I had software that could help me synthesize what was in Brian's notes? Better yet, what was in Brian's brain?
 
 That question became North TK.
+
+<figure class="post-image">
+  <img src="/images/posts/information-rich/panel-discussion.jpeg" alt="Scope3 customer summit London" />
+  <figcaption>Scope3's first ever customer summit in London</figcaption>
+</figure>
 
 ## The pattern repeats everywhere
 
