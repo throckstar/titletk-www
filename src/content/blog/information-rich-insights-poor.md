@@ -36,10 +36,7 @@ I kept thinking about something Brian wrote years ago about building Right Media
 
 That question became North TK.
 
-<figure class="post-image">
-  <img src="/images/posts/information-rich/panel-discussion.jpeg" alt="Scope3 customer summit London" />
-  <figcaption>Scope3's first ever customer summit in London</figcaption>
-</figure>
+> North TK is a purpose-built software platform for communications teams who need to move faster, see further, and stay aligned on what the story actually is.
 
 ## The pattern repeats everywhere
 
