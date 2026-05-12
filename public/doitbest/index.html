@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Title TK — For Do It Best</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* ─── TITLE TK v3 — WARM INTELLIGENCE ─── */
+  --tk-coral:         #FFADAD;
+  --tk-coral-deep:    #F58C8C;
+  --tk-coral-soft:    #FFD6D6;
+  --tk-coral-dim:     rgba(255,173,173,0.12);
+  --tk-wine:          #7A3B3F;
+  --tk-wine-deep:     #5A2A2E;
+  --tk-slate:         #54657A;
+  --tk-slate-deep:    #3D4C5E;
+  --tk-slate-soft:    #8794A4;
+  --tk-moss:          #5F7464;
+  --tk-graphite:      #2A2A2D;
+  --tk-graphite-2:    #3D3D40;
+  --tk-graphite-3:    #6A6A6D;
+  --tk-stone:         #E8E1D8;
+  --tk-stone-2:       #DED5C8;
+  --tk-paper:         #FFFFFF;
+  --tk-paper-2:       #F6F2EC;
+  --tk-fog:           #D7DCE2;
+  --tk-fog-2:         #EBEEF2;
+  --tk-rule:          #D6CFC4;
+  --tk-rule-cool:     #C7CDD4;
+
+  /* ─── NORTHTK — PRODUCT (Slate Signal) ─── */
+  --nk-slate:         #54657A;
+  --nk-slate-deep:    #3D4C5E;
+  --nk-slate-soft:    #C7CDD4;
+  --nk-slate-tint:    #EBEEF2;
+  --nk-paper:         #FFFFFF;
+  --nk-paper-2:       #F6F7F9;
+  --nk-rule:          #E3E5EA;
+  --nk-rule-strong:   #C7CDD4;
+  --nk-ink:           #2A2A2D;
+  --nk-ink-2:         #3D4C5E;
+  --nk-ink-3:         #6A7180;
+  /* legacy aliases */
+  --nk-lapis:         var(--tk-slate);
+  --nk-lapis-soft:    var(--nk-slate-soft);
+  --nk-lapis-tint:    var(--nk-slate-tint);
+
+  /* ─── SURFACE ALIASES ─── */
+  --nk-bg:            #FFFFFF;
+  --nk-bg-2:          #F6F2EC;
+  --nk-text:          #2A2A2D;
+  --nk-text-3:        #6A6A6D;
+
+  /* ─── TYPE ─── */
+  --tk-mono:          'IBM Plex Mono', ui-monospace, monospace;
+  --tk-sans:          'IBM Plex Sans', system-ui, sans-serif;
+  --tk-display:       'Archivo', 'Helvetica Neue', system-ui, sans-serif;
+  --nk-sans:          'IBM Plex Sans', system-ui, sans-serif;
+  --nk-mono:          'IBM Plex Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; color-scheme: light only; }
+body {
+  background: var(--nk-bg); color: var(--nk-ink);
+  font-family: var(--tk-sans); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; font-style: normal !important; color-scheme: light only;
+}
+em, i { font-style: normal; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { margin: 0; }
+.wrap { max-width: 1380px; margin: 0 auto; padding: 0 64px; }
+@media (max-width: 900px) { .wrap { padding: 0 28px; } }
+
+/* NAV */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 64px; position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--nk-rule); box-shadow: inset 0 2px 0 0 var(--tk-coral);
+}
+.nav-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--tk-display); font-weight: 700;
+  font-size: 17px; letter-spacing: -0.015em; color: var(--nk-ink); line-height: 1;
+}
+.nav-links {
+  display: flex; gap: 32px; font-family: var(--tk-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-ink-3);
+}
+.nav-links a { transition: color 180ms; }
+.nav-links a:hover { color: var(--nk-ink); }
+.nav-right {
+  font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--nk-text-3); display: flex; align-items: center; gap: 8px;
+}
+.nav-right .badge {
+  background: var(--tk-coral); color: #fff;
+  padding: 5px 12px; border-radius: 999px; font-size: 9.5px; letter-spacing: 0.12em;
+}
+@media (max-width: 900px) { .nav { padding: 18px 28px; } .nav-links { display: none; } }
+
+/* EYEBROW */
+.eyebrow {
+  font-family: var(--tk-mono); font-size: 10.5px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--nk-text-3); display: flex; gap: 12px; align-items: center; margin-bottom: 20px;
+}
+.eyebrow .accent { color: var(--tk-coral); }
+
+/* HERO */
+.hero { min-height: 100vh; background: var(--tk-coral); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none;
+}
+.hero-inner { display: flex; flex-direction: column; flex: 1; max-width: 1380px; margin: 0 auto; padding: 0 64px; width: 100%; }
+.hero-meta { display: flex; gap: 10px; align-items: center; font-family: var(--tk-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(0,0,0,0.45); padding-top: 48px; }
+.hero-dot { opacity: 0.5; }
+.hero-title { font-family: var(--tk-display); font-weight: 800; font-size: clamp(64px, 9vw, 148px); line-height: 0.93; letter-spacing: -0.03em; color: var(--nk-ink); margin-top: auto; padding-bottom: 48px; }
+.hero-footer { border-top: 1px solid rgba(0,0,0,0.18); padding: 28px 0 40px; }
+.hero-footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.hf-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.38); margin-bottom: 5px; }
+.hf-name { font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: var(--nk-ink); }
+.hf-sub { font-family: var(--tk-sans); font-size: 13px; color: rgba(0,0,0,0.45); margin-top: 2px; }
+@media (max-width: 900px) { .hero-inner { padding: 0 28px; } .hero-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+
+/* SECTION BASE */
+.section { padding: 100px 0; border-bottom: 1px solid var(--nk-rule); }
+.section-alt { background: var(--tk-paper-2); }
+.section-header { margin-bottom: 56px; }
+.section-header h2 { font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: var(--nk-ink); max-width: 900px; }
+.section-lede { font-family: var(--tk-sans); font-size: 17px; color: var(--nk-text); line-height: 1.55; max-width: 680px; margin-top: 20px; }
+.section-lede strong { color: var(--nk-ink); font-weight: 600; }
+
+/* SITUATION POINTS */
+.situation-points { display: flex; flex-direction: column; border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; }
+.sp-row { padding: 20px 24px; border-bottom: 1px solid var(--nk-rule); display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
+.sp-row:last-child { border-bottom: none; }
+.sp-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; color: var(--tk-coral); padding-top: 3px; }
+.sp-text { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.5; }
+.sp-text strong { color: var(--nk-ink); font-weight: 600; }
+
+/* STORY CARDS */
+.story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.story-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px; transition: border-color 200ms; }
+.story-card:hover { border-color: rgba(245,140,140,0.5); }
+.story-card.lead { background: var(--tk-coral-dim); border-color: rgba(255,173,173,0.35); }
+.sc-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.story-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--nk-ink); line-height: 1.1; }
+.story-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.55; }
+@media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; } }
+
+/* CAPABILITY CARDS */
+.cap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+.cap-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 36px; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px; transition: border-color 200ms; }
+.cap-card:hover { border-color: rgba(245,140,140,0.4); }
+.cap-card .cap-label { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.cap-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 24px; letter-spacing: -0.016em; color: var(--nk-ink); line-height: 1.1; }
+.cap-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.6; }
+.cap-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.cap-card ul li { font-family: var(--tk-sans); font-size: 13.5px; color: var(--nk-ink-2); padding-left: 18px; position: relative; line-height: 1.4; }
+.cap-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--tk-coral); }
+@media (max-width: 900px) { .cap-grid { grid-template-columns: 1fr; } }
+
+/* PROCESS STEPS */
+.process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 48px; border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden; }
+.process-step { display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: start; padding: 28px 32px; border-bottom: 1px solid var(--nk-rule); background: #FFFFFF; transition: background 180ms; }
+.process-step:last-child { border-bottom: none; }
+.process-step:hover { background: var(--tk-coral-dim); }
+.ps-num { font-family: var(--tk-mono); font-size: 13px; letter-spacing: 0.1em; color: var(--tk-coral); font-weight: 500; padding-top: 4px; }
+.ps-body h4 { font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.012em; color: var(--nk-ink); margin-bottom: 8px; }
+.ps-body p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.55; }
+
+/* CASE STUDY CARDS */
+.cs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+.cs-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 36px; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px; }
+.cs-client { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nk-lapis-soft); }
+.cs-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.012em; color: var(--nk-ink); line-height: 1.15; }
+.cs-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.6; flex: 1; }
+.cs-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.cs-pill { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-text-3); }
+@media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
+
+/* CLIENT TILES */
+.client-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 48px; }
+.client-tile { border: 1px solid var(--nk-rule); border-radius: 6px; padding: 14px 20px; font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: var(--nk-ink-3); background: #FFFFFF; letter-spacing: -0.01em; white-space: nowrap; }
+.client-tile.hero-client { background: var(--tk-coral-dim); border-color: rgba(255,173,173,0.35); color: var(--nk-ink); }
+
+/* TEAM CARDS */
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.team-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 36px; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px; }
+.team-card .tc-role { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.team-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 28px; letter-spacing: -0.018em; color: var(--nk-ink); }
+.team-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.6; }
+.team-card .tc-link { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-top: 4px; display: inline-block; }
+@media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } }
+
+/* WHY US CLOSING */
+.why-us-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.wu-card { border: 1px solid var(--nk-rule); border-radius: 10px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 10px; }
+.wu-card .wu-num { font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-coral); }
+.wu-card h3 { font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.012em; color: var(--nk-ink); line-height: 1.1; }
+.wu-card p { font-family: var(--tk-sans); font-size: 14px; color: var(--nk-ink-2); line-height: 1.55; }
+@media (max-width: 900px) { .why-us-points { grid-template-columns: 1fr; } }
+
+/* CLOSING STATEMENT */
+.closing { padding: 120px 0; background: var(--nk-ink); }
+.closing h2 { font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.028em; color: #FFFFFF; max-width: 900px; margin-bottom: 32px; }
+.closing .closing-body { font-family: var(--tk-sans); font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 680px; margin-bottom: 40px; }
+.closing-contact { display: flex; gap: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+.cc-item .cc-label { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 5px; }
+.cc-item .cc-val { font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: #FFFFFF; }
+
+/* FOOTER */
+.footer { padding: 36px 0; background: var(--tk-graphite); border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: var(--tk-display); font-weight: 700; font-size: 15px; color: rgba(255,255,255,0.35); letter-spacing: -0.01em; }
+.footer-note { font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+
+@media print { #edit-toolbar { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    title tk
+  </a>
+  <div class="nav-links">
+    <a href="#opening">Our POV</a>
+    <a href="#approach">Approach</a>
+    <a href="#why-clients">Why Us</a>
+    <a href="#team">Team</a>
+    <a href="#how-we-work">North TK</a>
+    <a href="#path">Process</a>
+    <a href="#experience">Experience</a>
+  </div>
+  <div class="nav-right">
+    <span class="badge">Capabilities</span>
+    <span>For Do It Best</span>
+  </div>
+</nav>
+
+<!-- COVER PAGE -->
+<section style="min-height: 100vh; background: var(--tk-stone); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+  <!-- dot texture -->
+  <div style="position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(42,42,45,0.07) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none;"></div>
+
+  <!-- Top bar -->
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 64px; position: relative; z-index: 2;">
+    <!-- Title TK logo -->
+    <a href="#" style="display: inline-flex; align-items: center; gap: 10px; font-family: var(--tk-display); font-weight: 700; font-size: 17px; letter-spacing: -0.015em; color: var(--tk-graphite); text-decoration: none;">
+      <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      title tk
+    </a>
+
+    <!-- Do it Best logo — embedded, b/w via CSS filter -->
+    <div style="text-align: right;">
+      <img src="data:image/jpeg;base64,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" alt="Do it Best" style="height: 48px; width: auto; filter: grayscale(100%) contrast(1.2); opacity: 0.85;">
+      <div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tk-graphite-3); margin-top: 6px;">Prepared For</div>
+    </div>
+  </div>
+
+  <!-- Main content — vertically centered -->
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 64px; position: relative; z-index: 2;">
+    <div style="max-width: 860px;">
+      <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 40px;">Capabilities · May 2026</div>
+      <div style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(56px, 8vw, 128px); line-height: 0.92; letter-spacing: -0.03em; color: var(--tk-graphite);">Title TK.</div>
+      <div style="margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--tk-rule-strong); max-width: 560px;">
+        <p style="font-family: var(--tk-sans); font-size: 20px; color: var(--tk-graphite-2); line-height: 1.5; font-weight: 400;">Storytelling for world-changing companies.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div style="padding: 32px 64px; border-top: 1px solid var(--tk-rule); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2;">
+    <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite-3);">Confidential · For Do It Best</div>
+    <a href="#opening" style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite); text-decoration: none; border-bottom: 1px solid var(--tk-graphite-3); padding-bottom: 2px;">Read →</a>
+  </div>
+</section>
+
+<!-- OPENING QUESTION -->
+<section id="opening" style="padding: 120px 0; background: var(--tk-graphite); border-bottom: 1px solid rgba(255,255,255,0.08);">
+  <div class="wrap">
+    <div style="max-width: 900px;">
+      <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 32px;">The question every organization should be asking</div>
+      <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(52px, 7vw, 112px); line-height: 0.93; letter-spacing: -0.03em; color: #fff; margin-bottom: 48px;">Does anyone care<br>about what you're<br>saying?</h2>
+      <p style="font-family: var(--tk-sans); font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.65; max-width: 660px;">Most organizations have more to say than the market is hearing. The gap isn't effort — it's story. The wrong narrative, told to the wrong room, in the wrong language, at the wrong moment. We close that gap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WE'RE TITLE TK -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: var(--tk-paper);">
+  <div class="wrap">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+      <div>
+        <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 20px;">We're Title TK</div>
+        <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(40px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.025em; color: var(--tk-graphite); margin-bottom: 28px;">Strategic communications<br>for companies at<br>inflection points.</h2>
+        <p style="font-family: var(--tk-sans); font-size: 16px; color: var(--tk-graphite-2); line-height: 1.65; max-width: 480px;">We help companies close the gap between the story they're telling and the story the market needs to hear — at the moments that determine what happens next.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0; border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden;">
+        <div style="padding: 24px 28px; border-bottom: 1px solid var(--nk-rule);">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 8px;">Recognition</div>
+          <div style="font-family: var(--tk-sans); font-size: 14px; color: var(--tk-graphite-2); line-height: 1.5;">Building awareness in your market for the stories that move the needle — with the press, the platforms, and the people who make or influence decisions.</div>
+        </div>
+        <div style="padding: 24px 28px; border-bottom: 1px solid var(--nk-rule);">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 8px;">Relevance</div>
+          <div style="font-family: var(--tk-sans); font-size: 14px; color: var(--tk-graphite-2); line-height: 1.5;">Surfacing the hidden innovation stories that demonstrate competitive advantage and long-term scaling — turning internal momentum into market perception.</div>
+        </div>
+        <div style="padding: 24px 28px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 8px;">Revenue</div>
+          <div style="font-family: var(--tk-sans); font-size: 14px; color: var(--tk-graphite-2); line-height: 1.5;">Communications that show up in the business. Coverage that moves buyers, narrative that closes the loop on pipeline.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POV / WHY WE EXIST -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: var(--tk-paper-2);">
+  <div class="wrap">
+    <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 20px;">Our POV</div>
+    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start;">
+      <div>
+        <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(36px, 4vw, 60px); line-height: 0.95; letter-spacing: -0.022em; color: var(--tk-graphite); margin-bottom: 20px;">Why we exist.</h2>
+        <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--tk-graphite-2); line-height: 1.65;">Inspire people and organizations to take the actions you want. That's the job. Every brief. Every pitch. Every piece of content. Every press conversation.</p>
+        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--tk-rule);">
+          <p style="font-family: var(--tk-sans); font-size: 14px; color: var(--tk-graphite-3); line-height: 1.65;">Most companies try to scale a story they haven't finished writing. We nail that first — so the story is doing the work before the pitch goes out.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--tk-rule); border-radius: 10px; overflow: hidden;">
+        <div style="background: var(--tk-paper); padding: 36px 32px;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">The story isn't landing.</div>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6;">You know you have something real. The market doesn't know it yet — or doesn't know it as well as they should. That's a narrative problem, not a product problem.</p>
+        </div>
+        <div style="background: var(--tk-paper); padding: 36px 32px;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">Coverage is not a strategy.</div>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6;">A clip report is not a communications program. We build programs where output connects to outcome — where every piece of earned media traces back to a strategic decision.</p>
+        </div>
+        <div style="background: var(--tk-paper); padding: 36px 32px;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">Operators, not consultants.</div>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6;">We don't hand a deck and walk away. The partners do the work — the same people who've run programs at scale, in-house and in agencies, across technology cycles since the late 1990s.</p>
+        </div>
+        <div style="background: var(--tk-graphite); padding: 36px 32px;">
+          <div style="font-family: var(--tk-display); font-weight: 700; font-size: 20px; letter-spacing: -0.015em; color: #fff; margin-bottom: 12px; line-height: 1.1;">The intelligence exists.</div>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.6;">The infrastructure to surface it doesn't. NorthTK puts AI-assisted narrative intelligence under every engagement — so we move faster, see further, and never lose the thread.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: var(--tk-paper);" id="approach">
+  <div class="wrap">
+    <div style="display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start;">
+      <div>
+        <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 20px;">Services</div>
+        <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(40px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.025em; color: var(--tk-graphite); margin-bottom: 16px;">Approach.</h2>
+        <p style="font-family: var(--tk-sans); font-size: 14px; font-weight: 600; color: var(--tk-graphite); margin-bottom: 8px;">Story. Strategy. Engagement.</p>
+        <p style="font-family: var(--tk-sans); font-size: 14px; color: var(--tk-graphite-3); line-height: 1.6;">Every Title TK program is led by a company co-founder.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--nk-rule); border: 1px solid var(--nk-rule); border-radius: 10px; overflow: hidden;">
+        <!-- Card 1 -->
+        <div style="background: var(--tk-paper); padding: 32px 28px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 16px;">§ 01</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">Clarity that drives scale.</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6; margin-bottom: 20px;">Most growth companies try to scale a story they haven't finished writing. We nail that first. Before a single pitch goes out, we build the foundational narrative — positioning, messaging, architecture.</p>
+          <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--nk-rule);">
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Brand &amp; narrative strategy</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Messaging architecture</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Executive positioning</div>
+            <div style="padding: 10px 0; font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Corporate communications</div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div style="background: var(--tk-paper); padding: 32px 28px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 16px;">§ 02</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">Deep partnering.</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6; margin-bottom: 20px;">We embed with your team, think like operators, and work like founders. Senior people doing the work, from day one — no junior layers, no account-management theater.</p>
+          <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--nk-rule);">
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Founders and senior people doing the work</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Straight answers, no jargon</div>
+            <div style="padding: 10px 0; font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">At your side at every inflection point</div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div style="background: var(--tk-paper); padding: 32px 28px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 16px;">§ 03</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">Momentum that compounds.</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6; margin-bottom: 20px;">The work. Putting the story in front of the people who need to hear it — and making sure it shows up everywhere it matters next.</p>
+          <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--nk-rule);">
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Earned media &amp; storytelling</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Integrated marketing</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Stakeholder engagement</div>
+            <div style="padding: 10px 0; font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Crisis &amp; inflection moments</div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div style="background: var(--tk-paper); padding: 32px 28px;">
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-coral-deep); margin-bottom: 16px;">§ 04</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; letter-spacing: -0.015em; color: var(--tk-graphite); margin-bottom: 12px; line-height: 1.1;">Ruthless efficiency, human creativity.</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.6; margin-bottom: 20px;">NorthTK puts AI-assisted intelligence underneath every engagement — so our team moves faster, sees further, and never loses the thread.</p>
+          <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--nk-rule);">
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">AI-assisted story discovery</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Narrative intelligence</div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--nk-rule); font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Signal monitoring &amp; alerts</div>
+            <div style="padding: 10px 0; font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">Coverage &amp; share-of-voice tracking</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CLIENTS TURN TO TK -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: var(--tk-paper-2);" id="why-clients">
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 16px;">§ 03 — Why brands choose Title TK</div>
+        <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(40px, 5.5vw, 84px); line-height: 0.93; letter-spacing: -0.026em; color: var(--tk-graphite);">Ten reasons clients<br>turn to us.</h2>
+      </div>
+      <div style="font-family: var(--tk-mono); font-size: 11px; color: var(--tk-graphite-3); text-align: right; line-height: 1.7;">A non-exhaustive list.<br>Every company has its own.</div>
+    </div>
+    <div style="border-top: 1px solid var(--tk-graphite); margin-bottom: 0;">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--nk-rule); border-top: 1px solid var(--tk-graphite);">
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">01 — Category</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Creating or expanding a category</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">They've built something the market doesn't have a name for yet — or they're shaking a market with new ideas and innovations that demand a new frame.</p>
+        </div>
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">02 — Launch</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Launching something new</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">One shot to get the narrative right before the market decides for you. New company. New product. New initiative.</p>
+        </div>
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">03 — Awareness</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Customers don't know your story</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">Fix the awareness gap before it becomes a revenue gap.</p>
+        </div>
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">04 — Sales</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Lost deals because the story is not landing</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">If your pitch sounds different every time, your buyer hears a company that doesn't know itself.</p>
+        </div>
+        <div style="padding: 28px 20px;">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">05 — Discovery</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">AI visibility &amp; search</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">If your brand isn't showing up in AI-generated answers, you're invisible before the conversation even starts.</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr);">
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule); background: var(--tk-paper);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">06 — Press</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Competitors are stealing mindshare</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">Attention in your category is finite. When competitors control the narrative, it compounds. Someone is going to own it.</p>
+        </div>
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule); background: var(--tk-paper);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">07 — Voice</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Close the gap in leadership visibility</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">The market trusts people before it trusts brands. When your leadership isn't visible, you're ceding ground that's hard to reclaim.</p>
+        </div>
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule); background: var(--tk-paper);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">08 — Scale</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Scaling faster than marketing can keep up</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">Growth outpaces narrative all the time. You need a story infrastructure to keep pace.</p>
+        </div>
+        <div style="padding: 28px 20px; border-right: 1px solid var(--nk-rule); background: var(--tk-paper);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 12px;">09 — Reputation</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--tk-graphite); margin-bottom: 10px; line-height: 1.15;">Reputation deficit</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3); line-height: 1.55;">Proactive reputation management is now a real challenge, not just crisis comms.</p>
+        </div>
+        <div style="padding: 28px 20px; background: var(--tk-graphite);">
+          <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px;">10 — Exits</div>
+          <h3 style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: #fff; margin-bottom: 10px; line-height: 1.15;">&nbsp;</h3>
+          <p style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55;">IPO, exit, M&amp;A. How the market receives the news shapes the future of the business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: var(--tk-paper);" id="team">
+  <div class="wrap">
+    <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tk-graphite-3); margin-bottom: 20px;">The Partners</div>
+    <div style="display: grid; grid-template-columns: 400px 1fr; gap: 80px; align-items: start; margin-bottom: 64px;">
+      <div>
+        <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(52px, 6vw, 88px); line-height: 0.93; letter-spacing: -0.026em; color: var(--tk-graphite); margin-bottom: 24px;">Team.</h2>
+        <p style="font-family: var(--tk-sans); font-size: 16px; color: var(--tk-graphite-2); line-height: 1.65;">We're a small team with a deep belief in great stories and the people behind them. Every Title TK engagement runs through our founders — who bring decades of senior experience running programs for some of the world's most demanding companies.</p>
+      </div>
+      <div style="padding-top: 12px;">
+        <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--tk-graphite-3); line-height: 1.7; border-left: 3px solid var(--tk-coral); padding-left: 20px;">No handoffs. No layers. The partners in the pitch are the partners doing the work — from the first conversation through the last deliverable. That's not a pitch. It's how the firm was designed.</p>
+      </div>
+    </div>
+
+    <!-- Team cards -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+
+      <!-- Cristina -->
+      <div style="border: 1px solid var(--nk-rule); border-radius: 12px; overflow: hidden; background: var(--tk-paper);">
+        <div style="background: var(--tk-coral); height: 260px; display: flex; align-items: flex-end; padding: 20px; position: relative;">
+          <div style="position: absolute; top: 20px; left: 20px; font-family: var(--tk-mono); font-size: 13px; color: var(--tk-graphite); opacity: 0.6;">{ }</div>
+          <div>
+            <div style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; color: var(--tk-graphite); letter-spacing: -0.015em;">Cristina Pena</div>
+            <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite); opacity: 0.7; margin-top: 4px;">Co-Founder · Partner</div>
+          </div>
+        </div>
+        <div style="padding: 28px;">
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.65; margin-bottom: 20px;">Co-led the emerging tech practice and launched the B2B2C practice at Sparkpr. Has run programs for companies from pre-launch through IPO across technology, climate, and consumer sectors. Deep relationships with the reporters and editors who cover the spaces Do It Best cares about.</p>
+          <div style="border-top: 1px solid var(--nk-rule); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">cristina@titletk.co</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tk-slate);">LinkedIn →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jason -->
+      <div style="border: 1px solid var(--nk-rule); border-radius: 12px; overflow: hidden; background: var(--tk-paper);">
+        <div style="background: var(--tk-coral-deep); height: 260px; display: flex; align-items: flex-end; padding: 20px; position: relative;">
+          <div style="position: absolute; top: 20px; left: 20px; font-family: var(--tk-mono); font-size: 13px; color: var(--tk-graphite); opacity: 0.5;">{ }</div>
+          <div>
+            <div style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; color: var(--tk-graphite); letter-spacing: -0.015em;">Jason Throckmorton</div>
+            <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite); opacity: 0.7; margin-top: 4px;">Co-Founder · Partner</div>
+          </div>
+        </div>
+        <div style="padding: 28px;">
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.65; margin-bottom: 20px;">Co-founded LaunchSquad, one of the most recognized technology communications agencies in the country. Led communications at Scope3, running marketing for a company reshaping the economics of digital advertising. Has worked in this industry since the late 1990s — through every market cycle, platform shift, and narrative inflection point.</p>
+          <div style="border-top: 1px solid var(--nk-rule); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">jason@titletk.co</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tk-slate);">LinkedIn →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mike -->
+      <div style="border: 1px solid var(--nk-rule); border-radius: 12px; overflow: hidden; background: var(--tk-paper);">
+        <div style="background: var(--tk-wine); height: 260px; display: flex; align-items: flex-end; padding: 20px; position: relative;">
+          <div style="position: absolute; top: 20px; left: 20px; font-family: var(--tk-mono); font-size: 13px; color: rgba(255,255,255,0.4);">{ }</div>
+          <div>
+            <div style="font-family: var(--tk-display); font-weight: 700; font-size: 22px; color: #fff; letter-spacing: -0.015em;">Mike Barash</div>
+            <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 4px;">Co-Founder · Partner</div>
+          </div>
+        </div>
+        <div style="padding: 28px;">
+          <p style="font-family: var(--tk-sans); font-size: 13.5px; color: var(--tk-graphite-2); line-height: 1.65; margin-bottom: 20px;">Founded and led Codeword through its acquisition by Waggener Edstrom. Has built editorial and content operations at scale — from brand journalism to content infrastructure — for companies that needed a media presence, not just a press release. The operator who built the thing, not the advisor who watched.</p>
+          <div style="border-top: 1px solid var(--nk-rule); padding-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--tk-graphite-3);">mike@titletk.co</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tk-slate);">LinkedIn →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="section" id="who-we-are">
+  <div class="wrap">
+    <div class="eyebrow"><span>Who We Are</span> <span class="accent">06</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">Small, senior,<br>embedded.</h2>
+      <p class="section-lede" contenteditable="false">Title TK is a strategic communications firm for companies at inflection points.</p>
+    </div>
+    <div class="situation-points">
+      <div class="sp-row">
+        <div class="sp-num">01</div>
+        <div class="sp-text" contenteditable="false"><strong>We build narratives that hold.</strong> Most PR shops produce coverage. We build the story architecture that generates coverage for years. The difference is that we start with what's actually true, find the most interesting version of it, and give journalists a reason to return to it.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">02</div>
+        <div class="sp-text" contenteditable="false"><strong>We understand complex businesses.</strong> We work with companies that have multiple stakeholders, layered ownership structures, and audiences that range from trade press to Tier 1 business media. A cooperative serving hundreds of independent hardware store operators is a complex communications subject. We're built for that.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">03</div>
+        <div class="sp-text" contenteditable="false"><strong>We orient around three outcomes: Recognition, Relevance, and Revenue.</strong> Every piece of coverage, every LinkedIn post, every byline is built to move one of those. Recognition in the right rooms — with current members, prospective members, and the press that shapes perception at both levels. Relevance that puts Do It Best's leadership in the conversation, not just the coverage. And Revenue that follows when the story is right.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">04</div>
+        <div class="sp-text" contenteditable="false"><strong>Being small is a feature, not a limitation.</strong> You won't be handed off to junior staff. You'll never wonder who's actually working on your account. This is a senior-led, operator-run firm where the founders are on the work — and that's by design.</div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">05</div>
+        <div class="sp-text" contenteditable="false"><strong>Our work is powered by North TK.</strong> Our proprietary intelligence platform gives us a sharper view of the media landscape — reporter beat history, coverage velocity, story angles gaining traction — so we're making decisions from data, not instinct. It's infrastructure most agencies don't have.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NORTH TK -->
+<section style="padding: 100px 0; border-bottom: 1px solid var(--nk-rule); background: var(--tk-graphite);" id="how-we-work">
+  <div class="wrap">
+    <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
+      <span>Powered by Title TK</span> <span style="color: var(--tk-coral);">07</span>
+    </div>
+    <div style="margin-bottom: 56px;">
+      <h2 style="font-family: var(--tk-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.93; letter-spacing: -0.026em; color: #fff; max-width: 900px; margin-bottom: 20px;">North TK: Narrative<br>Intelligence.</h2>
+      <p style="font-family: var(--tk-sans); font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 680px;">North TK is our proprietary software built for one specific use case: capturing and discovering signals that, when managed in a pipeline or workflow, become storytelling assets and the foundation for campaigns. Every brief, every storyline, every campaign in a Do It Best engagement would run through it.</p>
+    </div>
+
+    <!-- Feature description row -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px;">
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;">
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 10px;">Signals</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 8px;">Capture what matters</div>
+        <div style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;">Meeting notes, Slack threads, press mentions, product updates — every relevant signal captured and stored against the client account.</div>
+      </div>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;">
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 10px;">Briefs</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 8px;">From signal to story</div>
+        <div style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;">Signals are synthesized into approved briefs with full traceability back to the source — so every pitch angle has a paper trail.</div>
+      </div>
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px;">
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--nk-lapis-soft); margin-bottom: 10px;">Storylines</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 16px; color: #fff; margin-bottom: 8px;">Campaigns with coherence</div>
+        <div style="font-family: var(--tk-sans); font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;">Briefs roll up into storylines. Storylines become campaigns. The whole program stays strategically aligned, not just tactically busy.</div>
+      </div>
+    </div>
+
+    <!-- Screenshot stack -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+
+      <!-- Screenshot 1: Signals list view -->
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div></div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">North TK · Signals · Do It Best</div>
+        </div>
+        <div style="background: #fff; display: grid; grid-template-columns: 185px 1fr; min-height: 420px;">
+          <!-- Sidebar -->
+          <div style="background: #1a1f2e; padding: 20px 0;">
+            <div style="padding: 0 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"/></svg></div>
+                <span style="font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: white;">North TK</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; font-family: var(--tk-sans); font-size: 11px; color: rgba(255,255,255,0.6);">Do It Best ▾</div>
+            </div>
+            <div style="padding: 0 8px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.4);">Home</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Pipeline</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: white; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: 600;">Signals</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Briefs</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Storylines</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Campaigns</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Foundation</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Brand Voice</div>
+            </div>
+          </div>
+          <!-- Main content -->
+          <div style="padding: 28px 36px; background: #fafafa; overflow: hidden;">
+            <h3 style="font-family: var(--tk-sans); font-weight: 600; font-size: 18px; color: #111; margin-bottom: 3px;">Signals</h3>
+            <p style="font-family: var(--tk-sans); font-size: 12px; color: #999; margin-bottom: 16px;">Catch what matters — from calls, docs, feeds, and the field</p>
+            <div style="display: flex; gap: 10px; margin-bottom: 10px; font-family: var(--tk-sans); font-size: 12px;">
+              <span style="background: var(--nk-lapis); color: white; padding: 4px 12px; border-radius: 999px;">All</span>
+              <span style="color: #888; padding: 4px 8px;">Inbox</span>
+              <span style="color: #888; padding: 4px 8px;">In Review</span>
+              <span style="color: #888; padding: 4px 8px;">Promoted</span>
+              <span style="color: #888; padding: 4px 8px;">Parked</span>
+            </div>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+              <span style="background: var(--nk-lapis); color: white; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">All types</span>
+              <span style="border: 1px solid #e5e5e5; color: #666; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">Technology</span>
+              <span style="border: 1px solid #e5e5e5; color: #666; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">Member Growth</span>
+              <span style="border: 1px solid #e5e5e5; color: #666; font-family: var(--tk-sans); font-size: 11px; padding: 3px 10px; border-radius: 999px;">Competitive Insight</span>
+            </div>
+            <div style="font-family: var(--tk-mono); font-size: 10px; color: #bbb; letter-spacing: 0.08em; margin-bottom: 10px;">11 captured · 0 Parked · 2 In Review</div>
+            <div style="border: 1px solid #efefef; border-radius: 8px; overflow: hidden; font-size: 11.5px;">
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; background: #f5f5f5; border-bottom: 1px solid #efefef; padding: 8px 12px; font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; gap: 8px;">
+                <span>ID</span><span>Status</span><span>Title</span><span>Category</span><span>Source</span><span>Age</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">a4c21fe3</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Sapient partnership call: platform modernization milestones — API integration layer...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">Technology</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Call transcript</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">3d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">8b309c1a</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Nick interview prep: True Value integration story — what changed for member stores...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">Member Growth</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Meeting notes</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">5d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">c7da4052</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Orgill CIO announcement coverage — RIS News, Retail Dive reactions, gaps in substanc...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">Competitive Insight</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Press mention</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">7d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; border-bottom: 1px solid #f5f5f5; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">e19ab883</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Seasonal buying data: spring demand patterns across member categories — smarter inven...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">Technology</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Document</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">9d</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 80px 90px 1fr 120px 100px 40px; padding: 9px 12px; align-items: center; gap: 8px; background: white;">
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">f04c19d7</span>
+                <span style="background: #eff6ff; color: var(--nk-lapis); font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap;">Promoted</span>
+                <span style="font-family: var(--tk-sans); font-size: 12px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Allison LinkedIn draft: retail cooperative model — why independence beats scale...</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #bbb;">Member Growth</span>
+                <span style="font-family: var(--tk-sans); font-size: 11px; color: #999;">Meeting notes</span>
+                <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">11d</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot 2: Storylines view -->
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div></div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">North TK · Storylines · Do It Best</div>
+        </div>
+        <div style="background: #fff; display: grid; grid-template-columns: 200px 1fr; min-height: 320px;">
+          <div style="background: #1a1f2e; padding: 20px 0;">
+            <div style="padding: 0 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"/></svg></div>
+                <span style="font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: white;">North TK</span>
+              </div>
+              <div style="background: rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; font-family: var(--tk-sans); font-size: 11px; color: rgba(255,255,255,0.6);">Do It Best ▾</div>
+            </div>
+            <div style="padding: 0 8px; display: flex; flex-direction: column; gap: 2px;">
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.4);">Home</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Pipeline</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Signals</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Briefs</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: white; background: rgba(255,255,255,0.1); border-radius: 6px; font-weight: 600;">Storylines</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Campaigns</div>
+              <div style="padding: 4px 10px; font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px;">Foundation</div>
+              <div style="padding: 7px 10px; font-family: var(--tk-sans); font-size: 12px; color: rgba(255,255,255,0.5);">Brand Voice</div>
+            </div>
+          </div>
+          <div style="padding: 32px 40px; background: #fafafa;">
+            <h3 style="font-family: var(--tk-sans); font-weight: 600; font-size: 22px; color: #111; margin-bottom: 4px;">Storylines</h3>
+            <p style="font-family: var(--tk-sans); font-size: 13px; color: #888; margin-bottom: 20px;">Synthesis layer. Themes stitched from briefs — anthems, rallying cries, pitch angles.</p>
+            <div style="display: flex; gap: 20px; border-bottom: 1px solid #e5e5e5; margin-bottom: 20px; padding-bottom: 0;">
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-lapis); border-bottom: 2px solid var(--nk-lapis); padding-bottom: 10px; font-weight: 500;">All <span style="background: #eee; border-radius: 999px; padding: 1px 7px; font-size: 11px; color: #555;">3</span></span>
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #888; padding-bottom: 10px;">Developing <span style="background: #eee; border-radius: 999px; padding: 1px 7px; font-size: 11px; color: #555;">3</span></span>
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #888; padding-bottom: 10px;">Active <span style="background: #eee; border-radius: 999px; padding: 1px 7px; font-size: 11px; color: #555;">0</span></span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div style="border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px; background: white;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                  <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">3d9fc012</span>
+                  <span style="background: #fff3e0; color: #e65100; font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em;">Developing</span>
+                </div>
+                <p style="font-family: var(--tk-sans); font-size: 13px; font-weight: 600; color: #111; line-height: 1.4; margin-bottom: 14px;">Do It Best built the real tech infrastructure — the market just hasn't been told yet</p>
+                <div style="height: 3px; background: #eee; border-radius: 2px; margin-bottom: 12px; position: relative;"><div style="width: 35%; height: 100%; background: var(--nk-lapis); border-radius: 2px;"></div></div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Briefs</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">4</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Campaigns</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">1</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Updated</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">3d</div></div>
+                </div>
+              </div>
+              <div style="border: 1px solid #e5e5e5; border-radius: 8px; padding: 18px; background: white;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                  <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb;">7a2e8f44</span>
+                  <span style="background: #fff3e0; color: #e65100; font-family: var(--tk-mono); font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em;">Developing</span>
+                </div>
+                <p style="font-family: var(--tk-sans); font-size: 13px; font-weight: 600; color: #111; line-height: 1.4; margin-bottom: 14px;">Independent retail wins when it has better data than the big box — Do It Best provides it</p>
+                <div style="height: 3px; background: #eee; border-radius: 2px; margin-bottom: 12px; position: relative;"><div style="width: 20%; height: 100%; background: var(--nk-lapis); border-radius: 2px;"></div></div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Briefs</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">2</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Campaigns</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">0</div></div>
+                  <div><div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 2px;">Updated</div><div style="font-family: var(--tk-sans); font-weight: 600; font-size: 13px; color: #111;">5d</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot 3: Brief detail -->
+      <div style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 10px 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; gap: 6px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div><div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div></div>
+          <div style="font-family: var(--tk-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">North TK · Brief · a4c21fe3</div>
+        </div>
+        <div style="background: white; padding: 40px 48px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-lapis);">← Briefs</span>
+              <span style="font-family: var(--tk-mono); font-size: 11px; color: #bbb;">a4c21fe3</span>
+              <span style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-family: var(--tk-mono); font-size: 10px; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.05em;">Approved</span>
+            </div>
+            <div style="display: flex; gap: 16px;">
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #555;">Edit</span>
+              <span style="font-family: var(--tk-sans); font-size: 13px; color: #555;">Add to Storyline</span>
+            </div>
+          </div>
+          <div style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 12px;">Brief · a4c21fe3 · Signal Intelligence</div>
+          <h3 style="font-family: var(--tk-sans); font-weight: 700; font-size: 22px; color: #111; line-height: 1.3; margin-bottom: 8px;">Sapient partnership — the modernization story independent retailers actually need to hear</h3>
+          <div style="font-family: var(--tk-sans); font-size: 12px; color: #aaa; margin-bottom: 24px;">· Updated 3d ago</div>
+          <div style="border-top: 1px solid #f0f0f0; padding-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <p style="font-family: var(--tk-sans); font-size: 14px; color: #333; line-height: 1.65;"><strong>The moment:</strong> Do It Best's Publicis Sapient engagement is progressing toward key infrastructure milestones. The pricing and technology modernization work is substantive — not a vendor announcement, but a foundational shift in how the cooperative manages data and buying decisions on behalf of its members.</p>
+            <p style="font-family: var(--tk-sans); font-size: 14px; color: #333; line-height: 1.65;"><strong>Why it matters:</strong> The story the market has heard about Do It Best is operational. The story they haven't heard is that the cooperative is building the data infrastructure that will let independent retailers compete with Lowe's and Home Depot on information advantages, not just buying power. Orgill has announced a CIO. Do It Best is doing the actual work.</p>
+          </div>
+          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-family: var(--tk-mono); font-size: 10px; color: #bbb; letter-spacing: 0.1em;">Source · c7da4052</span>
+            <span style="font-family: var(--tk-sans); font-size: 13px; color: var(--nk-lapis);">Open signal →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PATH TO FIRST RESULTS -->
+<section class="section" id="path" style="background: var(--tk-paper-2);">
+  <div class="wrap">
+    <div class="eyebrow"><span>How We Work</span> <span class="accent">05</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">A process built<br>for speed.</h2>
+      <p class="section-lede" contenteditable="false">Most agencies have a process designed to protect their timeline. Ours is designed to compress it. Four phases. Clear deliverables at each step. Results before the engagement is finished — not after a six-month ramp.</p>
+    </div>
+
+    <!-- Phase timeline bar -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 40px; border-radius: 8px; overflow: hidden;">
+      <div style="background: var(--tk-graphite); padding: 14px 20px;">
+        <div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 4px;">Phase 01 · Weeks 1–3</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.01em;">Get Smart.</div>
+      </div>
+      <div style="background: var(--tk-graphite-2); padding: 14px 20px;">
+        <div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 4px;">Phase 02 · Weeks 4–6</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.01em;">Shape.</div>
+      </div>
+      <div style="background: var(--tk-slate); padding: 14px 20px;">
+        <div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 4px;">Phase 03 · Weeks 7–10</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.01em;">Roll Out.</div>
+      </div>
+      <div style="background: var(--tk-slate-deep); padding: 14px 20px;">
+        <div style="font-family: var(--tk-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-coral); margin-bottom: 4px;">Phase 04 · Weeks 11–13</div>
+        <div style="font-family: var(--tk-display); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.01em;">Engage.</div>
+      </div>
+    </div>
+
+    <!-- Phase detail cards -->
+    <div class="process-steps">
+
+      <div class="process-step">
+        <div class="ps-num">01</div>
+        <div class="ps-body">
+          <h4 contenteditable="false">Get Smart.</h4>
+          <p contenteditable="false">Founder and team interviews. Audit of existing materials, messaging, and media coverage. Competitive landscape mapping — what Orgill, True Value, and the home improvement trade press are saying about the category, and where the gaps are. Market signal analysis through North TK. The deliverable at the end of this phase is a Story Diagnostic: an honest read of where Do It Best's narrative is working, where it isn't, and what the highest-leverage opportunity is heading into the build phase.</p>
+          <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Stakeholder Interviews</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Materials Audit</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Competitive Landscape</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">North TK Signal Capture</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--tk-coral-deep); border-radius: 4px; padding: 5px 10px; color: var(--tk-wine);">Deliverable: Story Diagnostic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="ps-num">02</div>
+        <div class="ps-body">
+          <h4 contenteditable="false">Shape.</h4>
+          <p contenteditable="false">Narrative intelligence — the core messaging architecture built from what we learned in Phase 01. This is where we develop the master narrative, the messaging hierarchy, and the voice guide that everything else runs through. Proof points. Elevator copy. The language that makes the Do It Best technology story land differently in a trade press interview than in a member communication. We test it against reporter reaction before we lock it.</p>
+          <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Narrative Intelligence</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Messaging Hierarchy</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Voice Guide</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Proof Points</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--tk-coral-deep); border-radius: 4px; padding: 5px 10px; color: var(--tk-wine);">Deliverable: Narrative Brief</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="ps-num">03</div>
+        <div class="ps-body">
+          <h4 contenteditable="false">Roll Out.</h4>
+          <p contenteditable="false">Execution starts. Pitches, talk tracks, and sales enablement assets built on the narrative we just locked. Executive prep for live moments — whether that's trade press interviews, industry panels, or member communications. Stress-tests in real conditions: early media conversations, byline drafts, or a keynote session at Do It Best's own dealer market. The story goes live under controlled conditions so we can see what's working before we push the volume up.</p>
+          <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Media Pitches</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Talk Tracks</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Sales Enablement</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Executive Prep</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--tk-coral-deep); border-radius: 4px; padding: 5px 10px; color: var(--tk-wine);">Deliverable: Story Kit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="ps-num">04</div>
+        <div class="ps-body">
+          <h4 contenteditable="false">Engage.</h4>
+          <p contenteditable="false">Earned media, owned content, and executive visibility running at full strength. Trade press relationships activated. Bylined articles, leadership content, and social amplification working together. Coverage tracked against the storylines we built, not just volume. Distribution measured and refined. The goal at this phase isn't a launch moment — it's a media presence that builds on itself, where every piece of coverage creates the conditions for the next one.</p>
+          <div style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Earned Media</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Owned Content</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Executive Visibility</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Distribution & Measurement</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--tk-coral-deep); border-radius: 4px; padding: 5px 10px; color: var(--tk-wine);">Deliverable: Coverage Report</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section class="section section-alt" id="experience">
+  <div class="wrap">
+    <div class="eyebrow"><span>Relevant Experience</span> <span class="accent">08</span></div>
+    <div class="section-header">
+      <h2 contenteditable="false">We've been<br>here before.</h2>
+      <p class="section-lede" contenteditable="false">Retail, technology, B2B, and the intersection of complex operators with trade-media-heavy categories. We've worked in this territory.</p>
+    </div>
+
+    <!-- Case Studies -->
+    <div class="cs-grid">
+      <div class="cs-card">
+        <div class="cs-client">Walmart</div>
+        <h3 contenteditable="false">The technology story powering the Fortune 1 company.</h3>
+        <p contenteditable="false">Represented Walmart's Global Technology Team — telling the technology stories that defined the company's pivot from retailer to e-tailer. The challenge was the same one Do It Best faces: a company with a dominant operational reputation that needed to be understood as a technology leader. The audience included press, talent, and a broader market that needed to see the transformation was real.</p>
+        <div class="cs-pills">
+          <span class="cs-pill">Retail Tech</span>
+          <span class="cs-pill">F500</span>
+          <span class="cs-pill">Tier 1 Media</span>
+          <span class="cs-pill">Tier 1 Stages & Awards</span>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-client">Narvar</div>
+        <h3 contenteditable="false">Category-defining narrative for retail AI SaaS, with measurable business impact.</h3>
+        <p contenteditable="false">Repositioned Narvar as the definitive platform for post-purchase retail experience — a story that required trade press, technology press, and retail executives to understand a product category that didn't have clean language yet. Marketing attributed approximately 40% of new sales leads to communications work during the engagement.</p>
+        <div class="cs-pills">
+          <span class="cs-pill">Retail SaaS</span>
+          <span class="cs-pill">Narrative</span>
+          <span class="cs-pill">Brand</span>
+          <span class="cs-pill">Tier 1 Media</span>
+          <span class="cs-pill">Tier 1 Stages & Awards</span>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-client">Revel Systems</div>
+        <h3 contenteditable="false">POS technology story for the independent operator audience.</h3>
+        <p contenteditable="false">Revel's customer is the independent retailer — the same audience Do It Best serves as members. Building a narrative that resonates with franchisors, franchise operators, and the independent retail trade press is a specific skill. We've done it.</p>
+        <div class="cs-pills">
+          <span class="cs-pill">POS Technology</span>
+          <span class="cs-pill">Trade Media</span>
+          <span class="cs-pill">Local Media</span>
+        </div>
+      </div>
+      <div class="cs-card">
+        <div class="cs-client">AVA Retail</div>
+        <h3 contenteditable="false">AI-powered retail intelligence for in-store operations.</h3>
+        <p contenteditable="false">Built the communications program for a retail AI company whose story lives at the intersection of store operations, computer vision, and the economics of independent retail. The narrative challenge — translating technology capabilities into operator-relevant outcomes — maps directly to how Do It Best's technology story needs to be told to its member base.</p>
+        <div class="cs-pills">
+          <span class="cs-pill">Narrative</span>
+          <span class="cs-pill">Launch</span>
+          <span class="cs-pill">Local Media</span>
+          <span class="cs-pill">Tier 1 Media</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Tiles -->
+    <div style="margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--nk-rule);">
+      <div class="eyebrow" style="margin-bottom: 24px;"><span>Additional Context</span></div>
+      <p style="font-family: var(--tk-sans); font-size: 15px; color: var(--nk-text); max-width: 680px; margin-bottom: 32px;">Adjacent categories that have shaped how we think about technology narratives, B2B audiences, and trade-media-first programs.</p>
+      <div class="client-row">
+        <div class="client-tile hero-client">Walmart</div>
+        <div class="client-tile hero-client">Narvar</div>
+        <div class="client-tile hero-client">Revel Systems</div>
+        <div class="client-tile hero-client">AVA Retail</div>
+        <div class="client-tile">Typeface</div>
+        <div class="client-tile">Stability AI</div>
+        <div class="client-tile">Arcjet</div>
+        <div class="client-tile">MindMeld → Cisco</div>
+        <div class="client-tile">DRESSX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ABOUT -->
+<section style="padding: 100px 0; background: var(--tk-graphite);" id="closing">
+  <div class="wrap">
+    <div style="font-family: var(--tk-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px;">About Title TK</div>
+    <div style="max-width: 860px;">
+      <p style="font-family: var(--tk-sans); font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 28px;" contenteditable="false">Title TK is a strategic communications firm for growth-stage technology companies. Small, senior, and operator-led, we embed with clients rather than service them from a distance. Our work drives three outcomes: Recognition (building awareness in your market), Relevance (owning your category), and Revenue (growing the business through narrative that performs). We help clients succeed in any climate by putting the entrepreneur first and grounding solutions in results.</p>
+      <p style="font-family: var(--tk-sans); font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7;" contenteditable="false">Title TK was founded by Cristina Pena (co-led the emerging tech practice and launched and led the B2B2C practice at Spark), Jason Throckmorton (co-founded the award-winning marketing and communications agency LaunchSquad), and Mike Barash (founded and led Codeword through its acquisition by Waggener Edstrom).</p>
+    </div>
+    <div style="margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; gap: 48px;">
+      <div>
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 5px;">From</div>
+        <div style="font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: #FFFFFF;">Title TK</div>
+      </div>
+      <div>
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 5px;">For</div>
+        <div style="font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: #FFFFFF;">Do It Best</div>
+      </div>
+      <div>
+        <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 5px;">Date</div>
+        <div style="font-family: var(--tk-sans); font-weight: 600; font-size: 15px; color: #FFFFFF;">May 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">title tk</div>
+      <div class="footer-note">Confidential · For Do It Best · May 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// export utility — call exportHTML() from console if needed
+function exportHTML() {
+  const clone = document.documentElement.cloneNode(true);
+  const html = '<!doctype html>\n' + clone.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'doitbest-capabilities.html';
+  a.click();
+}
+</script>
+</body>
+</html>
