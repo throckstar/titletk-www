@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<!-- saved from url=(0076)file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <title>Title TK — For Do It Best</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only">
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./Title TK — For Do It Best_files/css2" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   /* ─── TITLE TK v3 — WARM INTELLIGENCE ─── */
@@ -226,72 +226,25 @@ h1, h2, h3, h4 { margin: 0; }
 @media print { #edit-toolbar { display: none; } }
 </style>
 </head>
-<body style="overflow: hidden;">
-
-<!-- PASSWORD GATE -->
-<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#F6F2EC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;">
-  <div style="display:flex;align-items:center;gap:10px;font-family:&#39;Archivo&#39;,&#39;Helvetica Neue&#39;,system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.015em;color:#2A2A2D;">
-    <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-    title tk
-  </div>
-  <div style="display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:360px;">
-    <div style="font-family:&#39;IBM Plex Mono&#39;,ui-monospace,monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:#6A6A6D;">Confidential · Enter Passcode to Continue</div>
-    <div style="position:relative;width:100%;">
-      <input id="gate-input" type="password" placeholder="Passcode" autocomplete="off" style="width:100%;padding:16px 48px 16px 20px;font-family:&#39;IBM Plex Sans&#39;,system-ui,sans-serif;font-size:16px;color:#2A2A2D;background:#fff;border:1.5px solid #D6CFC4;border-radius:10px;outline:none;box-sizing:border-box;" onkeydown="if(event.key===&#39;Enter&#39;)gateCheck()">
-      <button onclick="toggleGateVis()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px;">
-        <svg id="eye-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.35;">
-          <path d="M2 10C2 10 5 4 10 4C15 4 18 10 18 10C18 10 15 16 10 16C5 16 2 10 2 10Z" stroke="#2A2A2D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          <circle cx="10" cy="10" r="2.5" stroke="#2A2A2D" stroke-width="1.4"></circle>
-        </svg>
-      </button>
-    </div>
-    <div id="gate-error" style="font-family:&#39;IBM Plex Mono&#39;,ui-monospace,monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#F58C8C;display:none;">Incorrect passcode</div>
-    <button onclick="gateCheck()" style="width:100%;padding:16px;background:#2A2A2D;color:#fff;border:none;border-radius:999px;font-family:&#39;IBM Plex Sans&#39;,system-ui,sans-serif;font-size:16px;font-weight:500;cursor:pointer;letter-spacing:-0.01em;">
-      Continue →
-    </button>
-  </div>
-</div>
-
-<script>
-function gateCheck() {
-  var val = document.getElementById('gate-input').value.trim().toUpperCase();
-  if (val === 'TTK-DIB') {
-    document.getElementById('gate').style.display = 'none';
-    document.body.style.overflow = '';
-  } else {
-    var err = document.getElementById('gate-error');
-    err.style.display = 'block';
-    document.getElementById('gate-input').style.borderColor = '#F58C8C';
-    setTimeout(function(){ err.style.display='none'; document.getElementById('gate-input').style.borderColor='#D6CFC4'; }, 2000);
-  }
-}
-function toggleGateVis() {
-  var inp = document.getElementById('gate-input');
-  inp.type = inp.type === 'password' ? 'text' : 'password';
-}
-document.body.style.overflow = 'hidden';
-</script>
+<body>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#" class="nav-logo">
+  <a href="#" class="nav-logo">
     <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     title tk
   </a>
   <div class="nav-links">
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#opening">Our POV</a>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#approach">Approach</a>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#why-clients">Why Us</a>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#team">Team</a>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#how-we-work">North TK</a>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#path">Process</a>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#experience">Experience</a>
+    <a href="#opening">Our POV</a>
+    <a href="#approach">Approach</a>
+    <a href="#why-clients">Why Us</a>
+    <a href="#team">Team</a>
+    <a href="#how-we-work">North TK</a>
+    <a href="#path">Process</a>
+    <a href="#experience">Experience</a>
   </div>
   <div class="nav-right">
     <span class="badge">Capabilities</span>
@@ -307,10 +260,10 @@ document.body.style.overflow = 'hidden';
   <!-- Top bar -->
   <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 64px; position: relative; z-index: 2;">
     <!-- Title TK logo -->
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#" style="display: inline-flex; align-items: center; gap: 10px; font-family: var(--tk-display); font-weight: 700; font-size: 17px; letter-spacing: -0.015em; color: var(--tk-graphite); text-decoration: none;">
+    <a href="#" style="display: inline-flex; align-items: center; gap: 10px; font-family: var(--tk-display); font-weight: 700; font-size: 17px; letter-spacing: -0.015em; color: var(--tk-graphite); text-decoration: none;">
       <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-        <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M7 2C5 2 3 3.5 3 6V9C3 10.7 1.5 11.5 0 11.5C1.5 11.5 3 12.3 3 14V17C3 19.5 5 21 7 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19 2C21 2 23 3.5 23 6V9C23 10.7 24.5 11.5 26 11.5C24.5 11.5 23 12.3 23 14V17C23 19.5 21 21 19 21" stroke="#2A2A2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       title tk
     </a>
@@ -336,7 +289,36 @@ document.body.style.overflow = 'hidden';
   <!-- Bottom bar -->
   <div style="padding: 32px 64px; border-top: 1px solid var(--tk-rule); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2;">
     <div style="font-family: var(--tk-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite-3);">Confidential · For Do It Best</div>
-    <a href="file:///Users/jasonthrockmorton/Downloads/doitbest-capabilities-final_1.html#opening" style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite); text-decoration: none; border-bottom: 1px solid var(--tk-graphite-3); padding-bottom: 2px;">Read →</a>
+    <a href="#opening" style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tk-graphite); text-decoration: none; border-bottom: 1px solid var(--tk-graphite-3); padding-bottom: 2px;">Read →</a>
+  </div>
+</section>
+
+<!-- CORAL HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span>Title TK</span>
+      <span class="hero-dot">·</span>
+      <span>Capabilities</span>
+      <span class="hero-dot">·</span>
+      <span>For Do It Best</span>
+      <span class="hero-dot">·</span>
+      <span>May 2026</span>
+    </div>
+    <div class="hero-title" contenteditable="false" style="visibility:hidden; pointer-events:none; user-select:none;">&nbsp;</div>
+    <div class="hero-footer">
+      <div class="hero-footer-grid">
+        <div>
+          <div class="hf-label">Prepared For</div>
+          <div class="hf-name">Do It Best</div>
+        </div>
+        <div>
+          <div class="hf-label">Prepared By</div>
+          <div class="hf-name">Title TK</div>
+          <div class="hf-sub">partners@titletk.co</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -697,7 +679,7 @@ document.body.style.overflow = 'hidden';
           <div style="background: #1a1f2e; padding: 20px 0;">
             <div style="padding: 0 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"></path></svg></div>
+                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"/></svg></div>
                 <span style="font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: white;">North TK</span>
               </div>
               <div style="background: rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; font-family: var(--tk-sans); font-size: 11px; color: rgba(255,255,255,0.6);">Do It Best ▾</div>
@@ -790,7 +772,7 @@ document.body.style.overflow = 'hidden';
           <div style="background: #1a1f2e; padding: 20px 0;">
             <div style="padding: 0 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"></path></svg></div>
+                <div style="width: 22px; height: 22px; background: var(--nk-lapis); border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg width="10" height="10" viewBox="0 0 14 14" fill="none"><path d="M7 2L12 12H2L7 2Z" fill="white"/></svg></div>
                 <span style="font-family: var(--tk-display); font-weight: 700; font-size: 13px; color: white;">North TK</span>
               </div>
               <div style="background: rgba(255,255,255,0.08); border-radius: 6px; padding: 6px 10px; font-family: var(--tk-sans); font-size: 11px; color: rgba(255,255,255,0.6);">Do It Best ▾</div>
@@ -968,7 +950,7 @@ document.body.style.overflow = 'hidden';
             <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Earned Media</span>
             <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Owned Content</span>
             <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Executive Visibility</span>
-            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Distribution &amp; Measurement</span>
+            <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--nk-rule); border-radius: 4px; padding: 5px 10px; color: var(--nk-ink-3);">Distribution & Measurement</span>
             <span style="font-family: var(--tk-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--tk-coral-deep); border-radius: 4px; padding: 5px 10px; color: var(--tk-wine);">Deliverable: Coverage Report</span>
           </div>
         </div>
@@ -999,7 +981,7 @@ document.body.style.overflow = 'hidden';
           <span class="cs-pill">Retail Tech</span>
           <span class="cs-pill">F500</span>
           <span class="cs-pill">Tier 1 Media</span>
-          <span class="cs-pill">Tier 1 Stages &amp; Awards</span>
+          <span class="cs-pill">Tier 1 Stages & Awards</span>
         </div>
       </div>
       <div class="cs-card">
@@ -1011,7 +993,7 @@ document.body.style.overflow = 'hidden';
           <span class="cs-pill">Narrative</span>
           <span class="cs-pill">Brand</span>
           <span class="cs-pill">Tier 1 Media</span>
-          <span class="cs-pill">Tier 1 Stages &amp; Awards</span>
+          <span class="cs-pill">Tier 1 Stages & Awards</span>
         </div>
       </div>
       <div class="cs-card">
@@ -1105,6 +1087,5 @@ function exportHTML() {
   a.click();
 }
 </script>
-
-
-</body></html>
+</body>
+</html>
